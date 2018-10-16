@@ -15,22 +15,14 @@
 
 #define MainYellowColor [UIColor colorWithHex:0xEAA431]
 
-////服务器 正式版
-#define MainUrl @"http://www.huirongfa.com/App/Index/api"
-//图片
+//////服务器 正式版
+//#define MainUrl @"http://www.huirongfa.com/App/Index/api"
+////图片
+//#define ImageUrl @"http://www.huirongfa.com/"
+
+////服务器 测试版
+#define MainUrl  @"http://www.huirongfa.com/App/Index/api"
 #define ImageUrl @"http://www.huirongfa.com/"
-////服务器 正式版
-//#define MainUrl @"http://192.168.0.5/App/Index/api"
-////图片
-//#define ImageUrl @"http://192.168.0.5/"
-////
-//
-//服务器  测试
-//#define MainUrl @"http://122.114.208.180:92/App/Index/api"
-////图片
-//#define ImageUrl @"http://122.114.208.180:92/"
-
-
 
 // 接口目录
 

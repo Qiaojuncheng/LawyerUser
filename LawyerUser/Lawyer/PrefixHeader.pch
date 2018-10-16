@@ -20,6 +20,16 @@
 #import "UIViewController+HUD.h"
 #import "UIImageView+WebCache.h"
 #import "YYModel.h"
+#import "UIButton+ZYButton.h"
+#import "UILabel+ZYLable.h"
+#import "UIView+SDAutoLayout.h"
+#import "UITableView+SDAutoTableViewCellHeight.h"
+
+#import "AFManagerHelp.h"
+#import "ShowHUD.h"
+#import "PublicMethod.h"
+#import "MJExtension.h"
+ 
 
 #import "UILabel+BoundingRect.h"
 #import "Utile.h"
@@ -27,21 +37,35 @@
 
 #import <UMSocialCore/UMSocialCore.h>
 #import <UShareUI/UShareUI.h>
+
+#import "LawLogionViewController.h"
 //#import "SDWebImageManager.h"
 //#import "UIImageView+WebCache.h"
 /** @brief 登录状态变更的通知 */
+
+
+
+
+
+#define MJCURRENTDEVICE [[[UIDevice currentDevice] systemVersion] floatValue]
+
+
+
 #define KNOTIFICATION_LOGINSUCCESS @"loginStateChange"
 
-#define UserId  [[NSUserDefaults standardUserDefaults] objectForKey:@"id"]
+#define UserId  [[NSUserDefaults standardUserDefaults] objectForKey:@"id"]?[[NSUserDefaults standardUserDefaults] objectForKey:@"id"]:@""
 
-#define  latStr [[NSUserDefaults standardUserDefaults] objectForKey:@"Latitudeing"]
-#define lonStr [[NSUserDefaults standardUserDefaults] objectForKey:@"Longitudeing"]
+#define  latStr [[NSUserDefaults standardUserDefaults] objectForKey:@"Latitudeing"]?[[NSUserDefaults standardUserDefaults] objectForKey:@"Latitudeing"]:@""
+#define lonStr [[NSUserDefaults standardUserDefaults] objectForKey:@"Longitudeing"]?[[NSUserDefaults standardUserDefaults] objectForKey:@"Longitudeing"]:@""
+
+#define  UserPhone [[NSUserDefaults standardUserDefaults] objectForKey:@"phone"]?[[NSUserDefaults standardUserDefaults] objectForKey:@"phone"]:@""
 
 
 // 颜色
-#define MAINCOLOR [UIColor colorWithHex:0x216BB0]   // 主色
+#define MAINCOLOR [UIColor colorWithHex:0x3181FE]   // 主色蓝色
 #define MainBackColor [UIColor colorWithHex:0xf5f5f5] // 背景颜色
 #define LINECOLOR [UIColor colorWithHex:0xececec]//线条颜色
+#define APPCOLOR  [UIColor whiteColor]//RGBCOLOR(250, 141, 45)
 
 //字体大小
 
@@ -55,6 +79,10 @@
 #define DEEPTintColor [UIColor colorWithHex:0x333333]//字体黑色颜色
 #define TintColor [UIColor colorWithHex:0x666666]//字体灰色颜色
 #define ShallowTintColor [UIColor colorWithHex:0x999999]//字体浅色颜色
+#define THEMECOLOR  [UIColor whiteColor]
+#define RGBMCOLOR(a) [UIColor colorWithRed:(a)/255.0f green:(a)/255.0f blue:(a)/255.0f alpha:1]
+#define DEFAULTBGCOLOR RGBMCOLOR(242)
+
 
 // 导航栏 加 状态栏
 #define NavStatusBarHeight (44 + StatusBarHeight)
@@ -71,15 +99,98 @@
 
 //获取当前屏幕的高度
 #define ConentViewHeight [UIScreen mainScreen].bounds.size.height -NavStatusBarHeight
-
+#define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
 //获取当前屏幕的宽度
 #define ConentViewWidth  [UIScreen mainScreen].bounds.size.width
+#define SCREENWIDTH ConentViewWidth
+
+
+#define UD  [NSUserDefaults standardUserDefaults]
+
+
+#ifdef DEBUG
+//调试状态
+#define MyString [NSString stringWithFormat:@"%s", __FILE__].lastPathComponent
+#define DLog(...) printf("%s: %s 第%d行: %s\n",[[PublicMethod getCurrentDate] UTF8String], [MyString UTF8String] ,__LINE__, [[NSString stringWithFormat:__VA_ARGS__] UTF8String]);
+#define DLogMethod() NSLog(@"%s", __func__)
+#else
+//发布状态
+#define DLog(...)
+#define DLogMethod()
+#endif
 
 // 判断是否问 ios 7
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
 
+#define FONTTYPE @"HelveticaNeue-Light"
+
+
+/*iOS版本*/
+// 版本号
+#define MJCURRENTDEVICE [[[UIDevice currentDevice] systemVersion] floatValue]
+// iOS7
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0 && [[UIDevice currentDevice].systemVersion doubleValue] < 8.0)
+// iOS8
+#define iOS8 ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0 && [[UIDevice currentDevice].systemVersion doubleValue] < 9.0)
+// iOS9
+#define iOS9 ([[UIDevice currentDevice].systemVersion doubleValue] >= 9.0 && [[UIDevice currentDevice].systemVersion doubleValue] < 10.0)
+// iOS10
+#define iOS10 ([[UIDevice currentDevice].systemVersion doubleValue] >= 10.0 ）
+
+// iOS7及以后
+#define iOS7_OR_Later ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0 )
+// iOS8及以后
+#define iOS8_OR_Later ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0 )
+// iOS9及以后
+#define iOS9_OR_Later ([[UIDevice currentDevice].systemVersion doubleValue] >= 9.0 )
+// iOS9.1及以后
+#define iOS9_1OR_Later ([[UIDevice currentDevice].systemVersion doubleValue] >= 9.1f )
+// iOS10及以后
+#define iOS10_OR_Later ([[UIDevice currentDevice].systemVersion doubleValue] >= 10.0 )
+
+
+
 //ios6 和ios7 的适配
 #define IOS_Frame     if ([[[UIDevice currentDevice] systemVersion]doubleValue]>=7.0) {self.navigationController.navigationBar.translucent= NO;  }   ;   if ( [self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {self.automaticallyAdjustsScrollViewInsets = NO;}
+
+#define IsLogin [[NSUserDefaults standardUserDefaults] objectForKey:@"userid"]?YES:NO
+
+
+#pragma mark 新的接口
+#pragma mark  首页
+#define  APPPhone [[NSUserDefaults standardUserDefaults] objectForKey:@"400Phone"]
+
+
+#pragma mark 找律师
+
+#pragma mark 发布
+
+#pragma mark 案件欣赏
+//案件类型
+#define NewConsultGetType  [dic setValue:@"App/Public/getCategory" forKey:@"action"];
+// 案件欣赏
+#define NewCaseNews  [dic setValue:@"App/Public/News" forKey:@"action"];
+//收藏取消收藏
+#define NewCaseNewscollect  [dic setValue:@"App/Public/collect" forKey:@"action"];
+
+
+#pragma mark 我的
+// 获取400 电话
+#define NewGetPhone [dic setValue:@"App/Public/tel" forKey:@"action"];
+
+
+// 注册获取验证码
+#define  NewGetCode  [dic setValue:@"Base/User/regGetVerify" forKey:@"action"];
+// 登录获取验证码
+#define  NewLogGetCode  [dic setValue:@"Base/User/logGetVerify" forKey:@"action"];
+
+// 注册并验证
+#define  NewRegiste  [dic setValue:@"Base/User/appReg" forKey:@"action"];
+// 登录
+#define  NewLogin  [dic setValue:@"Base/User/appLog" forKey:@"action"];
+//
+
+#pragma mark 老的接口
 
 //电话和面谈预约
 #define UserputYuyue [dic setValue:@"App/User/putYuyue" forKey:@"action"];
@@ -122,7 +233,6 @@
 //提现信息
 #define QJTXINFO [dic setValue:@"App/Public/tx_info" forKey:@"action"];
 
-
 //取消关注
 #define Userqxguanzhu [dic setValue:@"App/User/qxguanzhu" forKey:@"action"];
 
@@ -149,5 +259,43 @@
 
 //内购验证
 #define APPLEPayVerity [dic setValue:@"App/User/apple" forKey:@"action"];
+
+
+
+
+
+
+#pragma  mark 新的接口
+#pragma  mark  首页
+
+//首页推荐律师
+#define LawMaingetTuiLawyer [dic setValue:@"App/User/getTuiLawyer" forKey:@"action"];
+
+
+#pragma  mark  找律师
+//找律师
+#define LawMaingetLawyerList [dic setValue:@"App/User/getLawyerList" forKey:@"action"];
+//律师详情
+#define LawMaingetlawyerXq [dic setValue:@"App/User/lawyerXq" forKey:@"action"];
+
+//法律服务类型
+#define NewSquarGetType  [dic setValue:@"App/Lawyer/suitType" forKey:@"action"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif /* PrefixHeader_pch */

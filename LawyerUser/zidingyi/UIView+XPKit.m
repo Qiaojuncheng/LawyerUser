@@ -192,15 +192,20 @@ static char kWhenTouchedUpBlockKey;
 	self.layer.masksToBounds = NO;
 }
 
-- (void)createCornerRadiusShadowWithCornerRadius:(CGFloat)cornerRadius offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius {
-	self.layer.shadowColor = [UIColor blackColor].CGColor;
-	self.layer.shadowOpacity = opacity;
-	self.layer.shadowOffset = offset;
-	self.layer.shadowRadius = radius;
-	self.layer.shouldRasterize = YES;
-	self.layer.cornerRadius = cornerRadius;
-	self.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:[self bounds] cornerRadius:cornerRadius] CGPath];
-	self.layer.masksToBounds = NO;
+- (void)createCornerRadiusShadowWithCornerRadius:(CGFloat)cornerRadius offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius  Color:(UIColor*)color{
+//    防止 子view也被添加阴影， 所以如果要穿创建的话先添加 阴影再添加其他view
+    UIView *BackView  =  [[UIView alloc]initWithFrame:self.bounds];
+    BackView.backgroundColor = [UIColor whiteColor];
+	BackView.layer.shadowColor = color.CGColor;
+    BackView.layer.shadowOpacity = opacity;
+    BackView.layer.shadowOffset = offset;
+    BackView.layer.shadowRadius = radius;
+    BackView.layer.shouldRasterize = YES;
+    BackView.layer.cornerRadius = cornerRadius;
+    BackView.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:[self bounds] cornerRadius:cornerRadius] CGPath];
+    BackView.layer.masksToBounds = NO;
+    [self addSubview:BackView];
+    [self  sendSubviewToBack:BackView];
 }
 
 // Animations

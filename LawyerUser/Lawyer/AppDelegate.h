@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+// 引入JPush功能所需头文件
+#import "JPUSHService.h"
+
+
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

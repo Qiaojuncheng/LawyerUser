@@ -11,6 +11,9 @@
 typedef void(^imageClickBlock)(NSInteger index);
 
 @interface xsqbanner : UIView
+
+//轮播图片名字的数组
+@property(strong,nonatomic) NSArray *imageArr;
 //轮播的ScrollView
 @property(strong,nonatomic) UIScrollView *direct;
 //轮播的页码

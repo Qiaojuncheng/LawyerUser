@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WYViewController : UINavigationController
+- (void)popViewController:(NSInteger)index;
 
 @end

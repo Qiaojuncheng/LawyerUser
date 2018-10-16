@@ -145,7 +145,8 @@
 - (void)createCornerRadiusShadowWithCornerRadius:(CGFloat)cornerRadius
                                           offset:(CGSize)offset
                                          opacity:(CGFloat)opacity
-                                          radius:(CGFloat)radius;
+                                          radius:(CGFloat)radius
+                                           Color:(UIColor*)color;
 
 /**
  *  Remove the shadow around the UIView

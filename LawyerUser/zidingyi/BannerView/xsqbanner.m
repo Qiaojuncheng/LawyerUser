@@ -11,8 +11,7 @@
 #import "UIImageView+WebCache.h"
 @interface xsqbanner()<UIScrollViewDelegate>
 
-//轮播图片名字的数组
-@property(strong,nonatomic) NSArray *imageArr;
+
 //自定义视图的数组
 @property(strong,nonatomic) NSArray *viewArr;
 //定时器
@@ -69,7 +68,7 @@
     if(self=[self initWithFrame:frame])
     {
         //设置ScrollView的contentSize
-        self.direct.contentSize=CGSizeMake((imageNameArray.count+2)*frame_width,0);
+        
         
         self.pageVC.numberOfPages=imageNameArray.count;
         
@@ -203,7 +202,7 @@
 -(void)setImageArr:(NSArray *)imageArr
 {
     _imageArr=imageArr;
-    
+    self.direct.contentSize=CGSizeMake((imageArr.count+2)*frame_width,0);
     [self addImageToScrollView];
     
     [self startTimer];

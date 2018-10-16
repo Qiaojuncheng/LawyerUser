@@ -9,7 +9,7 @@
 
 #import "GuideViewController.h"
 #import "AppDelegate.h"
-#import "QJLoginViewController.h"
+#import "LawLogionViewController.h"
 //#import "DTabbarViewController.h"
 
 //获取屏幕宽高
@@ -73,9 +73,9 @@
     [userdefa setBool:YES forKey:@"MMIsFirst"];
     [userdefa synchronize];
     AppDelegate * appdelegatee =(AppDelegate *)[UIApplication sharedApplication].delegate;
-    QJLoginViewController *view = [QJLoginViewController new];
-    UINavigationController * nav =[[UINavigationController alloc]initWithRootViewController:view];
-    appdelegatee.window.rootViewController = nav;
+    LawLogionViewController *view = [LawLogionViewController new];
+    UINavigationController * na= [[UINavigationController alloc]initWithRootViewController:view];
+    [UIApplication sharedApplication].delegate.window.rootViewController = na;
 
     
     //点击button跳转到根视图

@@ -8,22 +8,25 @@
 
 
 #import "AppDelegate.h"
-#import "MtabBatrC.h"
+//#import "MtabBatrC.h"
+#import "MCTabBarController.h"
 #import "IQKeyboardManager.h"
 #import <BaiduMapAPI_Base/BMKMapManager.h>
 #import "GuideViewController.h"
-#import "QJLoginViewController.h"
+#import "LawLogionViewController.h"
  
 #import <BaiduMapAPI_Map/BMKMapView.h>
-#import <BaiduMapAPI_Location/BMKLocationService.h>
 
 #import <AudioToolbox/AudioServices.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "WXApi.h"
 #import <StoreKit/StoreKit.h>
 
-// 引入JPush功能所需头文件
-#import "JPUSHService.h"
+// 高德地图
+#import "AMapServices.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
+
 
 static SystemSoundID shake_sound_male_id = 0;
 
@@ -33,15 +36,17 @@ static SystemSoundID shake_sound_male_id = 0;
 #endif
 
 
- @interface AppDelegate ()<JPUSHRegisterDelegate,BMKMapViewDelegate,BMKLocationServiceDelegate,JPUSHRegisterDelegate,WXApiDelegate,SKPaymentTransactionObserver,SKProductsRequestDelegate>{
+ @interface AppDelegate ()<JPUSHRegisterDelegate,AMapLocationManagerDelegate,JPUSHRegisterDelegate,WXApiDelegate,SKPaymentTransactionObserver,SKProductsRequestDelegate>{
   
      BMKMapManager* _mapManager;
-     
+     AMapLocationManager * _locationManager;
+
     
-     BMKLocationService * _locServiece;
+//     BMKLocationService * _locServiece;
      
      NSUserDefaults * UserDefaults;
 
+     MCTabBarController *Tab  ;
 }
 
 @end
@@ -50,6 +55,9 @@ static SystemSoundID shake_sound_male_id = 0;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [self getPhone];
+    [self getlocation];
      UserDefaults =[NSUserDefaults standardUserDefaults];
     NSLog(@"uuid = %@",[[[[UIDevice currentDevice] identifierForVendor] UUIDString] stringByReplacingOccurrencesOfString:@"-" withString:@""]);
     NSString * SoundsStr = [UserDefaults  objectForKey:@"Sounds"];
@@ -118,11 +126,7 @@ static SystemSoundID shake_sound_male_id = 0;
     }
     
     
-    _locServiece = [[BMKLocationService alloc]init];
-    _locServiece.delegate = self;
-    [_locServiece startUserLocationService];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(locationAction) name:@"LOCATIONACTION" object:nil];
-    //注册登录状态监听
+     //注册登录状态监听
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loginStateChange:)
                                                  name:KNOTIFICATION_LOGINSUCCESS
@@ -138,22 +142,20 @@ static SystemSoundID shake_sound_male_id = 0;
         self.window.rootViewController  = gvc;
     }else{
         if ([UserId length] > 0) {
-            MtabBatrC *Tab =[[MtabBatrC alloc]init];
+            Tab =[[MCTabBarController alloc]init];
             //    UINavigationController *MainNavi =[[UINavigationController alloc]initWithRootViewController:Tab];
             self.window.rootViewController = Tab;
 
         }else{
-            QJLoginViewController *view = [QJLoginViewController new];
-           UINavigationController * na= [[UINavigationController alloc]initWithRootViewController:view];
-            self.window.rootViewController = na;
+            LawLogionViewController *view = [LawLogionViewController new];
+            UINavigationController * na= [[UINavigationController alloc]initWithRootViewController:view];
+            [UIApplication sharedApplication].delegate.window.rootViewController = na;
         }
  }
         // Override point for customization after application launch.
     return YES;
 }
--(void)locationAction{
-    [_locServiece startUserLocationService];
-}
+
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
@@ -164,11 +166,16 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 -(void)setalias{
     
-    NSString * Uuid =[NSString stringWithFormat:@"%@",[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
-    Uuid =[Uuid stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    [JPUSHService setAlias:Uuid completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+    NSString * UUid  =   [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    UUid =[UUid stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    
+    UUid =  [UUid stringByAppendingString:UserPhone];
+    NSString * md5Str = [UUid MD5];
+    
+
+    [JPUSHService setAlias:md5Str completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         NSLog(@" 别名 iResCode = %ld, iAlias = %@  seq = %ld",(long)iResCode,iAlias,(long)seq);
-    } seq:[Uuid integerValue]];
+    } seq:[UUid integerValue]];
 //    [JPUSHService setAlias:UserId completion:nil seq:[UserId integerValue]];
  
 }
@@ -219,33 +226,37 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [self NOtificationWithDic:userInfo];
 
  }
+
+#pragma mark  极光通知处理
+
 -(void)NOtificationWithDic:(NSDictionary *)userInfo{
     NSString *customizeField1 = [userInfo valueForKey:@"stateNumber"]; //服务端传递的Extras附加字段，key是自己定义的
     //    customizeField1 我的咨询 1 收到回复
     //     我的预约     2 有律师同意   3有律师拒绝  4 有律师点击完成提示去评价
     //     我的需求   5 律师抢单成功   6 律师点完成提示评价
-    
-    if ([customizeField1 isEqualToString:@"1"])//
-    {
-        [UserDefaults setValue:@"yes" forKey:@"MyCounsment"];
-    }else if ([customizeField1 isEqualToString:@"2"]){
-        [UserDefaults setValue:@"yes" forKey:@"MyAppoinment"];
-    }else if ([customizeField1 isEqualToString:@"3"]){
-        [UserDefaults setValue:@"yes" forKey:@"MyNeeds"];
-    }
-    // 其他设备登录   先清除别名
-    if ([customizeField1 isEqualToString:@"1001"]) {
-        [self otherLogin];
-    }
-
-    [UserDefaults synchronize];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UPMINEUI" object:nil];
-    
+//
+//    if ([customizeField1 isEqualToString:@"1"])//
+//    {
+//        [UserDefaults setValue:@"yes" forKey:@"MyCounsment"];
+//    }else if ([customizeField1 isEqualToString:@"2"]){
+//        [UserDefaults setValue:@"yes" forKey:@"MyAppoinment"];
+//    }else if ([customizeField1 isEqualToString:@"3"]){
+//        [UserDefaults setValue:@"yes" forKey:@"MyNeeds"];
+//    }
+//    // 其他设备登录   先清除别名
+//    if ([customizeField1 isEqualToString:@"1001"]) {
+//        [self otherLogin];
+//    }
+//
+//    [UserDefaults synchronize];
+//
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"UPMINEUI" object:nil];
+//
 
     
 }
 
+#pragma mark  极光在线消息处理
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
     NSDictionary * userInfo = [notification userInfo];
 //    NSString *content = [userInfo valueForKey:@"content"];
@@ -254,21 +265,24 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    customizeField   1 我的咨询   1 收到回复
 //     我的预约     2 有律师同意   3有律师拒绝  4 有律师点击完成提示去评价
 //     我的需求   5 律师抢单成功   6 律师点完成提示评价
+   
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"PushMessage" object:customizeField1];
+
     
-    if ([customizeField1 isEqualToString:@"1"])//
-    {
-        [UserDefaults setValue:@"yes" forKey:@"MyCounsment"];
-    }else if ([customizeField1 isEqualToString:@"2"]){
-        [UserDefaults setValue:@"yes" forKey:@"MyAppoinment"];
-     }else if ([customizeField1 isEqualToString:@"3"]){
-        [UserDefaults setValue:@"yes" forKey:@"MyNeeds"];
-    }
-    [UserDefaults synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UPMINEUI" object:nil];
-    // 其他设备登录   先清除别名
-    if ([customizeField1 isEqualToString:@"1001"]) {
-        [self otherLogin];
-    }
+//    if ([customizeField1 isEqualToString:@"1"])//
+//    {
+//        [UserDefaults setValue:@"yes" forKey:@"MyCounsment"];
+//    }else if ([customizeField1 isEqualToString:@"2"]){
+//        [UserDefaults setValue:@"yes" forKey:@"MyAppoinment"];
+//     }else if ([customizeField1 isEqualToString:@"3"]){
+//        [UserDefaults setValue:@"yes" forKey:@"MyNeeds"];
+//    }
+//    [UserDefaults synchronize];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"UPMINEUI" object:nil];
+//    // 其他设备登录   先清除别名
+//    if ([customizeField1 isEqualToString:@"1001"]) {
+//        [self otherLogin];
+//    }
     [self playSoundAndVibration];
      NSLog(@"自定义消息  = %@",userInfo);
 }
@@ -285,9 +299,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您的账号已在其他设备上登录！" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        QJLoginViewController *view = [QJLoginViewController new];
-        UINavigationController * nav =[[UINavigationController alloc]initWithRootViewController:view];
-        self.window.rootViewController = nav;
+        LawLogionViewController *view = [LawLogionViewController new];
+        UINavigationController * na= [[UINavigationController alloc]initWithRootViewController:view];
+        [UIApplication sharedApplication].delegate.window.rootViewController = na;
+        
         NSLog(@"OK Action");
     }];
     [alertController addAction:okAction];
@@ -361,29 +376,28 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 - (void)loginStateChange:(NSNotification *)notification{
-    MtabBatrC *Tab =[[MtabBatrC alloc]init];
+     Tab =[[MCTabBarController alloc]init];
     self.window.rootViewController = Tab;
 }
 
-
-- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation{
-    
-}
-- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation{
-    if (userLocation != nil) {
-        NSLog(@"%f**%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
-        
-        NSString *lat = [NSString stringWithFormat:@"%f",userLocation.location.coordinate.latitude];
-        NSString *lon = [NSString stringWithFormat:@"%f",userLocation.location.coordinate.longitude];
-        NSUserDefaults *defatls = [NSUserDefaults standardUserDefaults];
-        [defatls setObject:lat forKey:@"Latitudeing"];
-        [defatls setObject:lon forKey:@"Longitudeing"];
-    }else{
-        
-    }
-    
-    [_locServiece stopUserLocationService];
-}
+//
+//- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation{
+//    
+//}
+//- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation{
+//    if (userLocation != nil) {
+//        NSLog(@"%f**%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+//        
+//        NSString *lat = [NSString stringWithFormat:@"%f",userLocation.location.coordinate.latitude];
+//        NSString *lon = [NSString stringWithFormat:@"%f",userLocation.location.coordinate.longitude];
+//        NSUserDefaults *defatls = [NSUserDefaults standardUserDefaults];
+//        [defatls setObject:lat forKey:@"Latitudeing"];
+//        [defatls setObject:lon forKey:@"Longitudeing"];
+//    }else{
+//        
+//    }
+//    
+// }
 
 
 - (void)playNewMessageSound
@@ -573,6 +587,54 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+-(void)getPhone{
+    
+    
+    NSMutableDictionary  *dic =[[NSMutableDictionary alloc]init] ;
+    NewGetPhone ;
+    
+    [UserDefaults  setObject:@"400-6400-661" forKey:@"400Phone"];
+    [UserDefaults synchronize];
+    
+    [AFManagerHelp POST:MainUrl parameters:dic success:^(id responseObjeck) {
+        // 处理数据
+        if ([responseObjeck[@"status"] integerValue] == 0){
+            [UserDefaults  setObject:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"tel"]] forKey:@"400Phone"];
+            
+            [UserDefaults synchronize];
+        }
+        
+    } failure:^(NSError *error) {
+    }];
+}
+-(void)getlocation{
+    [AMapServices sharedServices].apiKey =@"2849ad11590318e5cf93028db7303d8d";
+    //    [AMapLocationServices sharedServices].apiKey =@"03007e10d3a5591475445e5b4ee45e64";
+    _locationManager = [[AMapLocationManager alloc] init];
+    _locationManager.delegate = self;
+    
+    [_locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    
+    
+    [_locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+        
+        if (error)
+        {
+            NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+            
+            if (error.code == AMapLocationErrorLocateFailed)
+            {
+                return;
+            }
+        }
+        //       保存位置
+            [UserDefaults setValue:[NSString stringWithFormat:@"%f",location.coordinate.latitude] forKey:@"latitude"];
+            [UserDefaults setValue:[NSString stringWithFormat:@"%f",location.coordinate.longitude] forKey:@"longitude"];
+            [UserDefaults synchronize];
 
+        NSLog(@"location:%@", location);
+        
+     }];
+}
 
 @end

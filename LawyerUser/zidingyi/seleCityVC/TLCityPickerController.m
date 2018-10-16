@@ -10,7 +10,7 @@
 #import "TLCityPickerSearchResultController.h"
 #import "TLCityHeaderView.h"
 #import "TLCityGroupCell.h"
-#import "QJMapSearchViewController.h"
+//#import "QJMapSearchViewController.h"
 
 @interface TLCityPickerController () <TLCityGroupCellDelegate, TLSearchResultControllerDelegate>
 
