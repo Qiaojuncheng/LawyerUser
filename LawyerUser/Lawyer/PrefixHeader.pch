@@ -53,7 +53,7 @@
 
 #define KNOTIFICATION_LOGINSUCCESS @"loginStateChange"
 
-#define UserId  [[NSUserDefaults standardUserDefaults] objectForKey:@"id"]?[[NSUserDefaults standardUserDefaults] objectForKey:@"id"]:@""
+#define UserId  [[NSUserDefaults standardUserDefaults] objectForKey:@"userid"]?[[NSUserDefaults standardUserDefaults] objectForKey:@"userid"]:@""
 
 #define  latStr [[NSUserDefaults standardUserDefaults] objectForKey:@"Latitudeing"]?[[NSUserDefaults standardUserDefaults] objectForKey:@"Latitudeing"]:@""
 #define lonStr [[NSUserDefaults standardUserDefaults] objectForKey:@"Longitudeing"]?[[NSUserDefaults standardUserDefaults] objectForKey:@"Longitudeing"]:@""
@@ -275,6 +275,11 @@
 #pragma  mark  找律师
 //找律师
 #define LawMaingetLawyerList [dic setValue:@"App/User/getLawyerList" forKey:@"action"];
+// 悬赏金额和送心意金额
+#define LawMaingetsysMoney [dic setValue:@"App/Public/getSysMoney" forKey:@"action"];
+//送心意
+#define LawMaingetsysmind [dic setValue:@"App/Service/mind" forKey:@"action"];
+
 //律师详情
 #define LawMaingetlawyerXq [dic setValue:@"App/User/lawyerXq" forKey:@"action"];
 

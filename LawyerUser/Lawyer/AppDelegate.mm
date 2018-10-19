@@ -11,11 +11,9 @@
 //#import "MtabBatrC.h"
 #import "MCTabBarController.h"
 #import "IQKeyboardManager.h"
-#import <BaiduMapAPI_Base/BMKMapManager.h>
 #import "GuideViewController.h"
 #import "LawLogionViewController.h"
  
-#import <BaiduMapAPI_Map/BMKMapView.h>
 
 #import <AudioToolbox/AudioServices.h>
 #import <AudioToolbox/AudioToolbox.h>
@@ -38,7 +36,6 @@ static SystemSoundID shake_sound_male_id = 0;
 
  @interface AppDelegate ()<JPUSHRegisterDelegate,AMapLocationManagerDelegate,JPUSHRegisterDelegate,WXApiDelegate,SKPaymentTransactionObserver,SKProductsRequestDelegate>{
   
-     BMKMapManager* _mapManager;
      AMapLocationManager * _locationManager;
 
     
@@ -118,14 +115,7 @@ static SystemSoundID shake_sound_male_id = 0;
     [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
 
     
-     _mapManager = [[BMKMapManager alloc]init];
-    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
-    BOOL ret = [_mapManager start:@"DdARvxd0fwqdDFd7epAnNkcIKURhfyEN"  generalDelegate:nil];
-    if (!ret) {
-        NSLog(@"manager start failed!");
-    }
-    
-    
+ 
      //注册登录状态监听
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loginStateChange:)

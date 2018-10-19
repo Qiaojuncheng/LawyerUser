@@ -49,6 +49,7 @@
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     keyword = textField.text;
+    page = 1;
     [self makedata ];
     [textField endEditing:YES];
     NSLog(@"搜索");
@@ -74,47 +75,48 @@
     if(page==1){
         [self showHudInView:self.view hint:nil];
     }
+ 
     [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
         NSLog(@"%@",data);
-        if (page ==1) {
-            [dataArrray removeAllObjects];
+        if (self->page ==1) {
+            [self->dataArrray removeAllObjects];
         }
         NSString * codeStr =[NSString stringWithFormat:@"%@",data[@"status"]];
         if ([codeStr isEqualToString:@"0"]) {
             
             for (NSDictionary * dics in data[@"data"]) {
                 lawLawyerModle * model =  [lawLawyerModle yy_modelWithDictionary:dics];
-                [dataArrray addObject:model];
+                [self->dataArrray addObject:model];
                 
             }
             
-            [_tableView reloadData];
+            [self->_tableView reloadData];
         }
         [self hideHud];
-        [_tableView.mj_footer endRefreshing];
-        [_tableView.mj_header endRefreshing];
+        [self->_tableView.mj_footer endRefreshing];
+        [self->_tableView.mj_header endRefreshing];
     } failure:^(NSError *error) {
         [self hideHud];
-        [_tableView.mj_footer endRefreshing];
-        [_tableView.mj_header endRefreshing];
+        [self->_tableView.mj_footer endRefreshing];
+        [self->_tableView.mj_header endRefreshing];
     }];
     
 }
 
 -(void)addView{
     self.view.backgroundColor = [UIColor colorWithHex:0xf7f7f7];
-    _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0,  NavStatusBarHeight  + 44 + 10, SCREENWIDTH, SCREENHEIGHT  -  NavStatusBarHeight -44 - 30) style:UITableViewStylePlain];
+    _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0,  NavStatusBarHeight  + 44 + 10, SCREENWIDTH, SCREENHEIGHT  -  NavStatusBarHeight -44 - 10) style:UITableViewStylePlain];
     _tableView.delegate=  self;
     _tableView.dataSource = self;
     _tableView.separatorInset = UIEdgeInsetsMake(0,SCREENWIDTH, 0, 0);
     _tableView.backgroundColor =[UIColor whiteColor];
     _tableView.tableFooterView = [[UIView alloc]init];
     _tableView.mj_header  = [MJRefreshNormalHeader  headerWithRefreshingBlock:^{
-        page = 1;
+        self->page = 1;
         [self makedata];
     }];
     _tableView.mj_footer =[MJRefreshAutoFooter   footerWithRefreshingBlock:^{
-        page += 1;
+        self->page += 1;
         [self makedata];
         
     }];

@@ -193,6 +193,8 @@ static char kWhenTouchedUpBlockKey;
 }
 
 - (void)createCornerRadiusShadowWithCornerRadius:(CGFloat)cornerRadius offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius  Color:(UIColor*)color{
+    self.layer.cornerRadius = cornerRadius;
+//    self.layer.masksToBounds = YES ;
 //    防止 子view也被添加阴影， 所以如果要穿创建的话先添加 阴影再添加其他view
     UIView *BackView  =  [[UIView alloc]initWithFrame:self.bounds];
     BackView.backgroundColor = [UIColor whiteColor];
@@ -505,5 +507,6 @@ static char kWhenTouchedUpBlockKey;
 - (BOOL)isAtBack {
 	return ([self.superview.subviews objectAtIndex:0] == self);
 }
+
 
 @end

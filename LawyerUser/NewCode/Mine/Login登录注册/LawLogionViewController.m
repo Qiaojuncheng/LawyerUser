@@ -96,10 +96,15 @@
        UUid =  [UUid stringByAppendingString:self.PhoneTextField.text];
         NSString * md5Str = [UUid MD5];
 
-        vadic = @{@"type":@"2",@"phone":self.PhoneTextField.text,@"code":self.PassWorldTextField.text,@"device":md5Str};
+        vadic = @{@"type":@"1",@"phone":self.PhoneTextField.text,@"code":self.PassWorldTextField.text,@"device":md5Str};
     }else{
+        if(!self.XieYiBtn.selected){
+            [self showHint:@"请阅读并同意协议之后再注册"];
+            return ;
+        }
+
         NewRegiste
-         vadic = @{@"type":@"2",@"phone":self.PhoneTextField.text,@"code":self.PassWorldTextField.text};
+         vadic = @{@"type":@"1",@"phone":self.PhoneTextField.text,@"code":self.PassWorldTextField.text};
     }
 //      验证并登陆
          [self showHudInView:self.view hint:nil];
@@ -119,7 +124,7 @@
                 }
 
                 
-                 [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"id"]] forKey:@"userid"];
+                 [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"id"]] forKey:@"id"];
                 [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"avatar"]] forKey:@"avatar"];
                 [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"money"]] forKey:@"money"];
                 [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"phone"]] forKey:@"phone"];
@@ -139,7 +144,11 @@
                 }
               
                 
-             }
+            }else{
+                
+                [self showHint:data[@"msg"]];
+            }
+            
             [self hideHud];
         } failure:^(NSError *error) {
             [self hideHud];
@@ -192,7 +201,7 @@
     //action、value  type 1 用户 2 律师
 
     NSDictionary *dics = @{
-                           @"phone":[NSString stringWithFormat:@"%@",self.PhoneTextField.text],@"type":@"2"
+                           @"phone":[NSString stringWithFormat:@"%@",self.PhoneTextField.text],@"type":@"1"
                            };
     NSError *dataError = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dics options:(NSJSONWritingOptions)0 error:&dataError];
@@ -213,7 +222,7 @@
             [self showHint:@"短信已发送，请注意查收"];
             [self.CodeBtn startTime];
         }else{
-            [ShowHUD showWYBTextOnly:responseObjeck[@"msg"] duration:2 inView:weakSelf.view];
+            [self showHint:responseObjeck[@"msg"]];
         }
     } failure:^(NSError *error) {
         [self hideHud];

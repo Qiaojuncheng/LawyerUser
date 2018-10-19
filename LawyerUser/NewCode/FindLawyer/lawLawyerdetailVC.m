@@ -11,6 +11,8 @@
 #import "lawDetailTopCell.h"
 #import "lawDetailMiddleCell.h"
 #import "lawdetailBottomCell.h"
+#import "lawAppointmentVC.h"
+#import "lawFindSendHeaderVC.h"
 @interface lawLawyerdetailVC ()<UITableViewDelegate,UITableViewDataSource>{
     
     UITableView * _tableView ;
@@ -133,6 +135,10 @@
                 payType = @"预约";
             }else{
 //              直接是送心意
+                
+                lawFindSendHeaderVC * sendHeader = [[lawFindSendHeaderVC alloc]init];
+                sendHeader.model = self.model;
+                [self.navigationController pushViewController:sendHeader animated:YES];
             }
                 
             
@@ -173,7 +179,13 @@
 -(void)SureAction:(UIButton *)sender{
    
     NSLog(@"类型 --%@",payType);
-    
+    lawAppointmentVC * appointment = [[lawAppointmentVC alloc]init];
+    if ([payType isEqualToString:@"电话"]) {
+        appointment.IsPhoneMeeting = YES ;
+    }else{
+        appointment.IsPhoneMeeting = NO  ;
+    }
+    [self.navigationController pushViewController:appointment animated:YES];
     
 }
 
