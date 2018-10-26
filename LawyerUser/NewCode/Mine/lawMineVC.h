@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "MyInfoModel.h"
 
 @interface lawMineVC : BaseViewController
+
+@property(nonatomic,strong) MyInfoModel *infoModel;
 
 @end

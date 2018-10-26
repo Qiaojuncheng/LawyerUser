@@ -276,7 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NewCode/Mine/Login&#x767b;&#x5f55;&#x6ce8;&#x518c;/LawLogionViewController.m"
+<<<<<<< HEAD:LawyerUser/LawyerUser/Lawyer.xcworkspace/xcuserdata/mymac.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+            timestampString = "561891882.7461669"
+=======
             timestampString = "561632811.668861"
+>>>>>>> ab2d565b85920859991c8c83675e3c14e3789d3e:LawyerUser/Lawyer.xcworkspace/xcuserdata/mymac.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -301,5 +305,24 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+<<<<<<< HEAD:LawyerUser/LawyerUser/Lawyer.xcworkspace/xcuserdata/mymac.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewCode/Mine/PersonInfo/LawPersonInfoViewController.m"
+            timestampString = "561891882.746683"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "-seleWithImage:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+=======
+>>>>>>> ab2d565b85920859991c8c83675e3c14e3789d3e:LawyerUser/Lawyer.xcworkspace/xcuserdata/mymac.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
    </Breakpoints>
 </Bucket>

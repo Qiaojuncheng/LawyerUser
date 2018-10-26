@@ -297,7 +297,7 @@
 -(void)leftBar_Action:(UIButton *)sender{
     
  
-    UIAlertController * AlertVC =[UIAlertController alertControllerWithTitle:@"联系客服" message:[NSString stringWithFormat:@"\n%@\n(工作时间9:00_17:00)\n",APPPhone] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController * AlertVC =[UIAlertController alertControllerWithTitle:@"联系客服" message:[NSString stringWithFormat:@"\n%@\n(工作时间9:00-17:00)\n",APPPhone] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * cancal =[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }] ;
