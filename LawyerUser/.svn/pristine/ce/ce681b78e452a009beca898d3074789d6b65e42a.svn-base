@@ -1,0 +1,153 @@
+//
+//  PrefixHeader.pch
+//  Lawyer
+//
+//  Created by MYMAc on 2017/4/10.
+//  Copyright © 2017年 ShangYu. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "QJNetWork.h"
+#import "UIView+XPKit.h"
+#import "UIColor+XPKit.h"
+#import "NSString+XPKit.h"
+#import "HttpAfManager.h"
+#import "QJHttpTools.h"
+#import "UIViewController+HUD.h"
+#import "UIImageView+WebCache.h"
+#import "YYModel.h"
+
+#import "UILabel+BoundingRect.h"
+#import "Utile.h"
+#import "MJRefresh.h"
+
+#import <UMSocialCore/UMSocialCore.h>
+#import <UShareUI/UShareUI.h>
+//#import "SDWebImageManager.h"
+//#import "UIImageView+WebCache.h"
+/** @brief 登录状态变更的通知 */
+#define KNOTIFICATION_LOGINSUCCESS @"loginStateChange"
+
+#define UserId  [[NSUserDefaults standardUserDefaults] objectForKey:@"id"]
+
+#define  latStr [[NSUserDefaults standardUserDefaults] objectForKey:@"Latitudeing"]
+#define lonStr [[NSUserDefaults standardUserDefaults] objectForKey:@"Longitudeing"]
+
+
+// 颜色
+#define MAINCOLOR [UIColor colorWithHex:0x216BB0]   // 主色
+#define MainBackColor [UIColor colorWithHex:0xf5f5f5] // 背景颜色
+#define LINECOLOR [UIColor colorWithHex:0xececec]//线条颜色
+
+//字体大小
+
+#define font17 [UIFont systemFontOfSize:17]
+#define font16 [UIFont systemFontOfSize:16]
+#define font15 [UIFont systemFontOfSize:15]
+#define font14 [UIFont systemFontOfSize:14]
+#define font12 [UIFont systemFontOfSize:12]
+
+
+#define DEEPTintColor [UIColor colorWithHex:0x333333]//字体黑色颜色
+#define TintColor [UIColor colorWithHex:0x666666]//字体灰色颜色
+#define ShallowTintColor [UIColor colorWithHex:0x999999]//字体浅色颜色
+
+// 导航栏 加 状态栏
+#define NavStatusBarHeight (44 + StatusBarHeight)
+// 导航栏高度
+#define NavBarHeight 44
+//有导航控制器的时候 Tababar高度
+#define NavTabBarHeight [self.navigationController.tabBarController.tabBar frame].size.height
+//没导航控制器的时候 Tababar高度
+#define TabBarHeight [self.tabBarController.tabBar frame].size.height
+// 状态栏高度
+#define StatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+
+
+
+//获取当前屏幕的高度
+#define ConentViewHeight [UIScreen mainScreen].bounds.size.height -NavStatusBarHeight
+
+//获取当前屏幕的宽度
+#define ConentViewWidth  [UIScreen mainScreen].bounds.size.width
+
+// 判断是否问 ios 7
+#define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
+
+//ios6 和ios7 的适配
+#define IOS_Frame     if ([[[UIDevice currentDevice] systemVersion]doubleValue]>=7.0) {self.navigationController.navigationBar.translucent= NO;  }   ;   if ( [self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {self.automaticallyAdjustsScrollViewInsets = NO;}
+
+//电话和面谈预约
+#define UserputYuyue [dic setValue:@"App/User/putYuyue" forKey:@"action"];
+
+//添加取消关注
+#define UsercancelAttention [dic setValue:@"App/User/cancelAttention" forKey:@"action"];
+
+//发现类别查找
+#define lawyerfindsCate [dic setValue:@"App/lawyer/findsCate" forKey:@"action"];
+
+//条件查找
+#define Lawyerfinds [dic setValue:@"App/Lawyer/finds" forKey:@"action"];
+
+//案件类型以及服务费
+#define ConsultgetCategory [dic setValue:@"App/Consult/getCategory" forKey:@"action"];
+
+//添加咨询信息
+#define ConsultdoConsult [dic setValue:@"App/Consult/doConsult" forKey:@"action"];
+
+//案件委托
+#define ConsultdoCase [dic setValue:@"App/Consult/doCase" forKey:@"action"];
+
+//法律函
+#define ConsultsendLawyer [dic setValue:@"App/Consult/sendLawyer" forKey:@"action"];
+
+
+//文书规范信息
+#define Consultarticle [dic setValue:@"App/Consult/article" forKey:@"action"];
+
+
+//文书规范信息
+#define ConsultdoDocument [dic setValue:@"App/Consult/doDocument" forKey:@"action"];
+
+
+//客服热线
+#define UsergetConfig [dic setValue:@"App/User/getConfig" forKey:@"action"];
+
+//提现接口
+#define UserdoCash [dic setValue:@"App/User/doCash" forKey:@"action"];
+//提现信息
+#define QJTXINFO [dic setValue:@"App/Public/tx_info" forKey:@"action"];
+
+
+//取消关注
+#define Userqxguanzhu [dic setValue:@"App/User/qxguanzhu" forKey:@"action"];
+
+//合同审查
+#define ConsultcheckContact [dic setValue:@"App/Consult/checkContact" forKey:@"action"];
+
+//积分公告
+#define Indexjf_notice [dic setValue:@"App/Index/jf_notice" forKey:@"action"];
+
+//积分公告列表
+#define Indexjf_list [dic setValue:@"App/Index/jf_list" forKey:@"action"];
+
+//第三方登录
+#define UserthreeLogin [dic setValue:@"App/User/threeLogin" forKey:@"action"];
+
+//我的需求 评价
+#define QJMYXQ_PINGJIA [dic setValue:@"App/User/xq_pingjia" forKey:@"action"];
+
+//绑定帐号
+#define UserbindThree [dic setValue:@"App/User/bindThree" forKey:@"action"];
+
+//预约评价
+#define Useryy_pingjia [dic setValue:@"App/User/yy_pingjia" forKey:@"action"];
+
+//内购验证
+#define APPLEPayVerity [dic setValue:@"App/User/apple" forKey:@"action"];
+
+#endif /* PrefixHeader_pch */
