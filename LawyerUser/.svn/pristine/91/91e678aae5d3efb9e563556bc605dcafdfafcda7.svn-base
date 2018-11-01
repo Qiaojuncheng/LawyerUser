@@ -1,0 +1,425 @@
+//
+//  QJConsultationVc.m
+//  Lawyer
+//
+//  Created by MYMAc on 2017/7/27.
+//  Copyright © 2017年 ShangYu. All rights reserved.
+//
+
+#import "QJConsultationVc.h"
+#import "QJSelectItemView.h"
+#import "QJPayViewController.h"
+
+#import "QJVipVc.h"
+
+
+
+
+#import <StoreKit/StoreKit.h>
+
+@interface QJConsultationVc ()<SKPaymentTransactionObserver,SKProductsRequestDelegate>{
+
+    NSMutableArray * TypeArray;
+    NSString *category_id;
+     NSString * payPrice;
+    
+    
+    NSString * BuyCode;
+}
+@property (strong, nonatomic) SKPayment *payment;
+@property (strong, nonatomic) SKMutablePayment *g_payment;
+
+
+
+@end
+
+@implementation QJConsultationVc
+- (void)viewDidLoad {
+    [super viewDidLoad];
+   self.title = @"咨询";
+    BuyCode = @"ServiceFee01";
+    [super awakeFromNib];
+    TypeArray = [NSMutableArray array];
+    
+    self.TitleTextField.enabled = NO;
+    self.ContentTextView.placeholderText =@"请输入您的咨询内容";
+    self.OneLB.layer.masksToBounds = YES;
+    self.OneLB.layer.cornerRadius = 5;
+    
+    self.TwoLB.layer.masksToBounds = YES;
+    self.TwoLB.layer.cornerRadius = 5;
+    
+    self.ThreLB.layer.masksToBounds = YES;
+    self.ThreLB.layer.cornerRadius = 5;
+    
+    self.FouLB.layer.masksToBounds = YES;
+    self.FouLB.layer.cornerRadius = 5;
+    
+    _EnSureBtn.layer.masksToBounds   = YES;
+    _EnSureBtn.layer.cornerRadius = 10;
+    _EnSureBtn.layer.borderWidth = 1;
+    _EnSureBtn.layer.borderColor =[MAINCOLOR CGColor];
+    _EnSureBtn.backgroundColor = LINECOLOR;
+    
+    [Utile addClickEvent:self action:@selector(didGouMaiTaocan) owner:self.FuwuLB];
+    
+    NSMutableAttributedString * attr =[[NSMutableAttributedString alloc]initWithString:self.FuwuLB.text];
+    
+    NSRange   strrang = [self.FuwuLB.text rangeOfString:@"购买套餐"];
+    [attr  addAttribute:NSForegroundColorAttributeName value:MAINCOLOR range:strrang];
+    [self.FuwuLB setAttributedText:attr];
+    self.view.backgroundColor =MainBackColor;
+   // [self makeTypeAction];
+    [self makeConsultGetData];
+    // Do any additional setup after loading the view from its nib.
+}
+#pragma mark 购买套餐
+- (void)didGouMaiTaocan{
+    QJVipVc * sevc =[[QJVipVc alloc]init];
+    sevc.hidesBottomBarWhenPushed  = YES;
+    [self.navigationController pushViewController:sevc animated:YES];
+    
+}
+#pragma mark  案件类型以及服务费
+- (void)makeConsultGetData{
+    NSDictionary * dic  =[[NSMutableDictionary alloc]init];
+    ConsultgetCategory
+    [self showHudInView:self.view hint:nil];
+    [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
+        NSLog(@"案件类型以及服务费%@",data);
+        NSString  * str =[NSString stringWithFormat:@"%@",data[@"status"]];
+        if ([str isEqualToString:@"0"]) {
+            [TypeArray addObjectsFromArray:data[@"data"][@"categoryList"]];
+            
+            self.FuwuLB.text = [NSString stringWithFormat:@"服务费%@元，购买套餐可以免费服务",data[@"data"][@"config"]];
+            [Utile setUILabel:self.FuwuLB data:[NSString stringWithFormat:@"服务费%@元，",data[@"data"][@"config"]] setData:@"购买套餐" color:MAINCOLOR font:14.0 underLine:NO];
+            payPrice = data[@"data"][@"config"];
+            
+        }else{
+            NSString * msg = [NSString stringWithFormat:@"%@",data[@"msg"]];
+            [self showHint:msg];
+        }
+        [self makeTypeAction];
+        [self hideHud];
+    } failure:^(NSError *error) {
+        [self hideHud];
+        [self showHint:@"失败，请稍后重试！"];
+        NSLog(@"案件类型以及服务费%@",error);
+    }];
+
+}
+
+-(void)makeTypeAction{
+    
+   // TypeArray =[[NSMutableArray alloc]initWithObjects:@"纠纷",@"不纠纷",@"婚姻纠纷",@"财产纠纷",@"经济纠纷", nil];
+ 
+    [self.view endEditing:YES];
+    NSMutableArray *listArr = [NSMutableArray array];
+    for (NSDictionary *dica in TypeArray) {
+        [listArr addObject:[dica objectForKey:@"cat_name"]];
+    }
+    
+    [_TypeLabel whenTapped:^{
+        [self.view endEditing:YES];
+    QJSelectItemView  *seleView =[[QJSelectItemView alloc]initWithFrame:self.view.bounds];
+    seleView.ViewTitlt= @"纠纷类型";
+        _TypeLabel.text = @"请选择案件类型";
+    seleView.ViewDatArray = [[NSMutableArray alloc]initWithArray:listArr] ;
+    seleView.selectWithIndexBlcik = ^(int index) {
+     _TypeLabel.text  = listArr[index];
+        category_id = TypeArray[index][@"cat_id"];
+    };
+      
+        
+    [self.view addSubview:seleView];
+    [seleView showView];
+ }];
+
+    [self.PersonOrCompany whenTapped:^{
+         [self.view endEditing:YES];
+        QJSelectItemView  *seleView =[[QJSelectItemView alloc]initWithFrame:self.view.bounds];
+        seleView.ViewTitlt= @"当事人信息";
+//        _TypeLabel.text = @"请选择当事人信息";
+        NSArray * perArray  =@[@"个人",@"公司"];
+        seleView.ViewDatArray = [[NSMutableArray alloc]initWithArray:perArray] ;
+        seleView.selectWithIndexBlcik = ^(int index) {
+            _TitleTextField.text  = perArray[index];
+         };
+        [self.view addSubview:seleView];
+        [seleView showView];
+
+    }];
+        
+ }
+-(void)viewDidAppear:(BOOL)animated{
+    NSLog(@"view.subviews = %@",self.view.subviews);
+
+}
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+//内购
+- (void)requestProductData:(NSString *)type {
+    //根据商品ID查找商品信息
+    NSArray *product = [[NSArray alloc] initWithObjects:type, nil];
+    NSSet *nsset = [NSSet setWithArray:product];
+    //创建SKProductsRequest对象，用想要出售的商品的标识来初始化， 然后附加上对应的委托对象。
+    //该请求的响应包含了可用商品的本地化信息。
+    SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:nsset];
+    request.delegate = self;
+    
+    [request start];
+}
+
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    //接收商品信息
+    NSArray *product = response.products;
+    if ([product count] == 0) {
+        return;
+    }
+    // SKProduct对象包含了在App Store上注册的商品的本地化信息。
+    SKProduct *storeProduct = nil;
+    for (SKProduct *pro in product) {
+        if ([pro.productIdentifier isEqualToString:@"ServiceFee01"]) {
+            storeProduct = pro;
+            
+            //start 商品信息
+            NSLog(@"%@", [pro description]);
+            NSLog(@"%@", [pro localizedTitle]);
+            NSLog(@"%@", [pro localizedDescription]);
+            NSLog(@"%@", [pro price]);
+            NSLog(@"%@", [pro productIdentifier]);
+            
+            //end
+            
+        }
+    }
+    //创建一个支付对象，并放到队列中
+    self.g_payment = [SKMutablePayment paymentWithProduct:storeProduct];
+    self.g_payment.applicationUsername =[storeProduct productIdentifier];
+    //设置购买的数量
+    self.g_payment.quantity = 5;
+    [[SKPaymentQueue defaultQueue] addPayment:self.g_payment];
+}
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
+    [self hideHud];
+    
+    //[self showHint:@"请求商品信息失败"];
+    NSLog(@"请求商品失败%@", error);
+}
+
+- (void)requestDidFinish:(SKRequest *)request {
+    NSLog(@"反馈信息结束调用 %@",request);
+    
+}
+
+////监听购买结果
+//- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transaction {
+//    for (SKPaymentTransaction *tran in transaction) {
+//         // 如果小票状态是购买完成
+//        if (SKPaymentTransactionStatePurchased == tran.transactionState) {
+//            // 更新界面或者数据，把用户购买得商品交给用户
+//            //返回购买的商品信息
+//            NSLog(@"用户信息%@",tran.payment.applicationUsername);
+//            [self verifyPruchase:tran];
+//            //商品购买成功可调用本地接口
+//        } else if (SKPaymentTransactionStateRestored == tran.transactionState) {
+//
+//            [self hideHud];
+//            // 将交易从交易队列中删除
+//            [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+//        } else if (SKPaymentTransactionStateFailed == tran.transactionState) {
+//            // 支付失败
+//            [self hideHud];
+//            //   [self showHint:@"支付失败，请重新购买"];
+//            // 将交易从交易队列中删除
+//            [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+//        }
+//    }
+//}
+////交易结束
+//- (void)completeTransaction:(SKPaymentTransaction *)transaction {
+//    NSLog(@"交易结束");
+//    [self hideHud];
+//    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+//
+//}
+//
+//// 交易失败
+//- (void)failedTransaction:(SKPaymentTransaction *)transaction{
+//    if (transaction.error.code == SKErrorPaymentCancelled) {
+//        [self hideHud];
+//    }else{
+//
+//    }
+//
+//    [[SKPaymentQueue defaultQueue]finishTransaction:transaction];
+//
+//}
+//- (void)verifyPruchase:(SKPaymentTransaction *)tran{
+//
+//
+////    // 验证凭据，获取到苹果返回的交易凭据
+////    // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
+////    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+////    // 从沙盒中获取到购买凭据
+////    NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
+////    NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+////
+////                [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+////
+////
+////    NSDictionary * dic  =[[NSMutableDictionary alloc]init];
+////    APPLEPayVerity
+////    NSDictionary * valueDic  = @{@"apple_receipt":encodeStr,};
+////    NSString * baseStr = [NSString getBase64StringWithArray:valueDic];
+////    [dic setValue:baseStr forKey:@"value"];
+////
+////    [self showHudInView:self.view hint:nil];
+////    [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
+////         NSString  * str =[NSString stringWithFormat:@"%@",data[@"status"]];
+////        if ([str isEqualToString:@"0"]) {
+////                        [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+////
+////
+////        }else{
+////            NSString * msg = [NSString stringWithFormat:@"%@",data[@"msg"]];
+////            [self showHint:msg];
+////        }
+////         [self hideHud];
+////    } failure:^(NSError *error) {
+////        [self hideHud];
+////        [self showHint:@"失败，请稍后重试！"];
+////     }];
+////
+//
+//
+////    //
+//    NSString *urlString = [NSString stringWithFormat:@"%@app/apple/apple_receipt",requestURL];
+//    NSDictionary *dic;
+//    dic = @{@"apple_receipt":encodeStr,@"type":typeString,@"pay_id":[orderDic objectForKey:@"order_sn"],@"pay_type":@"0"};
+//    [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
+//        NSLog(@"服务器验证%@",data);
+//        NSString *code = [NSString stringWithFormat:@"%@",data[@"code"]];
+//        if ([code isEqualToString:@"200"]) {
+//            [self showHint:@"充值成功"];
+//            [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+//
+//            if ([typeString isEqualToString:@"1"]) {
+//
+//                [[NSNotificationCenter defaultCenter]postNotificationName:@"notificationrequestEmoney" object:self];
+//            }else{
+//            }
+//        }
+//        [self hideHud];
+//    } failure:^(NSError *error) {
+//        [self hideHud];
+//        [[NSUserDefaults standardUserDefaults] setObject:typeString forKey:@"typeString"];
+//        [[NSUserDefaults standardUserDefaults] setObject:[orderDic objectForKey:@"order_sn"] forKey:@"order_sn"];
+//        NSLog(@"验证凭据，获取到苹果返回的交易凭据  失败！");
+//
+//        [self verifyPruchase:tran];
+//
+//        //        UIAlertController * al =[UIAlertController alertControllerWithTitle:@"提示" message:@"您的充值信息正在验证！" preferredStyle:UIAlertControllerStyleAlert];
+//        //
+//        //        UIAlertAction * SureAction =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        //
+//        //        }];
+//        //
+//        //        [al addAction:SureAction];
+//        //
+//        //        [self presentViewController:al animated:YES completion:nil];
+//        //          NSLog(@"服务器验证%@",error);
+//    }];
+//
+//}
+//
+//
+//-(void)dealloc{
+//    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+//    //解除监听
+//
+//    [[NSNotificationCenter defaultCenter]removeObserver:@"notificationrequestEmoney"];
+//}
+
+
+#pragma mark 添加咨询信息
+- (IBAction)EnSureAction:(id)sender {
+    
+//    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+//    [self requestProductData:@"ServiceFee01"];
+//    return ;
+    
+    if ([Utile stringIsNil:category_id]) {
+        [self showHint:@"案件类型不能为空！"];
+        return;
+    }
+    
+    if ([Utile stringIsNil:_TitleTextField.text]) {
+        [self showHint:@"当事人信息不能为空！"];
+        return;
+    }
+    
+    if ([Utile stringIsNil:_ContentTextView.text]) {
+        [self showHint:@"咨询内容不能为空！"];
+        return;
+    }
+    NSDictionary * dic  =[[NSMutableDictionary alloc]init];
+    ConsultdoConsult
+    NSDictionary * valudic  = @{@"category_id":category_id,@"title":_TitleTextField.text,@"user_id":UserId,@"content":_ContentTextView.text};
+    
+    NSString * baseStr = [NSString getBase64StringWithArray:valudic];
+    [dic setValue:baseStr forKey:@"value"];
+    
+    [self showHudInView:self.view hint:nil];
+    [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
+        NSLog(@"添加咨询信息%@",data);
+        NSString  * str =[NSString stringWithFormat:@"%@",data[@"status"]];
+        if ([str isEqualToString:@"0"]) {
+            
+            category_id = @"";
+            _TitleTextField.text = @"";
+            _ContentTextView.text = @"";
+            _TypeLabel.text = @"请选择案件类型";
+
+            
+             QJPayViewController * pavVc =[[QJPayViewController alloc]init];
+            pavVc.title = @"咨询支付";
+             pavVc.payType = @"2";
+            pavVc.BuyConcent= @"1";
+            pavVc.payID = data[@"data"];
+             pavVc.payName= [NSString stringWithFormat:@"%@服务费",self.title];
+             pavVc.payPrice= payPrice;
+             pavVc.hidesBottomBarWhenPushed =YES;
+            [self.navigationController pushViewController:pavVc animated:YES];
+
+        }else{
+            NSString * msg = [NSString stringWithFormat:@"%@",data[@"msg"]];
+            [self showHint:msg];
+        }
+        [self hideHud];
+    } failure:^(NSError *error) {
+        [self hideHud];
+         NSLog(@"添加咨询信息%@",error);
+    }];
+
+    
+    
+    
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+@end
