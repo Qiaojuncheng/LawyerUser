@@ -31,11 +31,11 @@
 }
 -(void)makeData{
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
-//    NewMoneydetailed
+    NewMoneydetailed
     if( [UserId length] < 1){
         return ;
     }
-    NSDictionary * valudic  = @{@"lawyer_id":UserId,@"p":[NSString stringWithFormat:@"%ld",Page]};
+    NSDictionary * valudic  = @{@"uid":UserId,@"p":[NSString stringWithFormat:@"%ld",Page]};
     NSString * baseStr = [NSString getBase64StringWithArray:valudic];
     [dic setValue:baseStr forKey:@"value"];
     

@@ -63,7 +63,6 @@
 -(void)addCentersearchView{
     MJWeakSelf
     UIImageView * TopCenterImage =[[UIImageView alloc]initWithFrame:CGRectMake(85, StatusBarHeight + 8, SCREENWIDTH - 140, 28)];
-//    TopCenterImage.contentMode = UIViewContentModeScaleAspectFill;
     TopCenterImage.image =[UIImage imageNamed:@"search"];
     TopCenterImage.userInteractionEnabled = YES ;
     [TopCenterImage  whenTapped:^{

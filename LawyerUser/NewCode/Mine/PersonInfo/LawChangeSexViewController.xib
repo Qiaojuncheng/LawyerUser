@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -47,8 +47,8 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhC-pr-U6x">
                             <rect key="frame" x="255" y="1" width="98" height="61"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="type_circle"/>
-                            <state key="selected" image="type_chose"/>
+                            <state key="normal" image="pay_select"/>
+                            <state key="selected" image="pay_select2"/>
                             <connections>
                                 <action selector="BtnSelect:" destination="-1" eventType="touchUpInside" id="Cj0-Go-IDi"/>
                             </connections>
@@ -56,8 +56,8 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sh7-DR-mWq">
                             <rect key="frame" x="255" y="60" width="98" height="61"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="type_circle"/>
-                            <state key="selected" image="type_chose"/>
+                            <state key="normal" image="pay_select"/>
+                            <state key="selected" image="pay_select2"/>
                             <connections>
                                 <action selector="BtnSelect:" destination="-1" eventType="touchUpInside" id="Xvp-fd-6bq"/>
                             </connections>
@@ -72,7 +72,7 @@
         </view>
     </objects>
     <resources>
-        <image name="type_chose" width="18" height="18"/>
-        <image name="type_circle" width="18" height="18"/>
+        <image name="pay_select" width="18" height="18"/>
+        <image name="pay_select2" width="18" height="18"/>
     </resources>
 </document>

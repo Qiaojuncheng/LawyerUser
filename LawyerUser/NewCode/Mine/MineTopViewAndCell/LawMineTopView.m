@@ -15,7 +15,7 @@
     [Utile makeCorner:5 view:self.EditBtn ];
     [self.certifi createBordersWithColor:[UIColor colorWithHex:0x3181FE] withCornerRadius:self.certifi.height/2 andWidth:1];
     [Utile makeCorner:self.HeaderImage.height/2 view:self.HeaderImage];
-    self.PhoneLb.text =[NSString stringWithFormat:@"%@",_infoModel.namer?_infoModel.namer:_infoModel.phone];
+    self.PhoneLb.text =[NSString stringWithFormat:@"%@",_infoModel.name?_infoModel.name:_infoModel.phone];
     if([NSString changeNullString:_infoModel.id].length == 0){
         self.certifi.text  = @"";
         self.certifi.hidden = YES;

@@ -302,10 +302,19 @@
 #pragma mark  我的的接口
 // 个人信息
 #define NewGetInfor  [dic setValue:@"App/User/userInfo" forKey:@"action"];
+// 完善信息
+#define NewAddInfo  [dic setValue:@"App/User/addInfo" forKey:@"action"];
+//
+#define NewUserVip  [dic setValue:@"App/User/vip" forKey:@"action"];
 
+/*上传接口*/
+#define LS_UPLODE [NSString stringWithFormat:@"%@%@",MainUrl, @"/FileUpLoad/FileUpLoad"]
 
 //获取用户余额
 #define QJAddvicegetMoney  [dic setValue:@"App/Public/getMoney" forKey:@"action"];
+//明细
+#define NewMoneydetailed  [dic setValue:@"App/User/detail" forKey:@"action"];
+
 
 
 // 意见反馈

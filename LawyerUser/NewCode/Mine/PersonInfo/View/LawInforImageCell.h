@@ -11,6 +11,7 @@
 @interface LawInforImageCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *PersonImage;
 
+@property (weak, nonatomic) IBOutlet UILabel *CellTitile;
 
 
 @end

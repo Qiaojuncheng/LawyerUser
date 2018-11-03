@@ -137,9 +137,9 @@
  */
 + (void)asyncUploadFileWithData:(NSData *)fileData name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType parameters:(id)parameters success:(SuccessUploadImageBlock)success failture:(FailtureUploadImageBlock)failture {
 
-    AFHTTPSessionManager *manager = [self AFHTTPSessionManagerWithUrl:@"没用到" parameters:parameters];
+    AFHTTPSessionManager *manager = [self AFHTTPSessionManagerWithUrl:LS_UPLODE parameters:parameters];
     
-    [manager POST:@"没用到" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [manager POST:LS_UPLODE parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         //fileName:上传图片名称 fileName.jpg
         /*

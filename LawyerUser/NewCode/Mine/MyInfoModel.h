@@ -10,7 +10,7 @@
 @interface MyInfoModel : NSObject
 
 @property (nonatomic, copy) NSString *id;
-@property (nonatomic, copy) NSString *namer;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *avatar;
 @property (nonatomic, copy) NSString *sex; // sex  1男 2 女
@@ -21,6 +21,7 @@
 @property (nonatomic, copy) NSString *city_name;
 @property (nonatomic, copy) NSString *area_name;
 @property (nonatomic, copy) NSString *end_time;
+@property (nonatomic, copy) NSString *vip_name;
 
 
 

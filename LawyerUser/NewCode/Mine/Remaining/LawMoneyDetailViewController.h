@@ -10,4 +10,7 @@
 
 @interface LawMoneyDetailViewController : BaseViewController
 
+
+
+
 @end

@@ -14,6 +14,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *TixianLB;
 
+@property (weak, nonatomic) IBOutlet UIView *TixianView;
+
+
+
 
 
 

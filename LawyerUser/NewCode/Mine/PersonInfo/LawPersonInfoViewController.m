@@ -95,6 +95,7 @@
         if (cell == nil) {
             cell  =[[[NSBundle mainBundle ]loadNibNamed:@"LawInforImageCell" owner:self options:nil]lastObject];
         }
+            cell.CellTitile.text = @"头像";
             if (self.infoModel.avatar) {
                 [cell.PersonImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,self.infoModel.avatar]] placeholderImage:nil];
             }
@@ -119,7 +120,7 @@
 
             }
             if (indexPath.row == 1) {
-                cell.ConcentLB.text = self.infoModel.namer?self.infoModel.namer:@"昵称";
+                cell.ConcentLB.text = self.infoModel.name?self.infoModel.name:@"昵称";
             }else if (indexPath.row ==2){
             cell.ConcentLB.text = [self.infoModel.sex isEqualToString:@"1"]?@"男":@"女";
             }else if (indexPath.row ==3){
@@ -130,37 +131,41 @@
                  
                  cell.ConcentLB.text = self.infoModel.city_name?[NSString stringWithFormat:@"%@ %@ %@",self.infoModel.province_name,self.infoModel.city_name,self.infoModel.area_name]:@"";
 
-             }else if (indexPath.row ==5){
-                 cell.ConcentLB.text =@"未绑定";
-
              }
             
             return  cell ;
         }
     }else if(indexPath.section == 1){
-        LawInfoCell  * cell  =[tableView dequeueReusableCellWithIdentifier:@"cells"];
-        if (cell == nil) {
-            cell = [[[NSBundle mainBundle ]loadNibNamed:@"LawInfoCell" owner:self options:nil]lastObject];
-        }
+      
         
         if(indexPath.row ==0){
+            LawInfoCell  * cell  =[tableView dequeueReusableCellWithIdentifier:@"cells"];
+            if (cell == nil) {
+                cell = [[[NSBundle mainBundle ]loadNibNamed:@"LawInfoCell" owner:self options:nil]lastObject];
+            }
             cell.TypeLB.text =[NSString stringWithFormat:@"企业名称"];
-            cell.ConcentLB.text = @"未填写";
+            cell.ConcentLB.text =self.infoModel.company_name?self.infoModel.company_name:@"未填写";
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.RedView.hidden = YES;
+            return  cell ;
 
         }else
         {
-            cell.TypeLB.text =[NSString stringWithFormat:@"企业营业执照"];
-            cell.ConcentLB.text = @"未上传";
-            cell.LineView.hidden = YES;
-
+            
+            LawInforImageCell  * cell  =[tableView dequeueReusableCellWithIdentifier:@"cells"];
+            if (cell == nil) {
+                cell  =[[[NSBundle mainBundle ]loadNibNamed:@"LawInforImageCell" owner:self options:nil]lastObject];
+            }
+            cell.CellTitile.text = @"企业营业执照";
+            if (self.infoModel.license) {
+                [cell.PersonImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,self.infoModel.license]] placeholderImage:nil];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+         
+             return  cell ;
+ 
         }
-        
-        
-        
-        cell.RedView.hidden = YES;
-         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return  cell ;
-        
+ 
     }
     
     return [[UITableViewCell alloc]init];
@@ -174,10 +179,10 @@
             LawChagebasicInfoVC * changeName =[[LawChagebasicInfoVC alloc]init];
             
             changeName.titleStr =@"企业名称";
-            changeName.placherStr= self.infoModel.company_name?self.infoModel.namer:@"请输入您的企业名称";
+            changeName.placherStr= self.infoModel.company_name?self.infoModel.company_name:@"请输入您的企业名称";
             
             changeName.ChangValue = ^(NSString *changeValueStr) {
-                [self   ChangInformationWithDic:@{@"name":changeValueStr} ];
+                [self   ChangInformationWithDic:@{@"company_name":changeValueStr} ];
                 
             };
             [self.navigationController pushViewController:changeName animated:YES];
@@ -208,7 +213,7 @@
           LawChagebasicInfoVC * changeName =[[LawChagebasicInfoVC alloc]init];
  
           changeName.titleStr =@"修改昵称";
-            changeName.placherStr= self.infoModel.namer?self.infoModel.namer:@"请输入您的名字";
+            changeName.placherStr= self.infoModel.name?self.infoModel.name:@"请输入您的名字";
           
           changeName.ChangValue = ^(NSString *changeValueStr) {
                  [self   ChangInformationWithDic:@{@"name":changeValueStr} ];
@@ -262,24 +267,22 @@
 -(void)seleWithImage:(UIImage *)selectImage{
     
     NSData   * imageData  = UIImageJPEGRepresentation(selectImage, 0.01);
-    
-    NSMutableDictionary *valuedic =[[NSMutableDictionary alloc]init];
+     NSMutableDictionary *valuedic =[[NSMutableDictionary alloc]init];
     [valuedic setValue:UserId forKey:@"lawyer_id"];
-    
+
     NSString * base64String =[NSString getBase64StringWithArray:valuedic];
-    
     NSMutableDictionary  *dic =[[NSMutableDictionary alloc]init] ;
-//    NewAddInfor ;
     [dic setValue:base64String forKey:@"value"];
+    NewAddInfo
     [AFManagerHelp   asyncUploadFileWithData:imageData name:@"avatar" fileName:@"PersonHeadPic.jpg" mimeType:@"image/jpeg" parameters:dic success:^(id responseObject) {
-      
+
         if ([responseObject[@"status"] integerValue] == 0) {
-            
-            
+
+
         }else{
             [ShowHUD showWYBTextOnly:responseObject[@"msg"] duration:2 inView:self.view];
         }
-        
+
         [self hideHud];
     } failture:^(NSError *error) {
         [self hideHud];
@@ -294,13 +297,13 @@
 }
 // 更改基本信息
 -(void)ChangInformationWithDic:(NSDictionary *)dicc{
- 
-    NSMutableDictionary *valuedic =[[NSMutableDictionary alloc]initWithDictionary:dicc];
-    [valuedic setValue:UserId forKey:@"lawyer_id"];
- 
-    NSString * base64String =[NSString getBase64StringWithArray:valuedic];
     
     NSMutableDictionary  *dic =[[NSMutableDictionary alloc]init] ;
+    NSMutableDictionary *valuedic =[[NSMutableDictionary alloc]initWithDictionary:dicc];
+    [valuedic setValue:UserId forKey:@"uid"];
+    NewAddInfo
+    NSString * base64String =[NSString getBase64StringWithArray:valuedic];
+    
 //    NewAddInfor ;
     [dic setValue:base64String forKey:@"value"];
     MJWeakSelf;

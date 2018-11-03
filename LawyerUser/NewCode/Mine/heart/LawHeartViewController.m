@@ -31,15 +31,15 @@
 }
 -(void)makeData{
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
-//    NewHetermind
+    NewHetermind
     if( [UserId length] < 1){
         return ;
     }
     NSDictionary * valudic ;
     if(self.mid){
-        valudic = @{@"lawyer_id":UserId,@"p":[NSString stringWithFormat:@"%ld",Page],@"mid":self.mid};
+        valudic = @{@"user_id":UserId,@"p":[NSString stringWithFormat:@"%ld",Page],@"mid":self.mid};
     }else{
-         valudic = @{@"lawyer_id":UserId,@"p":[NSString stringWithFormat:@"%ld",Page]};
+         valudic = @{@"user_id":UserId,@"p":[NSString stringWithFormat:@"%ld",Page]};
     }
  
     NSString * baseStr = [NSString getBase64StringWithArray:valudic];

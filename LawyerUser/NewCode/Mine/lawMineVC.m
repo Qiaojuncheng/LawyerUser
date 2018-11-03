@@ -26,7 +26,7 @@
 #import "QJAboutAppViewController.h"
 #import "LawIWantPublicVC.h"
 
-
+#import "lawVipCentViewController.h"
 #import "lawMineVipView.h"
 
 @interface lawMineVC ()<UICollectionViewDelegate,UICollectionViewDataSource>{
@@ -38,7 +38,7 @@
     
     BOOL showHud; //第一次显示加载框 其他都不显示了
     
-   NSString * VipType;  // 1  Vip  2 不是  3 未登录
+   NSString * VipType;  // VIP 0 不是 1是   2 未登录
     
 }
 @property (strong ,nonatomic) UICollectionView * collectionView;
@@ -52,11 +52,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    VipType = @"0";
+    VipType = @"2";
     CollectSpace =  0;
     Topheight = 172;
     showHud = YES;
-    CollectitemArray = [[NSMutableArray alloc]initWithArray:@[@[@"咨询",@"电话预约",@"见面预约",@"法律服务"],@[@"收藏",@"我要发布",@"客服中心",@"关于汇融法",@"我要合作"]]];
+    CollectitemArray = [[NSMutableArray alloc]initWithArray:@[@[@"咨询",@"电话预约",@"见面预约",@"我的订单"],@[@"收藏",@"我要发布",@"客服中心",@"关于汇融法",@"我要合作"]]];
     
     CollectitemImageArray = [[NSMutableArray alloc]initWithArray:@[@[@"main_consult",@"main_telephone",@"main_order",@"main_service"],@[@"my_collect",@"my_release",@"my_customeservice",@"my_about",@"my_cooperation"]]];
     
@@ -105,6 +105,10 @@
         [self hideHud];
         if ([responseObjeck[@"status"] integerValue] == 0) {
             weakSelf.infoModel = [MyInfoModel mj_objectWithKeyValues:responseObjeck[@"data"]];
+           
+            self->VipType = weakSelf.infoModel.is_vip?weakSelf.infoModel.is_vip:@"2";
+            
+            
             [self.collectionView reloadData];
         }else{
             [self showHint:responseObjeck[@"msg"]];
@@ -196,13 +200,15 @@
             CGFloat   VipHeight =  0;
             lawMineVipView * vipVIew = [[lawMineVipView alloc]init];
             vipVIew.backgroundColor = [UIColor whiteColor];
+// 1  Vip  2 不是  3 未登录
             if ([VipType isEqualToString:@"1"]) {
                  VipHeight  = 52;
                 vipVIew.frame = CGRectMake(0, Topheight + 10, SCREENWIDTH, 44);
                 vipVIew.timeStr = @"2020-11-11";
                 
                 [vipVIew whenTouchedUp:^{
-                    NSLog(@"vipAction");
+                    lawVipCentViewController * vipCenter= [[lawVipCentViewController alloc]init];
+                    [self.navigationController pushViewController:vipCenter animated:YES];
                 }];
                 
             }else{

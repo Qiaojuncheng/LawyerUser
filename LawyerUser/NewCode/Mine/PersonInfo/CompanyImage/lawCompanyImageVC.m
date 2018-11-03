@@ -8,7 +8,9 @@
 
 #import "lawCompanyImageVC.h"
 #import "LawJCImageSelect.h"
-@interface lawCompanyImageVC ()<selectImagedelegate>
+@interface lawCompanyImageVC ()<selectImagedelegate>{
+    UIImage * LinceImage ;
+}
 
 @end
 
@@ -49,32 +51,7 @@
     
     
     [self.addBtn setImage:selectImage forState:UIControlStateNormal];
-//    NSData   * imageData  = UIImageJPEGRepresentation(selectImage, 0.01);
-//
-//    NSMutableDictionary *valuedic =[[NSMutableDictionary alloc]init];
-//    [valuedic setValue:UserId forKey:@"lawyer_id"];
-//
-//    NSString * base64String =[NSString getBase64StringWithArray:valuedic];
-//
-//    NSMutableDictionary  *dic =[[NSMutableDictionary alloc]init] ;
-//    //    NewAddInfor ;
-//    [dic setValue:base64String forKey:@"value"];
-//    [AFManagerHelp   asyncUploadFileWithData:imageData name:@"avatar" fileName:@"PersonHeadPic.jpg" mimeType:@"image/jpeg" parameters:dic success:^(id responseObject) {
-//
-//        if ([responseObject[@"status"] integerValue] == 0) {
-//
-//
-//        }else{
-//            [ShowHUD showWYBTextOnly:responseObject[@"msg"] duration:2 inView:self.view];
-//        }
-//
-//        [self hideHud];
-//    } failture:^(NSError *error) {
-//        [self hideHud];
-//
-//    }];
-//
-    
+    LinceImage    = selectImage ;
 }
 -(void)cancelSelecImage{
     
@@ -83,5 +60,32 @@
 
 - (IBAction)EnSureAction:(UIButton *)sender {
     NSLog(@"提交");
+    if (!LinceImage) {
+        [self showHint:@"请选择图片"];
+    }
+    NSData   * imageData  = UIImageJPEGRepresentation(LinceImage, 0.01);
+    
+    NSMutableDictionary *valuedic =[[NSMutableDictionary alloc]init];
+    [valuedic setValue:UserId forKey:@"uid"];
+    
+    NSString * base64String =[NSString getBase64StringWithArray:valuedic];
+    
+    NSMutableDictionary  *dic =[[NSMutableDictionary alloc]init] ;
+    NewAddInfo ;
+    [dic setValue:base64String forKey:@"value"];
+    [AFManagerHelp   asyncUploadFileWithData:imageData name:@"license" fileName:@"PersonHeadPic.jpg" mimeType:@"image/jpeg" parameters:dic success:^(id responseObject) {
+         if ([responseObject[@"status"] integerValue] == 0) {
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [ShowHUD showWYBTextOnly:responseObject[@"msg"] duration:2 inView:self.view];
+        }
+         [self hideHud];
+    } failture:^(NSError *error) {
+        [self hideHud];
+        
+    }];
+    
+
 }
 @end
