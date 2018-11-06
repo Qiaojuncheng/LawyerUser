@@ -28,6 +28,10 @@
 		1F2C1AD7218A9EB500749B42 /* LawMessageCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F2C1ACE218A9EB400749B42 /* LawMessageCenterCell.xib */; };
 		1F2C1AD8218A9EB500749B42 /* LawMessageCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2C1ACF218A9EB400749B42 /* LawMessageCenterCell.m */; };
 		1F2C1AD9218A9EB500749B42 /* LawMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2C1AD3218A9EB400749B42 /* LawMessageModel.m */; };
+		1F2EC1D4218EB3BB00F75226 /* lawVipZoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EC1D3218EB3BB00F75226 /* lawVipZoneVC.m */; };
+		1F2EC1D8218EB41000F75226 /* lawVipZoneTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EC1D7218EB41000F75226 /* lawVipZoneTopView.m */; };
+		1F2EC1DA218EB44300F75226 /* lawVipZoneTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F2EC1D9218EB44300F75226 /* lawVipZoneTopView.xib */; };
+		1F2EC1DD218F176300F75226 /* lawVipConcentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EC1DC218F176300F75226 /* lawVipConcentModel.m */; };
 		1F4034591EA5ECE1006803AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4034581EA5ECE1006803AE /* Images.xcassets */; };
 		1F40345C1EA5F8B0006803AE /* xsqbanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F40345B1EA5F8B0006803AE /* xsqbanner.m */; };
 		1F546C07218BF6EC004652D8 /* lawVipCentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F546C06218BF6EC004652D8 /* lawVipCentViewController.m */; };
@@ -51,6 +55,15 @@
 		1F86C987218C548200E8B75C /* lawVipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F86C986218C548200E8B75C /* lawVipModel.m */; };
 		1F86C98A218C5CD900E8B75C /* lawVipFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F86C989218C5CD900E8B75C /* lawVipFootView.m */; };
 		1F86C98C218C5CE900E8B75C /* lawVipFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F86C98B218C5CE900E8B75C /* lawVipFootView.xib */; };
+		1F8F5249218FF32D00526AAF /* lawVipZoneMiddleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F5247218FF32D00526AAF /* lawVipZoneMiddleCell.m */; };
+		1F8F524A218FF32D00526AAF /* lawVipZoneMiddleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8F5248218FF32D00526AAF /* lawVipZoneMiddleCell.xib */; };
+		1F8F524D21900FF000526AAF /* lawCompanyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F524C21900FF000526AAF /* lawCompanyModel.m */; };
+		1F8F52512190100B00526AAF /* lawCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F524F2190100B00526AAF /* lawCompanyCell.m */; };
+		1F8F52522190100B00526AAF /* lawCompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8F52502190100B00526AAF /* lawCompanyCell.xib */; };
+		1F8F52572190307200526AAF /* lawPhoneAppointVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F52562190307200526AAF /* lawPhoneAppointVC.m */; };
+		1F8F525C219030BA00526AAF /* lawMeetAppointVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F525B219030BA00526AAF /* lawMeetAppointVC.m */; };
+		1F8F52622190387600526AAF /* lawPhoneAppointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F52602190387600526AAF /* lawPhoneAppointCell.m */; };
+		1F8F52632190387600526AAF /* lawPhoneAppointCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8F52612190387600526AAF /* lawPhoneAppointCell.xib */; };
 		1F9949EF2189C98600C8D41B /* lawreleaseConsultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9949ED2189C98600C8D41B /* lawreleaseConsultVC.m */; };
 		1F9949F02189C98600C8D41B /* lawreleaseConsultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9949EE2189C98600C8D41B /* lawreleaseConsultVC.xib */; };
 		1FC859951EA4B4DF009AFE07 /* UIView+XPKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC859941EA4B4DF009AFE07 /* UIView+XPKit.m */; };
@@ -68,6 +81,12 @@
 		1FDCE9A01EA19EFC00D5B115 /* bt_star_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FDCE99C1EA19EFC00D5B115 /* bt_star_b.png */; };
 		1FDCE9A11EA19EFC00D5B115 /* RatingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCE99E1EA19EFC00D5B115 /* RatingBar.m */; };
 		1FDCE9A21EA19EFC00D5B115 /* star_three@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FDCE99F1EA19EFC00D5B115 /* star_three@2x.png */; };
+		1FE7E646218D30E90026610B /* lawVipRecodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7E645218D30E90026610B /* lawVipRecodeVC.m */; };
+		1FE7E649218D32AD0026610B /* lawVipRecodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7E648218D32AD0026610B /* lawVipRecodeModel.m */; };
+		1FE7E64D218D36700026610B /* lawMinVipUerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7E64B218D36700026610B /* lawMinVipUerCell.m */; };
+		1FE7E64E218D36700026610B /* lawMinVipUerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE7E64C218D36700026610B /* lawMinVipUerCell.xib */; };
+		1FE7E652218D39760026610B /* lawVipRechargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7E650218D39760026610B /* lawVipRechargeCell.m */; };
+		1FE7E653218D39760026610B /* lawVipRechargeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE7E651218D39760026610B /* lawVipRechargeCell.xib */; };
 		1FE8F8311FCE9630004A5EDF /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE8F8171FCE9630004A5EDF /* libSocialQQ.a */; };
 		1FE8F8321FCE9630004A5EDF /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE8F8191FCE9630004A5EDF /* TencentOpenAPI.framework */; };
 		1FE8F8331FCE9630004A5EDF /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1FE8F81A1FCE9630004A5EDF /* TencentOpenApi_IOS_Bundle.bundle */; };
@@ -305,6 +324,13 @@
 		1F2C1AD0218A9EB400749B42 /* LawMessageCenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LawMessageCenterCell.h; sourceTree = "<group>"; };
 		1F2C1AD2218A9EB400749B42 /* LawMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LawMessageModel.h; sourceTree = "<group>"; };
 		1F2C1AD3218A9EB400749B42 /* LawMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LawMessageModel.m; sourceTree = "<group>"; };
+		1F2EC1D2218EB3BB00F75226 /* lawVipZoneVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawVipZoneVC.h; sourceTree = "<group>"; };
+		1F2EC1D3218EB3BB00F75226 /* lawVipZoneVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawVipZoneVC.m; sourceTree = "<group>"; };
+		1F2EC1D6218EB41000F75226 /* lawVipZoneTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawVipZoneTopView.h; sourceTree = "<group>"; };
+		1F2EC1D7218EB41000F75226 /* lawVipZoneTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawVipZoneTopView.m; sourceTree = "<group>"; };
+		1F2EC1D9218EB44300F75226 /* lawVipZoneTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = lawVipZoneTopView.xib; sourceTree = "<group>"; };
+		1F2EC1DB218F176300F75226 /* lawVipConcentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawVipConcentModel.h; sourceTree = "<group>"; };
+		1F2EC1DC218F176300F75226 /* lawVipConcentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawVipConcentModel.m; sourceTree = "<group>"; };
 		1F3F114D1F96FF44002F7AC5 /* Lawyer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lawyer.entitlements; sourceTree = "<group>"; };
 		1F4034581EA5ECE1006803AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F40345A1EA5F8B0006803AE /* xsqbanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xsqbanner.h; sourceTree = "<group>"; };
@@ -345,6 +371,21 @@
 		1F86C988218C5CD800E8B75C /* lawVipFootView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawVipFootView.h; sourceTree = "<group>"; };
 		1F86C989218C5CD900E8B75C /* lawVipFootView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawVipFootView.m; sourceTree = "<group>"; };
 		1F86C98B218C5CE900E8B75C /* lawVipFootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = lawVipFootView.xib; sourceTree = "<group>"; };
+		1F8F5246218FF32D00526AAF /* lawVipZoneMiddleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawVipZoneMiddleCell.h; sourceTree = "<group>"; };
+		1F8F5247218FF32D00526AAF /* lawVipZoneMiddleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawVipZoneMiddleCell.m; sourceTree = "<group>"; };
+		1F8F5248218FF32D00526AAF /* lawVipZoneMiddleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = lawVipZoneMiddleCell.xib; sourceTree = "<group>"; };
+		1F8F524B21900FF000526AAF /* lawCompanyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawCompanyModel.h; sourceTree = "<group>"; };
+		1F8F524C21900FF000526AAF /* lawCompanyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawCompanyModel.m; sourceTree = "<group>"; };
+		1F8F524E2190100B00526AAF /* lawCompanyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawCompanyCell.h; sourceTree = "<group>"; };
+		1F8F524F2190100B00526AAF /* lawCompanyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawCompanyCell.m; sourceTree = "<group>"; };
+		1F8F52502190100B00526AAF /* lawCompanyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = lawCompanyCell.xib; sourceTree = "<group>"; };
+		1F8F52552190307200526AAF /* lawPhoneAppointVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawPhoneAppointVC.h; sourceTree = "<group>"; };
+		1F8F52562190307200526AAF /* lawPhoneAppointVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawPhoneAppointVC.m; sourceTree = "<group>"; };
+		1F8F525A219030BA00526AAF /* lawMeetAppointVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawMeetAppointVC.h; sourceTree = "<group>"; };
+		1F8F525B219030BA00526AAF /* lawMeetAppointVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawMeetAppointVC.m; sourceTree = "<group>"; };
+		1F8F525F2190387600526AAF /* lawPhoneAppointCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawPhoneAppointCell.h; sourceTree = "<group>"; };
+		1F8F52602190387600526AAF /* lawPhoneAppointCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawPhoneAppointCell.m; sourceTree = "<group>"; };
+		1F8F52612190387600526AAF /* lawPhoneAppointCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = lawPhoneAppointCell.xib; sourceTree = "<group>"; };
 		1F9949EC2189C98600C8D41B /* lawreleaseConsultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawreleaseConsultVC.h; sourceTree = "<group>"; };
 		1F9949ED2189C98600C8D41B /* lawreleaseConsultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawreleaseConsultVC.m; sourceTree = "<group>"; };
 		1F9949EE2189C98600C8D41B /* lawreleaseConsultVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = lawreleaseConsultVC.xib; sourceTree = "<group>"; };
@@ -375,6 +416,16 @@
 		1FDCE99D1EA19EFC00D5B115 /* RatingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingBar.h; sourceTree = "<group>"; };
 		1FDCE99E1EA19EFC00D5B115 /* RatingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingBar.m; sourceTree = "<group>"; };
 		1FDCE99F1EA19EFC00D5B115 /* star_three@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_three@2x.png"; sourceTree = "<group>"; };
+		1FE7E644218D30E90026610B /* lawVipRecodeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawVipRecodeVC.h; sourceTree = "<group>"; };
+		1FE7E645218D30E90026610B /* lawVipRecodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawVipRecodeVC.m; sourceTree = "<group>"; };
+		1FE7E647218D32AD0026610B /* lawVipRecodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawVipRecodeModel.h; sourceTree = "<group>"; };
+		1FE7E648218D32AD0026610B /* lawVipRecodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawVipRecodeModel.m; sourceTree = "<group>"; };
+		1FE7E64A218D36700026610B /* lawMinVipUerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawMinVipUerCell.h; sourceTree = "<group>"; };
+		1FE7E64B218D36700026610B /* lawMinVipUerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawMinVipUerCell.m; sourceTree = "<group>"; };
+		1FE7E64C218D36700026610B /* lawMinVipUerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = lawMinVipUerCell.xib; sourceTree = "<group>"; };
+		1FE7E64F218D39760026610B /* lawVipRechargeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawVipRechargeCell.h; sourceTree = "<group>"; };
+		1FE7E650218D39760026610B /* lawVipRechargeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawVipRechargeCell.m; sourceTree = "<group>"; };
+		1FE7E651218D39760026610B /* lawVipRechargeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = lawVipRechargeCell.xib; sourceTree = "<group>"; };
 		1FE8F8171FCE9630004A5EDF /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
 		1FE8F8191FCE9630004A5EDF /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		1FE8F81A1FCE9630004A5EDF /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
@@ -816,6 +867,26 @@
 			path = meessageModel;
 			sourceTree = "<group>";
 		};
+		1F2EC1D5218EB3DC00F75226 /* VipZoneView */ = {
+			isa = PBXGroup;
+			children = (
+				1F2EC1D6218EB41000F75226 /* lawVipZoneTopView.h */,
+				1F2EC1D7218EB41000F75226 /* lawVipZoneTopView.m */,
+				1F2EC1D9218EB44300F75226 /* lawVipZoneTopView.xib */,
+				1F2EC1DB218F176300F75226 /* lawVipConcentModel.h */,
+				1F2EC1DC218F176300F75226 /* lawVipConcentModel.m */,
+				1F8F5246218FF32D00526AAF /* lawVipZoneMiddleCell.h */,
+				1F8F5247218FF32D00526AAF /* lawVipZoneMiddleCell.m */,
+				1F8F5248218FF32D00526AAF /* lawVipZoneMiddleCell.xib */,
+				1F8F524B21900FF000526AAF /* lawCompanyModel.h */,
+				1F8F524C21900FF000526AAF /* lawCompanyModel.m */,
+				1F8F524E2190100B00526AAF /* lawCompanyCell.h */,
+				1F8F524F2190100B00526AAF /* lawCompanyCell.m */,
+				1F8F52502190100B00526AAF /* lawCompanyCell.xib */,
+			);
+			path = VipZoneView;
+			sourceTree = "<group>";
+		};
 		1F40344C1EA5DAA3006803AE /* BannerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,10 +899,15 @@
 		1F546C04218BF6B2004652D8 /* VipController */ = {
 			isa = PBXGroup;
 			children = (
+				1F2EC1D5218EB3DC00F75226 /* VipZoneView */,
 				1F86C984218C546500E8B75C /* model */,
 				1F546C08218BF7B1004652D8 /* View */,
 				1F546C05218BF6EC004652D8 /* lawVipCentViewController.h */,
 				1F546C06218BF6EC004652D8 /* lawVipCentViewController.m */,
+				1FE7E644218D30E90026610B /* lawVipRecodeVC.h */,
+				1FE7E645218D30E90026610B /* lawVipRecodeVC.m */,
+				1F2EC1D2218EB3BB00F75226 /* lawVipZoneVC.h */,
+				1F2EC1D3218EB3BB00F75226 /* lawVipZoneVC.m */,
 			);
 			path = VipController;
 			sourceTree = "<group>";
@@ -848,6 +924,12 @@
 				1F86C988218C5CD800E8B75C /* lawVipFootView.h */,
 				1F86C989218C5CD900E8B75C /* lawVipFootView.m */,
 				1F86C98B218C5CE900E8B75C /* lawVipFootView.xib */,
+				1FE7E64A218D36700026610B /* lawMinVipUerCell.h */,
+				1FE7E64B218D36700026610B /* lawMinVipUerCell.m */,
+				1FE7E64C218D36700026610B /* lawMinVipUerCell.xib */,
+				1FE7E64F218D39760026610B /* lawVipRechargeCell.h */,
+				1FE7E650218D39760026610B /* lawVipRechargeCell.m */,
+				1FE7E651218D39760026610B /* lawVipRechargeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -947,8 +1029,63 @@
 			children = (
 				1F86C985218C548200E8B75C /* lawVipModel.h */,
 				1F86C986218C548200E8B75C /* lawVipModel.m */,
+				1FE7E647218D32AD0026610B /* lawVipRecodeModel.h */,
+				1FE7E648218D32AD0026610B /* lawVipRecodeModel.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		1F8F525321902FA000526AAF /* PhoneAppoint */ = {
+			isa = PBXGroup;
+			children = (
+				1F8F52592190307D00526AAF /* Model */,
+				1F8F52582190307700526AAF /* View */,
+				1F8F52552190307200526AAF /* lawPhoneAppointVC.h */,
+				1F8F52562190307200526AAF /* lawPhoneAppointVC.m */,
+			);
+			path = PhoneAppoint;
+			sourceTree = "<group>";
+		};
+		1F8F52542190304200526AAF /* meetAppoint */ = {
+			isa = PBXGroup;
+			children = (
+				1F8F525E219030C800526AAF /* Model */,
+				1F8F525D219030BF00526AAF /* View */,
+				1F8F525A219030BA00526AAF /* lawMeetAppointVC.h */,
+				1F8F525B219030BA00526AAF /* lawMeetAppointVC.m */,
+			);
+			path = meetAppoint;
+			sourceTree = "<group>";
+		};
+		1F8F52582190307700526AAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F8F525F2190387600526AAF /* lawPhoneAppointCell.h */,
+				1F8F52602190387600526AAF /* lawPhoneAppointCell.m */,
+				1F8F52612190387600526AAF /* lawPhoneAppointCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8F52592190307D00526AAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F8F525D219030BF00526AAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8F525E219030C800526AAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1FC9314C1F72705D00EBBA4B /* YYModel */ = {
@@ -1394,6 +1531,8 @@
 		1FF619B72188A6CF00C13C28 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				1F8F52542190304200526AAF /* meetAppoint */,
+				1F8F525321902FA000526AAF /* PhoneAppoint */,
 				1F546C04218BF6B2004652D8 /* VipController */,
 				1FF619C72188A6CF00C13C28 /* aboutApp */,
 				1FF619B92188A6CF00C13C28 /* Collect */,
@@ -1417,8 +1556,8 @@
 		1FF619B92188A6CF00C13C28 /* Collect */ = {
 			isa = PBXGroup;
 			children = (
-				1FF619BA2188A6CF00C13C28 /* LawCollectViewController.m */,
 				1FF619BB2188A6CF00C13C28 /* LawCollectViewController.h */,
+				1FF619BA2188A6CF00C13C28 /* LawCollectViewController.m */,
 			);
 			path = Collect;
 			sourceTree = "<group>";
@@ -1992,6 +2131,8 @@
 				1FF61AD22188A6D000C13C28 /* LawCaseTypeCell.xib in Resources */,
 				1F4034591EA5ECE1006803AE /* Images.xcassets in Resources */,
 				1FF61A862188A6D000C13C28 /* LawIWantPublicVC.xib in Resources */,
+				1F8F52522190100B00526AAF /* lawCompanyCell.xib in Resources */,
+				1FE7E64E218D36700026610B /* lawMinVipUerCell.xib in Resources */,
 				1F5B27051E9B52D100DBFA44 /* LaunchScreen.storyboard in Resources */,
 				1FF61A9E2188A6D000C13C28 /* LawMineTopView.xib in Resources */,
 				1FF61A8A2188A6D000C13C28 /* QJAboutAppViewController.xib in Resources */,
@@ -2014,6 +2155,7 @@
 				1FF61A8F2188A6D000C13C28 /* LawheartCell.xib in Resources */,
 				1FF61A7F2188A6D000C13C28 /* lawFindSendHeaderVC.xib in Resources */,
 				1FE8F8331FCE9630004A5EDF /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				1F8F524A218FF32D00526AAF /* lawVipZoneMiddleCell.xib in Resources */,
 				1FF61A6E2188A6D000C13C28 /* LawMainTopView.xib in Resources */,
 				1FF61AAC2188A6D000C13C28 /* lawCompanyImageVC.xib in Resources */,
 				1FF61AB42188A6D000C13C28 /* LawCardInfoViewController.xib in Resources */,
@@ -2021,6 +2163,7 @@
 				1FF61A5A2188A6D000C13C28 /* LawSelectLeftCaseCell.xib in Resources */,
 				1FF61A912188A6D000C13C28 /* FeedbackViewController.xib in Resources */,
 				1FE8F83C1FCE9631004A5EDF /* UMSocialSDKResources.bundle in Resources */,
+				1F2EC1DA218EB44300F75226 /* lawVipZoneTopView.xib in Resources */,
 				1F5E780A1FA1DE6D00D22E3B /* 333.png in Resources */,
 				1F5E78081FA1DE6D00D22E3B /* 111.png in Resources */,
 				1F546C0D218BF7F1004652D8 /* lawVipTopView.xib in Resources */,
@@ -2029,6 +2172,7 @@
 				1FF61A8E2188A6D000C13C28 /* LawHeartViewController.xib in Resources */,
 				9A1933611F7F284400D23A36 /* WYViewController.xib in Resources */,
 				1FE8F83A1FCE9631004A5EDF /* UMSocialSDKPromptResources.bundle in Resources */,
+				1F8F52632190387600526AAF /* lawPhoneAppointCell.xib in Resources */,
 				1F546C12218BFA46004652D8 /* lawVipCentServiceCell.xib in Resources */,
 				1FF61AB62188A6D000C13C28 /* LawAddCardViewController.xib in Resources */,
 				1FDCE9A21EA19EFC00D5B115 /* star_three@2x.png in Resources */,
@@ -2048,6 +2192,7 @@
 				1F5B27001E9B52D100DBFA44 /* Main.storyboard in Resources */,
 				1FF61A7B2188A6D000C13C28 /* lawdetailBottomCell.xib in Resources */,
 				9A3DF6ED1F79EBFA002CCAB3 /* MJRefresh.bundle in Resources */,
+				1FE7E653218D39760026610B /* lawVipRechargeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2151,6 +2296,7 @@
 				1F5B273B1E9B538C00DBFA44 /* BaseViewController.m in Sources */,
 				1FF61A702188A6D000C13C28 /* lawMainMiddleView.m in Sources */,
 				1FF61A772188A6D000C13C28 /* lawDetailTopCell.m in Sources */,
+				1FE7E64D218D36700026610B /* lawMinVipUerCell.m in Sources */,
 				1FFAF75A218978FE00363C8C /* lawPublicLegalSevice.m in Sources */,
 				1FF61ACB2188A6D000C13C28 /* LawAppreSelectCaseTypeView.m in Sources */,
 				9A3DF6F21F79EBFA002CCAB3 /* UIView+MJExtension.m in Sources */,
@@ -2170,30 +2316,36 @@
 				1FF61A942188A6D000C13C28 /* QJCJQuestionSubModel.m in Sources */,
 				9A3DF6E21F79EBFA002CCAB3 /* MJRefreshFooter.m in Sources */,
 				9A3DF6E91F79EBFA002CCAB3 /* MJRefreshBackStateFooter.m in Sources */,
+				1F8F524D21900FF000526AAF /* lawCompanyModel.m in Sources */,
 				1FF61AA62188A6D000C13C28 /* LawChangInfoIntroductVC.m in Sources */,
 				1FF61A9C2188A6D000C13C28 /* LawMineTopView.m in Sources */,
 				1FF61A5C2188A6D000C13C28 /* LawSelectTypeofCaseView.m in Sources */,
 				1FCB1C801E9C60DD004653EF /* QJNetWork.m in Sources */,
 				1FD9E4B41F71181C00CC2E30 /* GuideViewController.m in Sources */,
 				1F9949EF2189C98600C8D41B /* lawreleaseConsultVC.m in Sources */,
+				1F8F5249218FF32D00526AAF /* lawVipZoneMiddleCell.m in Sources */,
 				1FF61A8C2188A6D000C13C28 /* LawHeartViewController.m in Sources */,
 				1FF61A6C2188A6D000C13C28 /* LawMainPageViewController.m in Sources */,
 				1FF61AB92188A6D000C13C28 /* LawBankCardCell.m in Sources */,
 				1FF61A902188A6D000C13C28 /* LawheartCell.m in Sources */,
 				1FF61A5E2188A6D000C13C28 /* LawJCImageSelect.m in Sources */,
+				1FE7E649218D32AD0026610B /* lawVipRecodeModel.m in Sources */,
 				1F546C07218BF6EC004652D8 /* lawVipCentViewController.m in Sources */,
 				1FF61ABC2188A6D000C13C28 /* LawPersonInfoViewController.m in Sources */,
+				1FE7E652218D39760026610B /* lawVipRechargeCell.m in Sources */,
 				1FF61AC22188A6D000C13C28 /* LawMondetaulCell.m in Sources */,
 				1FF61A812188A6D000C13C28 /* lawPublicViewController.m in Sources */,
 				1FF61AA92188A6D000C13C28 /* LawPlatformAuthViewController.m in Sources */,
 				1F2C1AD9218A9EB500749B42 /* LawMessageModel.m in Sources */,
 				1FF61A882188A6D000C13C28 /* MyInfoModel.m in Sources */,
 				1FC931531F72705D00EBBA4B /* YYClassInfo.m in Sources */,
+				1F2EC1D4218EB3BB00F75226 /* lawVipZoneVC.m in Sources */,
 				1FF61A5D2188A6D000C13C28 /* LMJScrollTextView2.m in Sources */,
 				1FD921D7216DE30A008F4F4F /* MCTabBar.m in Sources */,
 				1FF61A612188A6D000C13C28 /* ShowHUD.m in Sources */,
 				9A3DF6E11F79EBFA002CCAB3 /* MJRefreshComponent.m in Sources */,
 				1FF61A712188A6D000C13C28 /* lawMainPageLawyerCell.m in Sources */,
+				1F8F52622190387600526AAF /* lawPhoneAppointCell.m in Sources */,
 				1FF61ABB2188A6D000C13C28 /* LawBankCardViewController.m in Sources */,
 				1FD9E4A31F70ECCF00CC2E30 /* NSString+XPKit.m in Sources */,
 				1FF61A922188A6D000C13C28 /* XSetVCCell.m in Sources */,
@@ -2228,6 +2380,7 @@
 				1FF61A582188A6D000C13C28 /* LawSelectLeftCaseCell.m in Sources */,
 				1FF61A5F2188A6D000C13C28 /* UIButton+ZYButton.m in Sources */,
 				1FF61AD12188A6D000C13C28 /* LawCaseTypeCell.m in Sources */,
+				1FE7E646218D30E90026610B /* lawVipRecodeVC.m in Sources */,
 				1FF61A742188A6D000C13C28 /* lawAppointmentVC.m in Sources */,
 				1FF61A832188A6D000C13C28 /* QJCXieYiVc.m in Sources */,
 				9AD265AD1F74EDB2007E98F3 /* Utile.m in Sources */,
@@ -2255,6 +2408,7 @@
 				1FF61A972188A6D000C13C28 /* QJInfoDetailVC.m in Sources */,
 				1FD3C6671F340E140039AFD2 /* LPlaceholderTextView.m in Sources */,
 				1FF61A822188A6D000C13C28 /* LawCollectViewController.m in Sources */,
+				1F2EC1DD218F176300F75226 /* lawVipConcentModel.m in Sources */,
 				9A3DF6EF1F79EBFA002CCAB3 /* NSBundle+MJRefresh.m in Sources */,
 				1FF61AAD2188A6D000C13C28 /* LawInforImageCell.m in Sources */,
 				1F546C11218BFA46004652D8 /* lawVipCentServiceCell.m in Sources */,
@@ -2268,6 +2422,7 @@
 				1FF61A632188A6D000C13C28 /* PublicMethod.m in Sources */,
 				1FF61ABA2188A6D000C13C28 /* LawCardInfoViewController.m in Sources */,
 				1FF61ABE2188A6D000C13C28 /* LawWthDeawalViewController.m in Sources */,
+				1F2EC1D8218EB41000F75226 /* lawVipZoneTopView.m in Sources */,
 				1FF61A962188A6D000C13C28 /* XSetVCModel.m in Sources */,
 				9A3DF6DF1F79EBFA002CCAB3 /* MJRefreshAutoFooter.m in Sources */,
 				1FEFBB241E9F668B00B0A76D /* QJSelectDatePickView.m in Sources */,
@@ -2280,6 +2435,7 @@
 				1F40345C1EA5F8B0006803AE /* xsqbanner.m in Sources */,
 				1F86C98A218C5CD900E8B75C /* lawVipFootView.m in Sources */,
 				1FF61A6D2188A6D000C13C28 /* lawLawyerModle.m in Sources */,
+				1F8F52572190307200526AAF /* lawPhoneAppointVC.m in Sources */,
 				9A3DF6EB1F79EBFA002CCAB3 /* MJRefreshNormalHeader.m in Sources */,
 				1F1972BB1F38081B00C648CF /* HttpAfManager.m in Sources */,
 				1FF61A8B2188A6D000C13C28 /* LawNewHeZuoViewController.m in Sources */,
@@ -2291,12 +2447,14 @@
 				1F2C1AD5218A9EB500749B42 /* LawMianPageMessageList.m in Sources */,
 				1FF61ACD2188A6D000C13C28 /* LawCaseNewModel.m in Sources */,
 				9A3DF6E71F79EBFA002CCAB3 /* MJRefreshBackGifFooter.m in Sources */,
+				1F8F52512190100B00526AAF /* lawCompanyCell.m in Sources */,
 				9A3DF6EE1F79EBFA002CCAB3 /* MJRefreshConst.m in Sources */,
 				1FF61A7C2188A6D000C13C28 /* lawSearchLawyerVC.m in Sources */,
 				1FDCE9A11EA19EFC00D5B115 /* RatingBar.m in Sources */,
 				1FF61A722188A6D000C13C28 /* LawMainTopView.m in Sources */,
 				9A3DF6E01F79EBFA002CCAB3 /* MJRefreshBackFooter.m in Sources */,
 				9A3DF6F11F79EBFA002CCAB3 /* UIScrollView+MJRefresh.m in Sources */,
+				1F8F525C219030BA00526AAF /* lawMeetAppointVC.m in Sources */,
 				1F1972D21F3853DE00C648CF /* TLCityHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@
 #import "lawVipTopView.h"
 #import "lawVipCentServiceCell.h"
 #import "lawVipFootView.h"
+#import "lawVipRecodeVC.h"
 @interface lawVipCentViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>{
     
     NSMutableArray * CollectDataArray;
@@ -32,9 +33,16 @@
     CollectDataArray=[[NSMutableArray alloc]init];
     [self requestData];
     [self.collectionFootView.FirstView whenTapped:^{
+        lawVipRecodeVC * law =[[lawVipRecodeVC alloc]init];
+        law.RecodeType = @"1";
+        [self.navigationController pushViewController:law animated:YES];
         NSLog(@"使用记录");
     }];
     [self.collectionFootView.SecondView whenTapped:^{
+        lawVipRecodeVC * law =[[lawVipRecodeVC alloc]init];
+        law.RecodeType = @"2";
+        [self.navigationController pushViewController:law animated:YES];
+
         NSLog(@"充值记录");
     }];
     // Do any additional setup after loading the view.
@@ -64,8 +72,7 @@
     if (!_collectionTopView) {
         _collectionTopView =[[[NSBundle mainBundle]loadNibNamed:@"lawVipTopView" owner:self options:nil]lastObject];
       }
-    
-    return _collectionTopView;
+     return _collectionTopView;
 }
 
 #pragma mark  设置CollectionView的的参数
@@ -118,7 +125,7 @@
             UICollectionReusableView *header=[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"footer" forIndexPath:indexPath];
             [header removeAllSubviews];
             [header addSubview:self.collectionFootView];
-            
+            self.collectionTopView.Model = self.Model;
             header.left  =  -13;
             //        header.width = SCREENWIDTH;
              header.clipsToBounds = NO ;
@@ -173,8 +180,7 @@
 - (void)requestData {
     
     
-    [self showHint:nil  inView:self.view];
-    
+ 
     //action、value
     NSDictionary *valuedic = @{
                                @"uid":UserId,

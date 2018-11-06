@@ -128,7 +128,8 @@
                 [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"avatar"]] forKey:@"avatar"];
                 [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"money"]] forKey:@"money"];
                 [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"phone"]] forKey:@"phone"];
-                [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"renzheng"]] forKey:@"renzheng"];
+                [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"name"]] forKey:@"name"];
+                 [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"renzheng"]] forKey:@"renzheng"];
                 [UD setValue:[NSString stringWithFormat:@"%@",data[@"data"][@"step"]] forKey:@"step"];
 
                 [UD synchronize];

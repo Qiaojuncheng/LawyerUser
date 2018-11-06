@@ -92,7 +92,7 @@
 
             [valuedic setValue:UserId forKey:@"id"];
             [valuedic setValue:@"1" forKey:@"type"];
-            [valuedic setValue:@"2" forKey:@"role"];
+            [valuedic setValue:@"1" forKey:@"role"];
             [valuedic setValue:self.model.id forKey:@"tid"];
             
          NSString * base64String =[NSString getBase64StringWithArray:valuedic];

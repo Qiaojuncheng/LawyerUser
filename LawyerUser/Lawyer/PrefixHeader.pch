@@ -249,7 +249,7 @@
 #define LawMaingetTuiLawyer [dic setValue:@"App/User/getTuiLawyer" forKey:@"action"];
 //首页轮播图；App/Public/banner
 #define LawMainBanner [dic setValue:@"App/Public/banner" forKey:@"action"];
-//收到的心意
+//送心意
 #define NewHetermind [dic setValue:@"App/Public/mind" forKey:@"action"];
 
 
@@ -304,8 +304,17 @@
 #define NewGetInfor  [dic setValue:@"App/User/userInfo" forKey:@"action"];
 // 完善信息
 #define NewAddInfo  [dic setValue:@"App/User/addInfo" forKey:@"action"];
-//
+// 用户vip接口
 #define NewUserVip  [dic setValue:@"App/User/vip" forKey:@"action"];
+// 套餐使用记录
+#define NewUserLogs  [dic setValue:@"App/User/useLogs" forKey:@"action"];
+//套餐充值记录
+#define NewUserrechargeLogs  [dic setValue:@"App/User/rechargeLogs" forKey:@"action"];
+//企业会员套餐内容
+#define NewIndex  [dic setValue:@"App/Vip/index" forKey:@"action"];
+//合作企业
+#define NewLawEnterprise  [dic setValue:@"App/Vip/enterprise" forKey:@"action"];
+
 
 /*上传接口*/
 #define LS_UPLODE [NSString stringWithFormat:@"%@%@",MainUrl, @"/FileUpLoad/FileUpLoad"]

@@ -21,11 +21,11 @@
     _Model = Model;
    
 
-    self.HeaderNameLB.text = Model.name?Model.name:@"";
-    [self.HeaderImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,Model.avatar]] placeholderImage:nil];
-    self.OneTimeLB.text=  [NSString stringWithFormat:@"您的企业VIP到期时间%@",[NSString timeWithTimeIntervalString:Model.end_time]];
-    self.TwoTimeLB.text=  [NSString stringWithFormat:@"将于 %@ 到期",[NSString timeWithTimeIntervalString:Model.end_time]];
-    [self.VipTypeBtn setTitle:Model.vip_name forState:UIControlStateNormal];
+    self.HeaderNameLB.text = [UD objectForKey:@"name"] ?[UD objectForKey:@"name"]:@"";
+    [self.HeaderImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,[UD objectForKey:@"avatar"]]] placeholderImage:nil];
+    self.OneTimeLB.text=  [NSString stringWithFormat:@"您的企业VIP到期时间%@",[NSString timeWithTimeIntervalString:[UD objectForKey:@"end_time"]]];
+    self.TwoTimeLB.text=  [NSString stringWithFormat:@"将于 %@ 到期",[NSString timeWithTimeIntervalString:[UD objectForKey:@"end_time"]]];
+    [self.VipTypeBtn setTitle:[UD objectForKey:@"vip_name"] forState:UIControlStateNormal];
 
 }
 /*
@@ -47,5 +47,9 @@
         NSLog(@"续费");
     }
     
+}
+
+- (IBAction)BackVC:(id)sender {
+    [self.belongViewController.navigationController popViewControllerAnimated:YES];
 }
 @end

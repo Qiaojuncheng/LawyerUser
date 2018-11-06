@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addCenterLabelWithTitle:@"账户余额" titleColor:[UIColor blackColor]];
-    self.TixianView.hidden = YES ;
+//    self.TixianView.hidden = YES ;
     MJWeakSelf;
     [self addRightButtonWithTitle:@"明细" titleColor:[UIColor colorWithHex:0x3181fe] actionBlock:^{
         LawMoneyDetailViewController * detail = [[LawMoneyDetailViewController alloc] init];
@@ -26,18 +26,8 @@
     }];
     
     [self.TixianLB whenTapped:^{
-       
-        if([_PriceLB.text integerValue] < 100){
-            
-            [self showHint:@"少于100不能提现"];
-            return  ;
-        }
-        
-        LawRemainingwithdrawalVC * lawTixanVC =[[LawRemainingwithdrawalVC alloc]init];
-        lawTixanVC.AllMoney = _PriceLB.text;
-        [self.navigationController pushViewController:lawTixanVC animated:YES];
-        
-    }];
+        NSLog(@"充值");
+     }];
     [self makeYUE];
     // Do any additional setup after loading the view from its nib.
 }

@@ -17,6 +17,8 @@
 #import "lawSearchLawyerVC.h"
 #import "lawPublicLegalSevice.h"
 #import "LawMianPageMessageCenter.h"
+#import "lawVipCentViewController.h"
+#import "lawVipZoneVC.h"
 @interface LawMainPageViewController ()<UITableViewDataSource,UITableViewDelegate>{
     //     右上角的红点
     UIView * tipView;
@@ -218,9 +220,17 @@
         
         [middleView whenTapped:^{
             if (i == 0) {
-                NSLog(@"附近律师");
+
+                self.navigationController.tabBarController.selectedIndex = 1;
             }else{
-                NSLog(@"会员专区");
+                if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
+                         lawVipCentViewController * vipCenter= [[lawVipCentViewController alloc]init];
+                        [self.navigationController pushViewController:vipCenter animated:YES];
+ 
+                }else{
+                       lawVipZoneVC * vc=[[lawVipZoneVC alloc]init];
+                        [self.navigationController pushViewController:vc animated:YES];
+                  }
             }
         }];
         
@@ -246,7 +256,14 @@
 
         
                 if(index == 30){
-                   
+                    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
+                        lawVipCentViewController * vipCenter= [[lawVipCentViewController alloc]init];
+                        [self.navigationController pushViewController:vipCenter animated:YES];
+                        
+                    }else{
+                        lawVipZoneVC * vc=[[lawVipZoneVC alloc]init];
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }
                 }else if(index == 31) {
                     lawPublicLegalSevice * Service =[[lawPublicLegalSevice alloc]init];
                     Service.hidesBottomBarWhenPushed = YES ;
@@ -406,6 +423,9 @@
     LawMianPageMessageCenter* messagecent = [[LawMianPageMessageCenter alloc]init];
     [self.navigationController pushViewController:messagecent animated:YES];
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

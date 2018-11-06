@@ -24,7 +24,7 @@
     [super viewDidLoad];
     Page = 1;
     dataArrray = [[NSMutableArray alloc]init];
-    [self addCenterLabelWithTitle:@"收到的心意" titleColor:nil];
+    [self addCenterLabelWithTitle:@"送出的心意" titleColor:nil];
     [self addView];
     [self makeData];
     // Do any additional setup after loading the view from its nib.

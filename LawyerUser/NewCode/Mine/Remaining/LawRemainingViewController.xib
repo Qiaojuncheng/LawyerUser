@@ -63,7 +63,7 @@
                                 <constraint firstAttribute="height" constant="15" id="xVb-MN-iOS"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提现" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14i-Pz-mlk">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14i-Pz-mlk">
                             <rect key="frame" x="48" y="21" width="283" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="nPS-bZ-iND"/>

@@ -137,6 +137,9 @@
                         <constraint firstAttribute="height" constant="35" id="YJn-4i-dS0"/>
                     </constraints>
                     <state key="normal" image="nav_arrow"/>
+                    <connections>
+                        <action selector="BackVC:" destination="iN0-l3-epB" eventType="touchUpInside" id="UJu-az-P24"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="潘梦飞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90f-G3-NmV">
                     <rect key="frame" x="15" y="71" width="61.5" height="20"/>
@@ -147,7 +150,7 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_recharge" translatesAutoresizingMaskIntoConstraints="NO" id="AHJ-O6-82c">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_vip" translatesAutoresizingMaskIntoConstraints="NO" id="AHJ-O6-82c">
                     <rect key="frame" x="81.5" y="71" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="b2b-gI-Csg"/>
@@ -206,6 +209,7 @@
         <image name="bg_vip2" width="375" height="310"/>
         <image name="bg_vipcard" width="345" height="191"/>
         <image name="icon_recharge" width="44" height="44"/>
+        <image name="icon_vip" width="20" height="18"/>
         <image name="nav_arrow" width="10" height="17"/>
     </resources>
 </document>

@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *TwoBtn;
 
 - (IBAction)BtnAction:(UIButton *)sender;
+- (IBAction)BackVC:(id)sender;
 
 -(void)initSubview;
 

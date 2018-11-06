@@ -13,9 +13,8 @@
 #import "LawLogionViewController.h"
 #import "LawRemainingViewController.h"
 
-//#import "LawConSultViewController.h"
-//#import "LawMeetingViewController.h"
-//#import "LawSquarSrviceViewController.h"
+#import "lawPhoneAppointVC.h"
+#import "lawMeetAppointVC.h"
 #import "LawNewHeZuoViewController.h"
 
 #import "LawHeartViewController.h"
@@ -27,7 +26,9 @@
 #import "LawIWantPublicVC.h"
 
 #import "lawVipCentViewController.h"
-#import "lawMineVipView.h"
+#import "lawMineVipView.h" // 是VIP进入的页面；
+#import "lawVipZoneVC.h" // 不是vip 进入的页面；
+
 
 @interface lawMineVC ()<UICollectionViewDelegate,UICollectionViewDataSource>{
     NSMutableArray * CollectitemArray;
@@ -58,7 +59,7 @@
     showHud = YES;
     CollectitemArray = [[NSMutableArray alloc]initWithArray:@[@[@"咨询",@"电话预约",@"见面预约",@"我的订单"],@[@"收藏",@"我要发布",@"客服中心",@"关于汇融法",@"我要合作"]]];
     
-    CollectitemImageArray = [[NSMutableArray alloc]initWithArray:@[@[@"main_consult",@"main_telephone",@"main_order",@"main_service"],@[@"my_collect",@"my_release",@"my_customeservice",@"my_about",@"my_cooperation"]]];
+    CollectitemImageArray = [[NSMutableArray alloc]initWithArray:@[@[@"main_consult",@"main_telephone",@"main_order",@"main_service"],@[@"my_collect",@"my_release",@"my_customeservice",@"logo",@"my_cooperation"]]];
     
     self.view.backgroundColor = [UIColor whiteColor];
     MJWeakSelf
@@ -84,9 +85,6 @@
     }
  }
 - (void)requestData {
-    
-    
-    [self showHint:nil  inView:self.view];
  
     //action、value
     NSDictionary *valuedic = @{
@@ -98,16 +96,32 @@
     NSMutableDictionary  *dic =[[NSMutableDictionary alloc]init] ;
     NewGetInfor ;
     [dic setValue:base64String forKey:@"value"];
-   MJWeakSelf;
+     MJWeakSelf;
     [AFManagerHelp POST:MainUrl parameters:dic success:^(id responseObjeck) {
         // 处理数据
         DLog(@" %@",responseObjeck);
         [self hideHud];
         if ([responseObjeck[@"status"] integerValue] == 0) {
             weakSelf.infoModel = [MyInfoModel mj_objectWithKeyValues:responseObjeck[@"data"]];
-           
-            self->VipType = weakSelf.infoModel.is_vip?weakSelf.infoModel.is_vip:@"2";
+          
+        
+            [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"id"]] forKey:@"id"];
+            [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"is_vip"]] forKey:@"is_vip"];
+            [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"avatar"]] forKey:@"avatar"];
+            [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"money"]] forKey:@"money"];
+            [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"phone"]] forKey:@"phone"];
+            [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"name"]] forKey:@"name"];
+            [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"renzheng"]] forKey:@"renzheng"];
+            [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"step"]] forKey:@"step"];
+            [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"end_time"]] forKey:@"end_time"];
+            [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"vip_name"]] forKey:@"vip_name"];
+
+            [UD synchronize];
             
+            
+//            判断是不是vip
+            self->VipType = weakSelf.infoModel.is_vip?weakSelf.infoModel.is_vip:@"2";
+
             
             [self.collectionView reloadData];
         }else{
@@ -167,7 +181,7 @@
         if (indexPath.section == 0) {
             
             self.collectionTopView.infoModel = self.infoModel;
-            //     41 编辑 42 余额  43  券 44 爱心 100 未登录点击 登录注册跳转登录页面
+#pragma mark   //     41 编辑 42 余额  43  券 44 爱心 100 未登录点击 登录注册跳转登录页面
             self.collectionTopView.TouchBtnBlock = ^(NSInteger index) {
                 if(!IsLogin){
                     [weakSelf  JumpLoginVIewController];
@@ -208,6 +222,7 @@
                 
                 [vipVIew whenTouchedUp:^{
                     lawVipCentViewController * vipCenter= [[lawVipCentViewController alloc]init];
+                    vipCenter.Model = self.infoModel;
                     [self.navigationController pushViewController:vipCenter animated:YES];
                 }];
                 
@@ -217,6 +232,8 @@
                 vipVIew.frame = CGRectMake(12, Topheight + 10, SCREENWIDTH - 24, 112);
                 vipVIew.VipType =  VipType;
                 [vipVIew whenTouchedUp:^{
+                    lawVipZoneVC * vc=[[lawVipZoneVC alloc]init];
+                    [self.navigationController pushViewController:vc animated:YES];
                     NSLog(@"LookVipDes");
                 }];
             }
@@ -323,9 +340,15 @@ referenceSizeForHeaderInSection:(NSInteger)section {
             
 //            LawConSultViewController * adsListVc = [[LawConSultViewController alloc]init];
 //            [self.navigationController pushViewController:adsListVc animated:YES];
-        }else if (indexPath.row ==1 || indexPath.row ==2){
+        }else if (indexPath.row ==1){
+            //  @"电话预约";
+            lawPhoneAppointVC * phoneVC =[[lawPhoneAppointVC alloc]init];
+            [self.navigationController pushViewController:phoneVC animated:YES];
+        }else if(indexPath.row ==2){
             
-//            LawMeetingViewController * adsListVc = [[LawMeetingViewController alloc]init];
+            lawMeetAppointVC * meetVC =[[lawMeetAppointVC alloc]init];
+            [self.navigationController pushViewController:meetVC animated:YES];
+//          LawMeetingViewController * adsListVc = [[LawMeetingViewController alloc]init];
 //            if (indexPath.row==1) {
 //                adsListVc.meetTing =@"电话预约";
 //            }else{
