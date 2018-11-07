@@ -11,8 +11,10 @@
 typedef void (^BtnTouchActionBlock)(NSInteger index);
 @interface LawMineTopView : UIView
 @property(nonatomic,strong) MyInfoModel *infoModel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *VipImageTop;
 
 @property (weak, nonatomic) IBOutlet UILabel *PhoneLb;
+@property (weak, nonatomic) IBOutlet UIImageView *PVipImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *certifi;
 @property (weak, nonatomic) IBOutlet UIImageView *HeaderImage;

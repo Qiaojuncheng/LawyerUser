@@ -151,6 +151,9 @@
                                     <state key="normal" title="立即开通">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="BuyVipAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="I0R-jy-SYq"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.87450980392156863" green="0.70588235294117641" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -238,7 +241,7 @@
                     <state key="normal" title="金卡">
                         <color key="titleColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <state key="selected" title="银卡" backgroundImage="btn_vipcard">
+                    <state key="selected" backgroundImage="btn_vipcard">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -299,6 +302,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="ConcentView" destination="lst-UO-oad" id="HBr-IV-qTw"/>
+                <outlet property="MessageLB" destination="gjZ-U0-F1c" id="zjC-W4-yKD"/>
                 <outlet property="NameLB" destination="lql-Re-hfE" id="1E3-ck-c2b"/>
                 <outlet property="PriceLB" destination="yFg-vq-XDs" id="V7r-KK-RYg"/>
                 <outlet property="SmallWhiteView" destination="7vT-ZS-Cjd" id="qiw-Z9-Fff"/>

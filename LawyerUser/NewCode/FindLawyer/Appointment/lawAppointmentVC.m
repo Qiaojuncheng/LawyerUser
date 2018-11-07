@@ -10,6 +10,8 @@
 #import "LYSDatePicker.h"
 #import "LawSelectTypeofCaseView.h"
 #import "LawConsultTypeModel.h"
+#import "lawPayViewController.h"
+#import "lawPhonePayVC.h"
 @interface lawAppointmentVC ()<UITextFieldDelegate,LYSDatePickerDelegate,LYSDatePickerDataSource>{
     
     LYSDatePicker *pickerView ;
@@ -39,7 +41,9 @@
      }
     self.NameField.delegate = self ;
     self.PhoneTextField.delegate = self ;
-    
+    self.NameField.text =[UD objectForKey:@"name"]?[UD objectForKey:@"name"]:@"";
+    self.PhoneTextField.text =[UD objectForKey:@"phone"]?[UD objectForKey:@"phone"]:@"";
+
     [self.TypeLb  whenTouchedUp:^{
         [self showTypeVIew];
     }];
@@ -191,7 +195,7 @@
 
     }
     
-    
+    MJWeakSelf
     NSString * baseStr = [NSString getBase64StringWithArray:valueDic];
     [dic setValue:baseStr forKey:@"value"];
     NSLog(@"dic = %@",dic);
@@ -201,8 +205,23 @@
         
         NSString * codeStr =[NSString stringWithFormat:@"%@",data[@"status"]];
         if ([codeStr isEqualToString:@"0"]) {
-            [self.navigationController popViewControllerAnimated:YES];
-         }
+           
+            if(self.IsPhoneMeeting){
+            
+                
+                lawPhonePayVC * lawrevc  = [[lawPhonePayVC alloc] initWithNibName:@"lawPhonePayVC" bundle:nil];
+                 lawrevc.Pricestr= self.price;
+                [weakSelf.navigationController pushViewController:lawrevc animated:YES];
+                
+            }else{
+            
+            lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
+            lawrevc.Type = @"5";
+            lawrevc.Pricestr= self.price;
+            [weakSelf.navigationController pushViewController:lawrevc animated:YES];
+            }
+            
+          }
         [self showHint:data[@"msg"]];
         [self hideHud];
     } failure:^(NSError *error) {

@@ -9,6 +9,7 @@
 #import "lawreleaseConsultVC.h"
 #import "LawSelectTypeofCaseView.h"
 #import "LawConsultTypeModel.h"
+#import "lawPayViewController.h"
 @interface lawreleaseConsultVC (){
     NSArray * PriceLBArray;// 价格Label的数组
     BOOL  is_secret; // NO 不隐私   YES  隐私
@@ -46,6 +47,10 @@
 
     }else{
         [self addCenterLabelWithTitle:@"悬赏咨询" titleColor:nil];
+         self.LabelT.text = @"支付赏金并发布";
+ 
+        
+        
     }
     [self makePricData];
     [self.typeLB whenTapped:^{
@@ -201,7 +206,7 @@
     }
     
     
-    
+    MJWeakSelf
     NSString * baseStr = [NSString getBase64StringWithArray:valueDic];
     [dic setValue:baseStr forKey:@"value"];
     NSLog(@"dic = %@",dic);
@@ -215,7 +220,12 @@
                 [self.navigationController popViewControllerAnimated: YES];
             }else{
                 [self showHint:@"去支付"];
-
+                if (![self.type isEqualToString:@"2"]) {
+                    lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
+                    lawrevc.Type = @"4";
+                    lawrevc.Pricestr=Price;
+                    [weakSelf.navigationController pushViewController:lawrevc animated:YES];
+                }
             }
             
         }

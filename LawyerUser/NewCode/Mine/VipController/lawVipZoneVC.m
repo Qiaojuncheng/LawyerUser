@@ -187,6 +187,7 @@
     _tableView.estimatedSectionHeaderHeight= 0;
     _tableView.estimatedSectionFooterHeight= 0;
     _tableView.tableHeaderView = self.VipTopView;
+
     [self.view addSubview:_tableView];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

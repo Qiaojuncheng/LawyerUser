@@ -18,6 +18,7 @@
 #import "lawPublicLegalSevice.h"
 #import "LawMianPageMessageCenter.h"
 #import "lawVipCentViewController.h"
+#import "lawNearLawyerVC.h"
 #import "lawVipZoneVC.h"
 @interface LawMainPageViewController ()<UITableViewDataSource,UITableViewDelegate>{
     //     右上角的红点
@@ -221,9 +222,9 @@
         [middleView whenTapped:^{
             if (i == 0) {
 
-                self.navigationController.tabBarController.selectedIndex = 1;
-            }else{
-                if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
+                     lawNearLawyerVC * vipCenter= [[lawNearLawyerVC alloc]init];
+                [self.navigationController pushViewController:vipCenter animated:YES];            }else{
+                if (![[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
                          lawVipCentViewController * vipCenter= [[lawVipCentViewController alloc]init];
                         [self.navigationController pushViewController:vipCenter animated:YES];
  
@@ -254,7 +255,6 @@
 
     _topItemView.ItemselectBlock = ^(NSInteger index) {
 
-        
                 if(index == 30){
                     if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
                         lawVipCentViewController * vipCenter= [[lawVipCentViewController alloc]init];
@@ -284,6 +284,9 @@
                     Service.hidesBottomBarWhenPushed = YES ;
                     Service.type = @"4";
                      [self.navigationController pushViewController:Service animated:YES ];
+                }else {
+                    [self showHint:@"功能正在开发中敬请期待！"];
+
                 }
 
     };

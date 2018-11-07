@@ -7,7 +7,7 @@
 //
 
 #import "lawFindSendHeaderVC.h"
-
+#import "lawPayViewController.h"
 @interface lawFindSendHeaderVC (){
     NSArray * LBArray ;
     NSArray * moneyArray ;
@@ -111,6 +111,7 @@
     
     NSMutableDictionary * dic  =[[NSMutableDictionary alloc]init];
     LawMaingetsysmind
+    MJWeakSelf
     NSMutableDictionary *   valueDic =[[NSMutableDictionary alloc]init];
     [valueDic setValue:UserId forKey:@"uid"];
     [valueDic setValue:self.model.id forKey:@"lid"];
@@ -124,7 +125,13 @@
 
         NSString * codeStr =[NSString stringWithFormat:@"%@",data[@"status"]];
         if ([codeStr isEqualToString:@"0"]) {
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
+            lawrevc.Type = @"2";
+            lawrevc.Pricestr= self.MoneyTextField.text;
+            [weakSelf.navigationController pushViewController:lawrevc animated:YES];
+
+//            [self.navigationController popViewControllerAnimated:YES];
         }
 
     } failure:^(NSError *error) {

@@ -36,6 +36,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *desLb;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *LabelO;
+
+@property (weak, nonatomic) IBOutlet UILabel *LabelT;
+@property (weak, nonatomic) IBOutlet UILabel *LabelTHr;
+
+@property (weak, nonatomic) IBOutlet UILabel *LaeblFO;
+
 
 
 @property (weak, nonatomic) IBOutlet UILabel *PriceOneLB;

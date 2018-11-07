@@ -7,7 +7,8 @@
 //
 
 #import "lawVipTopView.h"
-
+#import "lawVipZoneVC.h"
+#import "lawPayViewController.h"
 @implementation lawVipTopView
 
 -(void)initSubview{
@@ -23,7 +24,7 @@
 
     self.HeaderNameLB.text = [UD objectForKey:@"name"] ?[UD objectForKey:@"name"]:@"";
     [self.HeaderImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,[UD objectForKey:@"avatar"]]] placeholderImage:nil];
-    self.OneTimeLB.text=  [NSString stringWithFormat:@"您的企业VIP到期时间%@",[NSString timeWithTimeIntervalString:[UD objectForKey:@"end_time"]]];
+    self.OneTimeLB.text=  [NSString stringWithFormat:@"您的企业VIP到期时间为%@",[NSString timeWithTimeIntervalString:[UD objectForKey:@"end_time"]]];
     self.TwoTimeLB.text=  [NSString stringWithFormat:@"将于 %@ 到期",[NSString timeWithTimeIntervalString:[UD objectForKey:@"end_time"]]];
     [self.VipTypeBtn setTitle:[UD objectForKey:@"vip_name"] forState:UIControlStateNormal];
 
@@ -43,7 +44,17 @@
     
     if (sender.tag == 41) {
         NSLog(@"升级");
+        lawVipZoneVC * VIPzoneVC =[[lawVipZoneVC alloc]init];
+        
+        [[self belongViewController].navigationController pushViewController:VIPzoneVC animated:YES];
     }else{
+        
+        lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
+        lawrevc.Type = @"3";
+        lawrevc.Pricestr= self.VipPriceStr;
+        lawrevc.VIPNameStr =[UD objectForKey:@"vip_name"];
+        [[self belongViewController].navigationController pushViewController:lawrevc animated:YES];
+
         NSLog(@"续费");
     }
     

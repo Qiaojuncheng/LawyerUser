@@ -56,6 +56,16 @@
         [weakSelf.navigationController pushViewController:VC animated:YES];
     }];
     
+    [self addleftButtonWithTitle:@"全部" actionBlock:^{
+        self->order = @"";
+        self->cate_id = @"";
+        self->area = @"";
+        self->page =1 ;
+        [self makedata];
+        [menu removeFromSuperview];
+        [self makemenu];
+
+    }];
     [self makedata];
     [self makemenu];
     [self  makeAddreeData];

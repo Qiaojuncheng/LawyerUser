@@ -7,7 +7,7 @@
 //
 
 #import "lawVipZoneTopView.h"
-
+#import "lawPayViewController.h"
 @implementation lawVipZoneTopView
 
 -(void)makeSubviews{
@@ -15,6 +15,8 @@
 //    [Utile makecorner:12 view:self.WhiteView color:[UIColor colorWithHex:0xE5E5E5]];
     [Utile makeCorner:12 view:self.YellView];
     [Utile makeCorner:6 view:self.SmallWhiteView];
+    [Utile makeCorner:self.personHeaderImage.height/2 view:self.personHeaderImage];
+
     self.oneCardBtn.selected = YES;
     self.tempBtn = self.oneCardBtn;
 //    [self makecornerwithType:51];
@@ -24,8 +26,25 @@
     }else{
         self.NameLB.text = [UD objectForKey:@"name"]?[UD objectForKey:@"name"]:[UD objectForKey:@"phone"];
         [self.personHeaderImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,[UD objectForKey:@"avatar"]]] placeholderImage:nil];
+        
+        if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
+            self.MessageLB.text=  [NSString stringWithFormat:@"您的企业VIP到期时间为%@",[NSString timeWithTimeIntervalString:[UD objectForKey:@"end_time"]]];
+            
+        }
+
     }
     
+}
+#pragma mark  购买套餐
+- (IBAction)BuyVipAction:(UIButton *)sender {
+    
+    lawVipConcentModel * model  = self.DataArray[_tempBtn.tag - 51];
+    lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
+    lawrevc.Type = @"3";
+    lawrevc.Pricestr= model.price;
+    lawrevc.VIPNameStr =model.name;
+    [[self belongViewController].navigationController pushViewController:lawrevc animated:YES];
+
 }
 //部分圆角显示
 -(void)makecornerwithType:(NSInteger)index{
@@ -84,7 +103,6 @@
     }
     
 }
-    
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -78,17 +78,17 @@
 #pragma mark  设置CollectionView的的参数
 - (void) initCollectionView
 {
+   
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.headerReferenceSize = CGSizeMake(SCREENWIDTH,self.collectionTopView.height);
+//    flowLayout.headerReferenceSize = CGSizeMake(SCREENWIDTH,self.collectionTopView.height);
     flowLayout.footerReferenceSize  = CGSizeMake(SCREENWIDTH, self.collectionFootView.height);
-    [self.collectionTopView initSubview];
     flowLayout.sectionInset=UIEdgeInsetsMake(0, 1, 0, 0);//设置间隔
 //    flowLayout.itemSize=CGSizeMake((SCREENWIDTH - 26) / 3, 84);  //设置每个单元格的大小
     flowLayout.minimumLineSpacing=0; //设置每一行的间距
     flowLayout.minimumInteritemSpacing = 0;
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     //设置CollectionView的属性
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(13, 0, SCREENWIDTH  - 26,SCREENHEIGHT) collectionViewLayout:flowLayout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(13, self.collectionTopView.height, SCREENWIDTH  - 26,SCREENHEIGHT - self.collectionTopView.height) collectionViewLayout:flowLayout];
     self.collectionView.delegate = self;
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
@@ -101,25 +101,28 @@
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([lawVipCentServiceCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"cell"];
     //    注册头视图
     
-    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+//    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
 
+    [self.view addSubview:self.collectionTopView];
+    [self.collectionTopView initSubview];
+    self.collectionTopView.frame = CGRectMake(0, 0, SCREENWIDTH, 337);
 }
 //  返回头视图
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     //如果是头视图
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        UICollectionReusableView *header=[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
-        [header removeAllSubviews];
-        [header addSubview:self.collectionTopView];
-
-        header.left  =  -13;
-//        header.width = SCREENWIDTH;
-         header.backgroundColor = [UIColor colorWithHex:0xf5f5f5];
-        header.clipsToBounds = NO ;
-        return header;
+//        UICollectionReusableView *header=[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+//        [header removeAllSubviews];
+//        [header addSubview:self.collectionTopView];
+//
+//        header.left  =  -13;
+////        header.width = SCREENWIDTH;
+//         header.backgroundColor = [UIColor colorWithHex:0xf5f5f5];
+//        header.clipsToBounds = NO ;
+//        return header;
     }else{
         if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
             UICollectionReusableView *header=[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"footer" forIndexPath:indexPath];
@@ -201,6 +204,8 @@
                 lawVipModel * model  =[lawVipModel yy_modelWithJSON:dic];
                 [self->CollectDataArray addObject:model];
             }
+            self.collectionTopView.VipPriceStr = @"2000";
+//            返回VIP的n名字和 价格  跳转充值使用；
             [self.collectionView reloadData];
             
          }else{

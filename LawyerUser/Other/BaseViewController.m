@@ -123,6 +123,7 @@
 {
     UIButton *LeftBtn = [UIButton buttonWithType:0];
     LeftBtn.backgroundColor = [UIColor clearColor];
+    [LeftBtn setTitleColor: [UIColor colorWithHex:0x333333]];
     [LeftBtn setNormalTitle:title];
     [LeftBtn.titleLabel setNormalFont:15.0f];
     [LeftBtn addClickTarget:self action:@selector(leftBar_Touched:)];

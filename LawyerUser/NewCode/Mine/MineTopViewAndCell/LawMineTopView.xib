@@ -24,26 +24,16 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18039678870" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgw-F0-ty5">
-                    <rect key="frame" x="20" y="18" width="109" height="21"/>
+                    <rect key="frame" x="40" y="18" width="109" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="bbC-qc-BNP"/>
+                        <constraint firstAttribute="height" constant="17" id="bbC-qc-BNP"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未认证" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pF6-hm-iQV">
-                    <rect key="frame" x="139" y="17" width="55" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="55" id="4SF-7c-f9z"/>
-                        <constraint firstAttribute="height" constant="21" id="d9f-JE-gjF"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.19215686274509802" green="0.50588235294117645" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" tag="41" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tng-0Q-78b">
-                    <rect key="frame" x="16" y="55" width="60" height="25"/>
+                    <rect key="frame" x="35" y="55" width="60" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -93,13 +83,20 @@
                         <action selector="BtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="sLB-Vw-zJc"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_vip" translatesAutoresizingMaskIntoConstraints="NO" id="aUb-6E-QBt">
+                    <rect key="frame" x="159" y="14.5" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="1e5-ih-Wcq"/>
+                        <constraint firstAttribute="height" constant="20" id="OMy-3n-VZR"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="hgw-F0-ty5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="0yH-eD-egc"/>
+                <constraint firstItem="hgw-F0-ty5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="0yH-eD-egc"/>
                 <constraint firstItem="hgw-F0-ty5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="Ipo-Re-8Ms"/>
-                <constraint firstItem="pF6-hm-iQV" firstAttribute="leading" secondItem="hgw-F0-ty5" secondAttribute="trailing" constant="10" id="Iso-cp-LRg"/>
-                <constraint firstItem="pF6-hm-iQV" firstAttribute="baseline" secondItem="hgw-F0-ty5" secondAttribute="baseline" id="cUg-9K-PBc"/>
+                <constraint firstItem="aUb-6E-QBt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14.5" id="ddr-zz-zEV"/>
+                <constraint firstItem="aUb-6E-QBt" firstAttribute="leading" secondItem="hgw-F0-ty5" secondAttribute="trailing" constant="10" id="u3J-Gg-U8I"/>
                 <constraint firstItem="uHy-H4-IwA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="z8e-1d-gmH"/>
                 <constraint firstAttribute="trailing" secondItem="uHy-H4-IwA" secondAttribute="trailing" constant="20" id="zPI-66-n4j"/>
             </constraints>
@@ -110,15 +107,17 @@
                 <outlet property="EditBtn" destination="Tng-0Q-78b" id="FCr-Ta-TyF"/>
                 <outlet property="HeaderImage" destination="uHy-H4-IwA" id="wTC-Ev-luR"/>
                 <outlet property="LeftConcent" destination="0yH-eD-egc" id="9ae-9S-qNL"/>
+                <outlet property="PVipImageView" destination="aUb-6E-QBt" id="nZS-Vb-Tri"/>
                 <outlet property="PhoneLb" destination="hgw-F0-ty5" id="KZq-ud-lKY"/>
                 <outlet property="TopConcent" destination="Ipo-Re-8Ms" id="8vn-wH-Vpr"/>
-                <outlet property="certifi" destination="pF6-hm-iQV" id="w0n-hU-yuK"/>
+                <outlet property="VipImageTop" destination="ddr-zz-zEV" id="lSn-o8-IBL"/>
             </connections>
-            <point key="canvasLocation" x="33.5" y="-191"/>
+            <point key="canvasLocation" x="32.799999999999997" y="-191.6041979010495"/>
         </view>
     </objects>
     <resources>
         <image name="edit" width="11" height="11"/>
+        <image name="icon_vip" width="20" height="18"/>
         <image name="my_heart" width="32" height="32"/>
         <image name="my_money" width="32" height="32"/>
         <image name="my_recharge" width="32" height="32"/>

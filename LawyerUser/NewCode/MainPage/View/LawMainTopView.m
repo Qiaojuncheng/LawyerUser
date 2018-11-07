@@ -34,7 +34,7 @@
     [attrStr insertAttributedString:attachmentAttrStr atIndex:attrStr.length];
     NSMutableArray * titArray =[[NSMutableArray alloc]init];
     for (LawNewHeaterModel * model  in titleArray) {
-        [titArray addObject:[NSString stringWithFormat:@"%@律师细心解答，收到心意%@元",model.lawyer_name,model.money]];
+        [titArray addObject:[NSString stringWithFormat:@"恭喜%@律师收到用户送出的%@元心意",model.lawyer_name,model.money]];
     }
     
     _scrollTextView.textDataArr =titArray;

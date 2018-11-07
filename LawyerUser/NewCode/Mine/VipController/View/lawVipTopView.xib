@@ -158,7 +158,7 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_recharge" translatesAutoresizingMaskIntoConstraints="NO" id="znC-gr-JpL">
-                    <rect key="frame" x="299" y="51" width="60" height="60"/>
+                    <rect key="frame" x="299" y="57" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="4tO-v2-BEj"/>
                         <constraint firstAttribute="height" constant="60" id="Kpb-50-zPY"/>
@@ -178,7 +178,7 @@
                 <constraint firstItem="AHJ-O6-82c" firstAttribute="centerY" secondItem="90f-G3-NmV" secondAttribute="centerY" id="NXb-Oz-gA0"/>
                 <constraint firstItem="AHJ-O6-82c" firstAttribute="leading" secondItem="90f-G3-NmV" secondAttribute="trailing" constant="5" id="QuJ-m0-lxd"/>
                 <constraint firstItem="8QF-cz-7g7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ywf-HK-DbL"/>
-                <constraint firstItem="znC-gr-JpL" firstAttribute="centerY" secondItem="AHJ-O6-82c" secondAttribute="centerY" id="cEP-yb-wxf"/>
+                <constraint firstItem="dOe-vw-A8H" firstAttribute="top" secondItem="znC-gr-JpL" secondAttribute="bottom" constant="24" id="j23-fi-fWe"/>
                 <constraint firstItem="7MT-la-rOJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="oba-aj-aEJ"/>
                 <constraint firstItem="90f-G3-NmV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="qYH-bi-XJV"/>
                 <constraint firstItem="8QF-cz-7g7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tDw-FQ-anz"/>

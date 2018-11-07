@@ -9,6 +9,7 @@
 #import "LawRemainingViewController.h"
 #import "LawMoneyDetailViewController.h"
 #import "LawRemainingwithdrawalVC.h"
+#import "lawPayViewController.h"
 @interface LawRemainingViewController ()
 
 @end
@@ -27,6 +28,10 @@
     
     [self.TixianLB whenTapped:^{
         NSLog(@"充值");
+        lawPayViewController * lawrevc =  [[lawPayViewController alloc]init];
+        lawrevc.Type = @"1";
+        [weakSelf.navigationController pushViewController:lawrevc animated:YES];
+
      }];
     [self makeYUE];
     // Do any additional setup after loading the view from its nib.

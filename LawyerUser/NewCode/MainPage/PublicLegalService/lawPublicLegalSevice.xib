@@ -15,6 +15,7 @@
                 <outlet property="CircleLB" destination="bSf-Ns-fTg" id="T8m-28-Rys"/>
                 <outlet property="ContentTextView" destination="8Zn-ll-Rfg" id="97r-hv-9lK"/>
                 <outlet property="OneCirceLB" destination="f2M-e6-haG" id="g8b-j4-IUL"/>
+                <outlet property="PayBtn" destination="enK-Hz-u39" id="9of-w3-DYo"/>
                 <outlet property="PriceLB" destination="Gz9-cW-bBT" id="Pas-2j-ZMa"/>
                 <outlet property="SmallPrice" destination="uoW-Q5-o45" id="kJ5-vU-bpk"/>
                 <outlet property="SmallView" destination="9fk-UT-22P" id="K50-ga-ec8"/>
@@ -22,6 +23,8 @@
                 <outlet property="TopHeigt" destination="uIJ-Uk-zcP" id="i5q-Le-Rai"/>
                 <outlet property="TwoCircel" destination="FPr-Ob-7LV" id="Cme-cq-nsS"/>
                 <outlet property="TypeLB" destination="u2V-MZ-Y3l" id="VWy-xB-aLK"/>
+                <outlet property="TypePriceLB" destination="4sM-qO-X1i" id="4wc-K6-tdN"/>
+                <outlet property="TypeTitleLB" destination="9Uw-04-vgD" id="jNr-p3-FyE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -148,7 +151,7 @@
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="aqN-fE-XjW"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="律师函" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Uw-04-vgD">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="案件类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Uw-04-vgD">
                             <rect key="frame" x="16" y="131" width="100" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="15" id="MUX-ZM-BF8"/>
@@ -185,7 +188,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="律师函" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sM-qO-X1i">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="律师统一报价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sM-qO-X1i">
                             <rect key="frame" x="16" y="352" width="100" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="l6V-qu-Fjp"/>

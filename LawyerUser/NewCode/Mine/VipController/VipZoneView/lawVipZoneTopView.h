@@ -33,9 +33,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *WhiteViewHeight;
 
+@property (weak, nonatomic) IBOutlet UILabel *MessageLB;
+
+
+
 
 -(void)makeSubviews;
 
+- (IBAction)BuyVipAction:(UIButton *)sender;
 
 
 

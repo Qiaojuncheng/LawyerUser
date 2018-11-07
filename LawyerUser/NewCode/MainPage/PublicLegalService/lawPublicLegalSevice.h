@@ -34,6 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)AddAction:(UIButton *)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *TypeTitleLB;
+
+@property (weak, nonatomic) IBOutlet UILabel *TypePriceLB;
+
+@property (weak, nonatomic) IBOutlet UIButton *PayBtn;
 
 
 

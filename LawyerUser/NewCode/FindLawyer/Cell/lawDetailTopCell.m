@@ -34,6 +34,7 @@
         labelleft += typeLabel.width + 10;
         typeLabel.text  = typeTitle;
         typeLabel.textAlignment = NSTextAlignmentCenter;
+        typeLabel.textColor =[UIColor colorWithHex:0x999999];
         [Utile  makecorner:3 view:typeLabel color:[UIColor colorWithHex:0x999999]];
         [self.TypeView addSubview:typeLabel];
     }

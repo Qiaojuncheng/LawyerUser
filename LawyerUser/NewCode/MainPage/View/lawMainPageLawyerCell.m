@@ -44,6 +44,8 @@
         typeLabel.font = [UIFont systemFontOfSize:13];
         labelleft += typeLabel.width + 10;
         typeLabel.text  = typeTitle;
+        typeLabel.textColor =[UIColor colorWithHex:0x999999];
+
         typeLabel.textAlignment = NSTextAlignmentCenter;
         [Utile  makecorner:3 view:typeLabel color:[UIColor colorWithHex:0x999999]];
         [self.TypeView addSubview:typeLabel];

@@ -29,7 +29,10 @@
 #import "lawMineVipView.h" // 是VIP进入的页面；
 #import "lawVipZoneVC.h" // 不是vip 进入的页面；
 
+#import "LawMyOrderListVC.h"
+#import "lawMyConsultListVC.h"
 
+#import "lawPayViewController.h"// 充值中心
 @interface lawMineVC ()<UICollectionViewDelegate,UICollectionViewDataSource>{
     NSMutableArray * CollectitemArray;
     NSMutableArray * CollectitemImageArray;
@@ -115,6 +118,7 @@
             [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"step"]] forKey:@"step"];
             [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"end_time"]] forKey:@"end_time"];
             [UD setValue:[NSString stringWithFormat:@"%@",responseObjeck[@"data"][@"vip_name"]] forKey:@"vip_name"];
+            
 
             [UD synchronize];
             
@@ -198,7 +202,8 @@
                         LawRemainingViewController * lawrevc =  [[LawRemainingViewController alloc]init];
                         [weakSelf.navigationController pushViewController:lawrevc animated:YES];
                     }else if (index ==43){
-                        LawPackageViewController * lawrevc =  [[LawPackageViewController alloc]init];
+                        lawPayViewController * lawrevc =  [[lawPayViewController alloc]init];
+                        lawrevc.Type = @"1";
                         [weakSelf.navigationController pushViewController:lawrevc animated:YES];
                         
                     }else if (index ==44){
@@ -336,10 +341,8 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         
         
         if(indexPath.row == 0){
-            
-            
-//            LawConSultViewController * adsListVc = [[LawConSultViewController alloc]init];
-//            [self.navigationController pushViewController:adsListVc animated:YES];
+             lawMyConsultListVC * phoneVC =[[lawMyConsultListVC alloc]init];
+            [self.navigationController pushViewController:phoneVC animated:YES];
         }else if (indexPath.row ==1){
             //  @"电话预约";
             lawPhoneAppointVC * phoneVC =[[lawPhoneAppointVC alloc]init];
@@ -348,19 +351,10 @@ referenceSizeForHeaderInSection:(NSInteger)section {
             
             lawMeetAppointVC * meetVC =[[lawMeetAppointVC alloc]init];
             [self.navigationController pushViewController:meetVC animated:YES];
-//          LawMeetingViewController * adsListVc = [[LawMeetingViewController alloc]init];
-//            if (indexPath.row==1) {
-//                adsListVc.meetTing =@"电话预约";
-//            }else{
-//                adsListVc.meetTing =@"见面预约";
-//            }
-//            [self.navigationController pushViewController:adsListVc animated:YES];
-//
-        }else if (indexPath.row==3){
-            
-//            LawSquarSrviceViewController * adsListVc = [[LawSquarSrviceViewController alloc]init];
-//            adsListVc.ServiceTitle = @"法律服务";
-//            [self.navigationController pushViewController:adsListVc animated:YES];
+         }else if (indexPath.row==3){
+             LawMyOrderListVC * adsListVc = [[LawMyOrderListVC alloc]init];
+             [self.navigationController pushViewController:adsListVc animated:YES];
+
         }
         
         

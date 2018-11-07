@@ -103,7 +103,8 @@
     }];
     UIAlertAction * sure =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [UD removeObjectForKey:@"id"];
-        
+        [UD removeObjectForKey:@"is_vip"];
+
         [self.navigationController popToRootViewControllerAnimated:NO];
 
     }];

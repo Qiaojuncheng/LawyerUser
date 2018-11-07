@@ -9,6 +9,7 @@
 #import "lawPublicLegalSevice.h"
 #import "LawSelectTypeofCaseView.h"
 #import "LawConsultTypeModel.h"
+#import "lawPayViewController.h"
 @interface lawPublicLegalSevice ()
 
 
@@ -30,20 +31,21 @@
     [Utile makeCorner:10 view:self.OneCirceLB];
     [Utile makeCorner:10 view:self.TwoCircel];
     [Utile makeCorner:10 view:self.ThreeCircelLB];
+ 
     if ([self.type isEqualToString:@"1"]) {
         self.SmallView.hidden = NO ;
         [self addCenterLabelWithTitle:@"案件委托" titleColor:nil];
-
+         self.TypePriceLB.text = @"委托报价";
+        [self.PayBtn setTitle:@"寻找律师报价" forState:UIControlStateNormal];
     }else  if ([self.type isEqualToString:@"2"]) {
         [self addCenterLabelWithTitle:@"发律师函" titleColor:nil];
  
-
     }else if ([self.type isEqualToString:@"3"]) {
-        [self addCenterLabelWithTitle:@"起草合同" titleColor:nil];
+        [self addCenterLabelWithTitle:@"合同审查" titleColor:nil];
  
 
     }else if ([self.type isEqualToString:@"4"]) {
-        [self addCenterLabelWithTitle:@"合同审查" titleColor:nil];
+        [self addCenterLabelWithTitle:@"合同起草" titleColor:nil];
  
 
     }else if ([self.type isEqualToString:@"5"]) {
@@ -148,8 +150,7 @@
             }
         }
     }
-    
- 
+    MJWeakSelf
     NSString * baseStr = [NSString getBase64StringWithArray:valueDic];
     [dic setValue:baseStr forKey:@"value"];
     NSLog(@"dic = %@",dic);
@@ -160,6 +161,22 @@
         NSString * codeStr =[NSString stringWithFormat:@"%@",data[@"status"]];
         if ([codeStr isEqualToString:@"0"]) {
             [self showHint:@"去支付"];
+            
+            lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
+             if ([self.type isEqualToString:@"1"]) {
+                lawrevc.Type = @"6";
+             }else  if ([self.type isEqualToString:@"2"]) {
+                lawrevc.Type = @"7";
+             }else if ([self.type isEqualToString:@"3"]) {
+                lawrevc.Type = @"8";
+             }else if ([self.type isEqualToString:@"4"]) {
+                lawrevc.Type = @"9";
+             }
+            lawrevc.Pricestr= self.PriceLB.text;
+            [weakSelf.navigationController pushViewController:lawrevc animated:YES];
+
+            
+            
         }
         [self hideHud];
     } failure:^(NSError *error) {

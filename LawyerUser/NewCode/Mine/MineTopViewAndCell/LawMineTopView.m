@@ -17,6 +17,7 @@
     [Utile makeCorner:self.HeaderImage.height/2 view:self.HeaderImage];
     self.PhoneLb.text =[NSString stringWithFormat:@"%@",_infoModel.name?_infoModel.name:_infoModel.phone];
     if([NSString changeNullString:_infoModel.id].length == 0){
+        self.PVipImageView.hidden = YES ;
         self.certifi.text  = @"";
         self.certifi.hidden = YES;
         self.EditBtn.hidden = YES ;
@@ -30,12 +31,20 @@
             }
         }];
     }else{
+        self.PVipImageView.hidden = NO ;
         self.certifi.hidden = NO;
         self.EditBtn.hidden = NO ;
-        self.LeftConcent.constant = 20;
+        self.LeftConcent.constant = 40;
         self.TopConcent.constant = 13;
+        self.VipImageTop.constant = 10;
         self.PhoneLb.textColor =[UIColor colorWithHex:0x333333];
         self.certifi.hidden = YES;
+        
+        if ([infoModel.is_vip isEqualToString:@"1"]) {
+            self.PVipImageView.image = [UIImage imageNamed:@"icon_vip"];
+        }else{
+            self.PVipImageView.image = [UIImage imageNamed:@"icon_vip_grey"];
+        }
 
     }
 //    if ([_infoModel.renzheng isEqualToString:@"1"]) {

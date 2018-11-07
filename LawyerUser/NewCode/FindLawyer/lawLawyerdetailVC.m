@@ -184,8 +184,11 @@
     
     if ([payType isEqualToString:@"电话"]) {
         appointment.IsPhoneMeeting = YES ;
+        appointment.price =self.model.phone_money;
     }else{
         appointment.IsPhoneMeeting = NO  ;
+        appointment.price = self.model.meet_money;
+
     }
     [self.navigationController pushViewController:appointment animated:YES];
     

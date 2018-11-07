@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic) BOOL IsPhoneMeeting ;// yes 电话预约，no 见面预约
 @property (strong, nonatomic) NSString * lid;// 律师id
+@property (strong, nonatomic) NSString * price; // 面谈或预约的价格；
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ViewTopHeight;
 
 - (IBAction)PushAction:(UIButton *)sender;
