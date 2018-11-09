@@ -205,7 +205,7 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPw-Bb-Zfn">
                             <rect key="frame" x="0.0" y="548" width="375" height="55"/>
-                            <color key="backgroundColor" red="0.19215686274509802" green="0.50588235294117645" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.19215686269999999" green="0.50588235290000005" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="Y0j-tM-814"/>
                             </constraints>

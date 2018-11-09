@@ -185,7 +185,7 @@
         if (indexPath.section == 0) {
             
             self.collectionTopView.infoModel = self.infoModel;
-#pragma mark   //     41 编辑 42 余额  43  券 44 爱心 100 未登录点击 登录注册跳转登录页面
+#pragma mark   //     41 编辑 42 余额  43  充值 44 爱心 100 未登录点击 登录注册跳转登录页面
             self.collectionTopView.TouchBtnBlock = ^(NSInteger index) {
                 if(!IsLogin){
                     [weakSelf  JumpLoginVIewController];

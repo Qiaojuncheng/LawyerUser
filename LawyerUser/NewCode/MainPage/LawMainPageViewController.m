@@ -224,7 +224,7 @@
 
                      lawNearLawyerVC * vipCenter= [[lawNearLawyerVC alloc]init];
                 [self.navigationController pushViewController:vipCenter animated:YES];            }else{
-                if (![[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
+                if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
                          lawVipCentViewController * vipCenter= [[lawVipCentViewController alloc]init];
                         [self.navigationController pushViewController:vipCenter animated:YES];
  
@@ -245,13 +245,13 @@
  
     
     NSArray * imageArray = @[@"icon_service01",@"icon_service02",@"icon_service03",@"icon_service04",@"icon_service05",@"icon_service06",@"icon_service07",@"icon_service08"];
-    NSArray * TitleArray = @[@"常年顾问服务",@"案件委托",@"发律师函",@"合同审查",@"合同起草",@"民刑监督",@"线下店铺",@"费用计算"];
+    NSArray * TitleArray = @[@"常年顾问服务",@"案件委托",@"发律师函",@"合同审查",@"合同起草",@"民行监督",@"线下店铺",@"费用计算"];
 
     [_topItemView makeItemWithTitleArray:TitleArray ImageArray:imageArray];
 
     [_TopHeaderView addSubview:_topItemView];
 //    MJWeakSelf;
-#pragma mark    30 @"常年顾问服务",@"案件委托",@"发律师函",@"合同审查",@"合同起草",@"民刑监督",@"线下店铺",@"费用计算"
+#pragma mark    30 @"常年顾问服务",@"案件委托",@"发律师函",@"合同审查",@"合同起草",@"民行监督",@"线下店铺",@"费用计算"
 
     _topItemView.ItemselectBlock = ^(NSInteger index) {
 

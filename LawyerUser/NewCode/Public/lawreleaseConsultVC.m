@@ -223,6 +223,7 @@
                 if (![self.type isEqualToString:@"2"]) {
                     lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
                     lawrevc.Type = @"4";
+                    lawrevc.PayId = data[@"data"][@"id"];
                     lawrevc.Pricestr=Price;
                     [weakSelf.navigationController pushViewController:lawrevc animated:YES];
                 }

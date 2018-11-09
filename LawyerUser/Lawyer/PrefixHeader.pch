@@ -252,6 +252,11 @@
 //送心意
 #define NewHetermind [dic setValue:@"App/Public/mind" forKey:@"action"];
 
+// 充值模块 ；
+#define NewUserCZ [dic setValue:@"App/User/cz" forKey:@"action"];
+
+//获取支付信息 （下单）；
+#define NewUserPay [dic setValue:@"App/Service/pay" forKey:@"action"];
 
 #pragma  mark  找律师
 //找律师
@@ -324,7 +329,8 @@
 //明细
 #define NewMoneydetailed  [dic setValue:@"App/User/detail" forKey:@"action"];
 
-
+//收藏
+#define NewmyCollect  [dic setValue:@"App/User/myCollect" forKey:@"action"];
 
 // 意见反馈
 #define QJAddvicefeedback [dic setValue:@"App/Public/feedback" forKey:@"action"];
