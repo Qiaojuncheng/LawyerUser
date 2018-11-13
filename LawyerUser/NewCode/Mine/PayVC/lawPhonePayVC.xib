@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="lawPhonePayVC">
             <connections>
                 <outlet property="AirPayBtn" destination="umr-QM-J2P" id="7Zg-YN-wsA"/>
+                <outlet property="CanuserLB" destination="7Jn-Ie-Sms" id="4VY-Xc-tsh"/>
+                <outlet property="LawName" destination="UIF-Kj-f69" id="YJd-0T-Xwx"/>
+                <outlet property="PayBtn" destination="acH-dO-8g6" id="Wft-lS-WnT"/>
+                <outlet property="PriceLB" destination="zes-by-g1W" id="t3E-LP-Nkc"/>
                 <outlet property="PriceTextField" destination="5bf-LJ-JgO" id="fUq-1f-GIO"/>
+                <outlet property="ShowVIew" destination="1J6-IR-Jk5" id="k1e-Fd-wAP"/>
                 <outlet property="WXpayBtn" destination="D8D-7o-uNf" id="blY-ty-uj1"/>
                 <outlet property="YeBtn" destination="lxX-pe-9ci" id="wmC-fc-A4q"/>
                 <outlet property="YeLB" destination="kS1-fW-unr" id="DJk-mf-v1u"/>
+                <outlet property="headerImage" destination="veQ-Wl-oZa" id="6q5-Wu-UgO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,26 +33,40 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JG3-6W-5dT">
                     <rect key="frame" x="0.0" y="74" width="375" height="100"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="veQ-Wl-oZa">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="veQ-Wl-oZa">
                             <rect key="frame" x="17" y="18" width="64" height="64"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="XQQ-Hy-26h"/>
+                                <constraint firstAttribute="width" constant="64" id="y45-Jx-kpd"/>
+                            </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="许延庆律师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIF-Kj-f69">
-                            <rect key="frame" x="97" y="25" width="92" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIF-Kj-f69">
+                            <rect key="frame" x="97" y="25" width="4.5" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="LDk-Ne-W16"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1J6-IR-Jk5">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1J6-IR-Jk5">
                             <rect key="frame" x="97" y="58" width="270" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="ScH-la-4Gs"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="UIF-Kj-f69" firstAttribute="top" secondItem="JG3-6W-5dT" secondAttribute="top" constant="25" id="2wr-FY-QwG"/>
+                        <constraint firstItem="veQ-Wl-oZa" firstAttribute="leading" secondItem="JG3-6W-5dT" secondAttribute="leading" constant="17" id="EK9-xs-u6c"/>
+                        <constraint firstItem="1J6-IR-Jk5" firstAttribute="top" secondItem="UIF-Kj-f69" secondAttribute="bottom" constant="16" id="Irf-ej-lT8"/>
+                        <constraint firstItem="veQ-Wl-oZa" firstAttribute="top" secondItem="JG3-6W-5dT" secondAttribute="top" constant="18" id="RkX-bO-nE1"/>
                         <constraint firstAttribute="height" constant="100" id="Wmi-wc-l1U"/>
+                        <constraint firstAttribute="trailing" secondItem="1J6-IR-Jk5" secondAttribute="trailing" constant="8" id="gsQ-h1-1sK"/>
+                        <constraint firstItem="UIF-Kj-f69" firstAttribute="leading" secondItem="veQ-Wl-oZa" secondAttribute="trailing" constant="16" id="h5J-uT-EPC"/>
+                        <constraint firstItem="1J6-IR-Jk5" firstAttribute="leading" secondItem="veQ-Wl-oZa" secondAttribute="trailing" constant="16" id="rPT-co-ubf"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWZ-iU-Wdl">
@@ -84,7 +104,7 @@
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8D-7o-uNf">
+                        <button opaque="NO" tag="31" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8D-7o-uNf">
                             <rect key="frame" x="330" y="5" width="40" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="8ru-dX-mgJ"/>
@@ -192,7 +212,7 @@
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxX-pe-9ci">
+                        <button opaque="NO" tag="33" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxX-pe-9ci">
                             <rect key="frame" x="330" y="5" width="40" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="IC7-ns-pne"/>
@@ -268,7 +288,7 @@
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umr-QM-J2P">
+                        <button opaque="NO" tag="32" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umr-QM-J2P">
                             <rect key="frame" x="330" y="5" width="40" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="o4h-Ej-jnL"/>
@@ -333,14 +353,16 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCR-P5-3S0">
                     <rect key="frame" x="16" y="511" width="343" height="29"/>
-                    <string key="text">* 当您对律师的服务不满意或拒绝支付律师费时，平台有权依据法律工作记录自主决定是否支付律师费；</string>
+                    <string key="text">* 当您对律师的服务不满意或拒绝支付律师费时，平台有权依据
+法律工作记录自主决定是否支付律师费；</string>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jv-mt-o5H">
                     <rect key="frame" x="16" y="540" width="343" height="29"/>
-                    <string key="text">* 当支付金额过大，无法使用微信进行支付，建议采用分次充值至余额账户，通过余额账户进行支付。</string>
+                    <string key="text">* 当支付金额过大，无法使用微信进行支付，建议采用分次充值
+至余额账户，通过余额账户进行支付。</string>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -377,6 +399,9 @@
                             <state key="normal" title="确认支付">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="PayAction:" destination="-1" eventType="touchUpInside" id="hGp-lM-LyW"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

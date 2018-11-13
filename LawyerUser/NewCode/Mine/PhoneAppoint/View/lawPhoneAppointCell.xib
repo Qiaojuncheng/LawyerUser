@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="lawPhoneAppointCell">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="174"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="173.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="162.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zG2-3M-N9R">
@@ -30,8 +30,8 @@
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="律师服务中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQx-Po-NKx">
-                                <rect key="frame" x="288" y="15" width="72" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQx-Po-NKx">
+                                <rect key="frame" x="360" y="15" width="0.0" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="u0w-mc-rVU"/>
                                 </constraints>
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nK5-zh-skd">
-                                <rect key="frame" x="270" y="18" width="8" height="8"/>
+                                <rect key="frame" x="342" y="18" width="8" height="8"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.20784313725490194" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="8" id="3JY-aH-34D"/>
@@ -68,7 +68,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVQ-qP-hcK">
-                        <rect key="frame" x="0.0" y="129.5" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="118.5" width="375" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="电话咨询" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9v-BV-IA1">
                                 <rect key="frame" x="16" y="15" width="122" height="13"/>
@@ -123,22 +123,12 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系电话：152 0781 429" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxB-Ya-OFX">
-                        <rect key="frame" x="68" y="109" width="138.5" height="13"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="13" id="mdQ-Hw-kqt"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxB-Ya-OFX">
+                        <rect key="frame" x="68" y="111" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_phone1" translatesAutoresizingMaskIntoConstraints="NO" id="fQk-9K-sxT">
-                        <rect key="frame" x="216.5" y="111" width="11" height="11"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="11" id="TFh-O6-yvV"/>
-                            <constraint firstAttribute="height" constant="11" id="Ved-Vg-Z9W"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系电话：152 0781 429" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXw-cO-LpP">
                         <rect key="frame" x="68" y="92" width="138.5" height="13"/>
                         <constraints>
@@ -172,8 +162,6 @@
                     <constraint firstItem="zG2-3M-N9R" firstAttribute="top" secondItem="12m-V3-BNt" secondAttribute="bottom" id="QdE-Bh-Km8"/>
                     <constraint firstItem="vXw-cO-LpP" firstAttribute="top" secondItem="RIu-Qn-5jp" secondAttribute="bottom" constant="8" id="Ukj-De-XAQ"/>
                     <constraint firstAttribute="trailing" secondItem="zG2-3M-N9R" secondAttribute="trailing" id="XlM-IW-7Np"/>
-                    <constraint firstItem="xVQ-qP-hcK" firstAttribute="top" secondItem="fQk-9K-sxT" secondAttribute="bottom" constant="7.5" id="ZqK-UP-JMb"/>
-                    <constraint firstItem="fQk-9K-sxT" firstAttribute="leading" secondItem="cxB-Ya-OFX" secondAttribute="trailing" constant="10" id="d2e-6L-blI"/>
                     <constraint firstItem="12m-V3-BNt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gRP-or-BwX"/>
                     <constraint firstItem="vXw-cO-LpP" firstAttribute="leading" secondItem="5gJ-iO-uhP" secondAttribute="trailing" constant="8" id="iCH-wL-Mql"/>
                     <constraint firstItem="0Hl-bV-SpW" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="jnW-MI-e2k"/>
@@ -186,12 +174,12 @@
             <connections>
                 <outlet property="MeetAddresLB" destination="vXw-cO-LpP" id="HXn-31-TLJ"/>
                 <outlet property="PersonImage" destination="RIu-Qn-5jp" id="FHV-3H-Ia3"/>
-                <outlet property="PhoneImage" destination="fQk-9K-sxT" id="1Cc-fZ-B1D"/>
                 <outlet property="PhoneLB" destination="cxB-Ya-OFX" id="eEr-hV-Cjz"/>
                 <outlet property="PriceLB" destination="NOI-xn-8PA" id="nKW-HB-E9B"/>
                 <outlet property="RedView" destination="nK5-zh-skd" id="DEb-On-sUz"/>
                 <outlet property="ServiceLB" destination="EQx-Po-NKx" id="lPC-in-MH2"/>
                 <outlet property="SureBtn" destination="Rwb-PT-2Tj" id="v0A-Sy-7qi"/>
+                <outlet property="TopHeight" destination="y3A-Ux-vxF" id="GbA-lP-D55"/>
                 <outlet property="TypeLB" destination="N9v-BV-IA1" id="KRY-0H-yGm"/>
                 <outlet property="personImageView" destination="5gJ-iO-uhP" id="5Ih-ge-Hqq"/>
                 <outlet property="publicTimeLB" destination="R9v-3z-DBb" id="cfa-Ku-2sF"/>
@@ -201,7 +189,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="list_phone1" width="11" height="11"/>
         <image name="list_ticket" width="40" height="14"/>
     </resources>
 </document>

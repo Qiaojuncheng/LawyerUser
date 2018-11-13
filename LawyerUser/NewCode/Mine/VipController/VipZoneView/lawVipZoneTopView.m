@@ -81,6 +81,12 @@
 //z显示 内容
 -(void)makeListViewWithmodel:(lawVipConcentModel *)model {
     
+    if ([model.num integerValue] > 0) {
+        self.KaitongNumberLB.text  =[NSString stringWithFormat:@"（%@家企业已开通）",model.num];
+    }else{
+        self.KaitongNumberLB.text =@"";
+    }
+    
     [self.ConcentView removeAllSubviews];
     self.ConcentView.hidden = NO ;
     self.PriceLB.text = model.price;

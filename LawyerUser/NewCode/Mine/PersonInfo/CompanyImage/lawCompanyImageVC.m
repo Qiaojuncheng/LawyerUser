@@ -8,6 +8,7 @@
 
 #import "lawCompanyImageVC.h"
 #import "LawJCImageSelect.h"
+#import <SDWebImage/UIButton+WebCache.h>
 @interface lawCompanyImageVC ()<selectImagedelegate>{
     UIImage * LinceImage ;
 }
@@ -23,7 +24,10 @@
     [Utile makeCorner:4 view:self.addBtn];
     [Utile makeCorner:4 view:self.ShiliImage];
     [Utile makeCorner:23 view:self.EnsureBtn];
-    
+    if (self.ImageStr.length > 5) {
+        [self.addBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,self.ImageStr]] forState:UIControlStateNormal];
+        [self.addBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    }
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -156,7 +156,7 @@
     
     switch (column) {
         case 0:
-            return @"区域" ;
+            return @"区域选择" ;
             break;
             //        case 1: return _data2[0];
         case 1:

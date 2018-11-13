@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "lawMyconsultListModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface lawMyConsultCell : UITableViewCell
+@property (strong , nonatomic )lawMyconsultListModel *Model;
+
 @property (weak, nonatomic) IBOutlet UIImageView *PersonImageView;
 @property (weak, nonatomic) IBOutlet UILabel *PersonNameLB;
 @property (weak, nonatomic) IBOutlet UILabel *TypeLB;

@@ -118,6 +118,7 @@
         cell  =[[[NSBundle mainBundle ]loadNibNamed:@"lawMainPageLawyerCell" owner:self options:nil]lastObject];
     }
     cell.model = dataArrray[indexPath.row];
+    cell.DistanceLB.text = cell.model.distance;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return  cell ;
 }

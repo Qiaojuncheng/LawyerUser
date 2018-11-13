@@ -26,10 +26,9 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    self.tabBar.translucent = NO ;
 //
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(JunmIndex) name:@"SELECTOTHER" object:nil];
-    
     
     
     _mcTabbar = [[MCTabBar alloc] init];

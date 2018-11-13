@@ -223,7 +223,9 @@
             if (i == 0) {
 
                      lawNearLawyerVC * vipCenter= [[lawNearLawyerVC alloc]init];
-                [self.navigationController pushViewController:vipCenter animated:YES];            }else{
+                [self.navigationController pushViewController:vipCenter animated:YES];
+                
+            }else{
                 if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
                          lawVipCentViewController * vipCenter= [[lawVipCentViewController alloc]init];
                         [self.navigationController pushViewController:vipCenter animated:YES];

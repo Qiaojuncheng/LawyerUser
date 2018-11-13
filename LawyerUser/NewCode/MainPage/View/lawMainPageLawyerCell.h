@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "lawLawyerModle.h"
 @interface lawMainPageLawyerCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *DistanceLB;
 
 
 @property (strong , nonatomic) lawLawyerModle * model;

@@ -26,7 +26,7 @@
     self.TopHeigt.constant = NavStatusBarHeight;
     self.ContentTextView.placeholderText = @"请详细描述您的委托内容（5-500字）";
 //    self.SmallPrice.text = @"500";
-    self.SmallPrice.userInteractionEnabled = NO ;
+//    self.SmallPrice.userInteractionEnabled = NO ;
     [Utile makeCorner:10 view:self.CircleLB];
     [Utile makeCorner:10 view:self.OneCirceLB];
     [Utile makeCorner:10 view:self.TwoCircel];
@@ -142,7 +142,7 @@
                 
             }else {
                 if ([self.SmallPrice.text floatValue] < 500) {
-                    [self showHint:@"最低金额不少以500"];
+                    [self showHint:@"最低金额不少于500"];
                 }else if([self.SmallPrice.text floatValue] > [self.BigPrice.text floatValue]){
                     [self showHint:@"金额不能低于最低金额！"];
                 }
@@ -160,10 +160,13 @@
         
         NSString * codeStr =[NSString stringWithFormat:@"%@",data[@"status"]];
         if ([codeStr isEqualToString:@"0"]) {
-            [self showHint:@"去支付"];
             
-            lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
+//            [self showHint:@"去支付"];
+
+            lawPayViewController * lawrevc  =  [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
              if ([self.type isEqualToString:@"1"]) {
+                 [self.navigationController popViewControllerAnimated:YES];
+                 return  ;
                 lawrevc.Type = @"6";
              }else  if ([self.type isEqualToString:@"2"]) {
                 lawrevc.Type = @"7";
@@ -172,6 +175,7 @@
              }else if ([self.type isEqualToString:@"4"]) {
                 lawrevc.Type = @"9";
              }
+            lawrevc.PayId = data[@"data"][@"id"];
             lawrevc.Pricestr= self.PriceLB.text;
             [weakSelf.navigationController pushViewController:lawrevc animated:YES];
 

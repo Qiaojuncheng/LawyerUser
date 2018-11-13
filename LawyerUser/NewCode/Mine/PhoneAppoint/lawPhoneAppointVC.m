@@ -8,6 +8,8 @@
 
 #import "lawPhoneAppointVC.h"
 #import "lawPhoneAppointCell.h"
+#import "lawAppointModel.h"
+
 @interface lawPhoneAppointVC ()<UITableViewDataSource,UITableViewDelegate>{
     NSMutableArray * dataArrray ;
     UITableView * _tableView;
@@ -36,13 +38,13 @@
         
     }
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    //    NewCasemyCollect
+        NewmyusermyAppoint
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
     if ([UserId length]> 0) {
-        [valuedic setValue:UserId forKey:@"lawyer_id"];
-        
+        [valuedic setValue:UserId forKey:@"uid"];
+        [valuedic setValue:@"1" forKey:@"type"];
         [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
-        
+
         NSString * base64String =[NSString getBase64StringWithArray:valuedic];
         [dic setValue:base64String forKey:@"value"];
         
@@ -55,8 +57,8 @@
                 }
                 for (NSDictionary  * dicc in responseObjeck[@"data"]) {
                     
-//                    LawCaseNewModel * model = [LawCaseNewModel yy_modelWithJSON:dicc];
-//                    [dataArrray addObject:model];
+                    lawAppointModel * model = [lawAppointModel yy_modelWithJSON:dicc];
+                    [dataArrray addObject:model];
                     
                 }
                 [_tableView reloadData];
@@ -101,7 +103,7 @@
     [self.view addSubview:_tableView];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  10;//dataArrray.count;
+    return   dataArrray.count;
     
 }
 
@@ -111,16 +113,67 @@
     if (cell == nil) {
         cell  =[[[NSBundle mainBundle ]loadNibNamed:@"lawPhoneAppointCell" owner:self options:nil]lastObject];
     }
+    cell.model =dataArrray[indexPath.row];
+    cell.OverBlock = ^{
+        [self  overWihtIndex:indexPath.row];
+        
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.MeetAddresLB.hidden = YES;
+    cell.TopHeight.constant = 27;
     return  cell ;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return  161;
+    return  163;
 }
+-(void)overWihtIndex:(NSInteger)index{
+    lawAppointModel * model = dataArrray[index];
+    
+    UIAlertController * ALVc =[UIAlertController alertControllerWithTitle:@"" message:@"此操作将结束本次咨询服务， 请确保咨询已经完成！" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * canaction =[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction * SureAction =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self showHudInView:self.view hint:nil];
+        NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+        NewmyusermyAppointOver
+        NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
+        if ([UserId length]> 0) {
+            [valuedic setValue:UserId forKey:@"uid"];
+            [valuedic setValue:model.id  forKey:@"id"];
+            NSString * base64String =[NSString getBase64StringWithArray:valuedic];
+            [dic setValue:base64String forKey:@"value"];
+            
+            [AFManagerHelp POST:MainUrl parameters:dic success:^(id responseObjeck) {
+                [self hideHud];
+                // 处理数据
+                if ([responseObjeck[@"status"] integerValue] == 0) {
+                    model.status = @"5";
+                    [dataArrray replaceObjectAtIndex:index withObject:model];
+                    [_tableView reloadData];
+                }
+                [_tableView.mj_header endRefreshing];
+                [_tableView.mj_footer endRefreshing];
+                
+            } failure:^(NSError *error) {
+                [self hideHud];
+                [_tableView.mj_header endRefreshing];
+                [_tableView.mj_footer endRefreshing];
+            }];
+            
+        }
+    }];
+    [ALVc addAction:canaction];
+    [ALVc addAction:SureAction];
+    [self presentViewController:ALVc animated:YES completion:nil];
+    
+ 
+    
+}
+
 /*
 #pragma mark - Navigation
 

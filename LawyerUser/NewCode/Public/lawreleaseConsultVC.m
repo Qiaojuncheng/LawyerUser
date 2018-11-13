@@ -219,7 +219,6 @@
             if([self.type isEqualToString:@"2"]){
                 [self.navigationController popViewControllerAnimated: YES];
             }else{
-                [self showHint:@"去支付"];
                 if (![self.type isEqualToString:@"2"]) {
                     lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
                     lawrevc.Type = @"4";

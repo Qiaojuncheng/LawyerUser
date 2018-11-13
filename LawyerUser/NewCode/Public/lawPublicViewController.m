@@ -21,7 +21,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     releaseOriginalViewController * orgin = [[releaseOriginalViewController alloc]init];
     orgin.hidesBottomBarWhenPushed = YES;
-    
     [self.navigationController pushViewController:orgin animated:NO];
     
 }

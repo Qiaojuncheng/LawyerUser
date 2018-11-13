@@ -209,21 +209,23 @@
             if(self.IsPhoneMeeting){
             
                 
-                lawPhonePayVC * lawrevc  = [[lawPhonePayVC alloc] initWithNibName:@"lawPhonePayVC" bundle:nil];
+            lawPhonePayVC * lawrevc  = [[lawPhonePayVC alloc] initWithNibName:@"lawPhonePayVC" bundle:nil];
                  lawrevc.Pricestr= self.price;
+                lawrevc.PayId = data[@"data"][@"id"];
+                lawrevc.model = self.model;
                 [weakSelf.navigationController pushViewController:lawrevc animated:YES];
                 
             }else{
             
             lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
             lawrevc.Type = @"5";
+            lawrevc.PayId = data[@"data"][@"id"];
             lawrevc.Pricestr= self.price;
             [weakSelf.navigationController pushViewController:lawrevc animated:YES];
             }
             
           }
-        [self showHint:data[@"msg"]];
-        [self hideHud];
+         [self hideHud];
     } failure:^(NSError *error) {
         [self hideHud];
         

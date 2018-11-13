@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UILabel *MessageLB;
 
+@property (weak, nonatomic) IBOutlet UILabel *KaitongNumberLB;
 
 
 

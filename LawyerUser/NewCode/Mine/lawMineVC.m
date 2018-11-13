@@ -62,7 +62,7 @@
     showHud = YES;
     CollectitemArray = [[NSMutableArray alloc]initWithArray:@[@[@"咨询",@"电话预约",@"见面预约",@"我的订单"],@[@"收藏",@"我要发布",@"客服中心",@"关于汇融法",@"我要合作"]]];
     
-    CollectitemImageArray = [[NSMutableArray alloc]initWithArray:@[@[@"main_consult",@"main_telephone",@"main_order",@"main_service"],@[@"my_collect",@"my_release",@"my_customeservice",@"logo",@"my_cooperation"]]];
+    CollectitemImageArray = [[NSMutableArray alloc]initWithArray:@[@[@"main_consult",@"main_telephone",@"main_order",@"main_service"],@[@"my_collect",@"my_release",@"my_customeservice",@"logome",@"my_cooperation"]]];
     
     self.view.backgroundColor = [UIColor whiteColor];
     MJWeakSelf

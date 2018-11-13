@@ -22,7 +22,7 @@
     
     self.PriceLB.text =[NSString stringWithFormat:@"￥%@",model.price];
     self.TimeLB.text=[NSString timeWithTimeIntervalString:model.time];
-    
+    self.YearLb.text =[NSString stringWithFormat:@"%@年",model.valid_time];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -126,13 +126,11 @@
             if (index == 10) {
                 bottomBtn.backgroundColor = MAINCOLOR;
                 bottomBtn.userInteractionEnabled = YES ;
-
-                payType = @"电话";
+                 payType = @"电话";
             }else if (index ==11){
                 bottomBtn.backgroundColor = MAINCOLOR;
                 bottomBtn.userInteractionEnabled = YES ;
-
-                payType = @"预约";
+                 payType = @"预约";
             }else{
 //              直接是送心意
                 
@@ -190,6 +188,7 @@
         appointment.price = self.model.meet_money;
 
     }
+    appointment.model=  self.model;
     [self.navigationController pushViewController:appointment animated:YES];
     
 }

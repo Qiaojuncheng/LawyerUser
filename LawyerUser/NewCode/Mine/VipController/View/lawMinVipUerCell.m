@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [Utile makeCorner:self.IconImaegVIew.height/2 view:self.IconImaegVIew];
+
     // Initialization code
 }
 -(void)setModel:(lawVipRecodeModel *)model{
@@ -20,7 +22,7 @@
     self.LawyerLB.text =[NSString stringWithFormat:@"服务律师：%@",_model.lawyer_name];
     self.TimeLB.text =[NSString timeWithTimeIntervalString:model.time];
     self.surplusLB.text = [NSString stringWithFormat:@"剩余次数：%@",model.num];
-    
+    [self.IconImaegVIew sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,model.icon]] placeholderImage:[UIImage imageNamed:@"head_empty"]];
     
 }
 

@@ -23,8 +23,10 @@
  "婚姻家庭",
  "融资借款"
  ]
+ 
  },
  */
+@property (strong , nonatomic ) NSString *distance ;
 
 @property (strong , nonatomic ) NSString *id ;
 @property (strong , nonatomic ) NSString *name ;

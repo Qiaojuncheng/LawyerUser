@@ -197,7 +197,7 @@
         }else if (indexPath.row == 1){
             lawCompanyImageVC * law =[[lawCompanyImageVC alloc]init];
 //                        law.model = platforModel;
- 
+            law.ImageStr = self.infoModel.license;
                         [self.navigationController pushViewController:law animated:YES];
         
         }
@@ -268,7 +268,7 @@
     
     NSData   * imageData  = UIImageJPEGRepresentation(selectImage, 0.01);
      NSMutableDictionary *valuedic =[[NSMutableDictionary alloc]init];
-    [valuedic setValue:UserId forKey:@"lawyer_id"];
+    [valuedic setValue:UserId forKey:@"uid"];
 
     NSString * base64String =[NSString getBase64StringWithArray:valuedic];
     NSMutableDictionary  *dic =[[NSMutableDictionary alloc]init] ;
@@ -277,8 +277,7 @@
     [AFManagerHelp   asyncUploadFileWithData:imageData name:@"avatar" fileName:@"PersonHeadPic.jpg" mimeType:@"image/jpeg" parameters:dic success:^(id responseObject) {
 
         if ([responseObject[@"status"] integerValue] == 0) {
-
-
+            [self makePersonInfo];
         }else{
             [ShowHUD showWYBTextOnly:responseObject[@"msg"] duration:2 inView:self.view];
         }

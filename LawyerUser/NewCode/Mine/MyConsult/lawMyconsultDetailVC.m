@@ -9,6 +9,9 @@
 #import "lawMyconsultDetailVC.h"
 #import "lawMyConsultCell.h"
 #import "lawMyConsultDetailCell.h"
+#import "lawConsultdetailModel.h"
+#import "lawFindSendHeaderVC.h"
+#import "lawLawyerdetailVC.h"
 @interface lawMyconsultDetailVC ()<UITableViewDataSource,UITableViewDelegate>{
     NSMutableArray * dataArrray ;
     UITableView * _tableView;
@@ -39,11 +42,12 @@
         
     }
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    //    NewCasemyCollect
+        NewmymyconsultXq
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
     if ([UserId length]> 0) {
-        [valuedic setValue:UserId forKey:@"lawyer_id"];
-        
+        [valuedic setValue:UserId forKey:@"uid"];
+        [valuedic setValue:self.model.id forKey:@"id"];
+
         [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
         
         NSString * base64String =[NSString getBase64StringWithArray:valuedic];
@@ -56,10 +60,11 @@
                 if (page == 1) {
                     [dataArrray removeAllObjects];
                 }
-                for (NSDictionary  * dicc in responseObjeck[@"data"]) {
+                for (NSDictionary  * dicc in responseObjeck[@"data"][@"reply_list"]) {
                     
-                    //                    LawCaseNewModel * model = [LawCaseNewModel yy_modelWithJSON:dicc];
-                    //                    [dataArrray addObject:model];
+                    lawConsultdetailModel * model = [ lawConsultdetailModel yy_modelWithJSON:dicc];
+                    model.CellHeight =[NSString GetHeightWithMaxSize:CGSizeMake(SCREENWIDTH - 68, MAXFLOAT) AndFont:[UIFont systemFontOfSize:15] AndText:model.content].height +90;
+                    [dataArrray addObject:model];
                     
                 }
                 [_tableView reloadData];
@@ -109,7 +114,7 @@
     if (section == 0) {
         return 1;
     }else{
-        return  10;// dataArrray.count;
+        return   dataArrray.count;
         
     }
     
@@ -140,6 +145,7 @@
         if (cell == nil) {
             cell  =[[[NSBundle mainBundle ]loadNibNamed:@"lawMyConsultCell" owner:self options:nil]lastObject];
         }
+        cell.Model = self.model;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return  cell ;
     }else{
@@ -147,24 +153,46 @@
         if (cell == nil) {
             cell  =[[[NSBundle mainBundle ]loadNibNamed:@"lawMyConsultDetailCell" owner:self options:nil]lastObject];
         }
+        cell.model=  dataArrray[indexPath.row];
+        cell.BtnActionBlock = ^(int index) {
+            lawConsultdetailModel * detailmodel =  dataArrray[indexPath.row];
+
+            if(index == 31){
+                //        采纳
+                [self getConsonslutWithIndex:indexPath.row];
+            }else if (index ==32){
+                //        送心意
+                
+                lawFindSendHeaderVC * sendHeader = [[lawFindSendHeaderVC alloc]init];
+                
+                lawLawyerDetailModle *model = [[lawLawyerDetailModle alloc]init];
+                model.name = detailmodel.lawyer_name;
+                model.id  = detailmodel.lid;
+                model.avatar = detailmodel.avatar ;
+                sendHeader.model = model;
+                [self.navigationController pushViewController:sendHeader animated:YES];
+            }else if(index == 33){
+                //        咨询
+                lawLawyerdetailVC * detail =[[lawLawyerdetailVC alloc]init];
+                 detail.lawyerid = detailmodel.lid;
+                [self.navigationController pushViewController:detail animated:YES];
+            }
+
+        };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return  cell ;
-        
         
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 150;
+        return self.model.CellHeight;
     }else{
-        return 132;
+        lawConsultdetailModel *model =  dataArrray[indexPath.row];
+        return model.CellHeight;
     }
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-}
-
+ 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
         CGFloat sectionHeaderHeight = 30;
         if(scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
@@ -173,6 +201,45 @@
                     scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
                 }
 }
+// 采纳
+-(void)getConsonslutWithIndex:(NSInteger)index{
+    
+    lawConsultdetailModel * detailmodel =  dataArrray[index];
+
+         [self showHudInView:self.view hint:nil];
+     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    Newmyuseradopt
+    NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
+    if ([UserId length]> 0) {
+        [valuedic setValue:UserId forKey:@"uid"];
+        [valuedic setValue:self.model.id forKey:@"cid"];
+        [valuedic setValue:detailmodel.id forKey:@"id"];
+
+ 
+        NSString * base64String =[NSString getBase64StringWithArray:valuedic];
+        [dic setValue:base64String forKey:@"value"];
+        
+        [AFManagerHelp POST:MainUrl parameters:dic success:^(id responseObjeck) {
+            [self hideHud];
+            // 处理数据
+            if ([responseObjeck[@"status"] integerValue] == 0) {
+                [self showHint:responseObjeck[@"msg"]];
+
+                page = 1 ;
+                [self makeCollect];
+            }
+          
+         } failure:^(NSError *error) {
+            [self hideHud];
+         }];
+        
+    }
+    
+}
+
+
+
+
 /*
 #pragma mark - Navigation
 
@@ -182,5 +249,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

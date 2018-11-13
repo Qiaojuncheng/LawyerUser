@@ -121,13 +121,13 @@
     NSLog(@"dic = %@",dic);
     [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
         NSLog(@"%@",data);
-        [self showHint:data[@"msg"]];
-
+ 
         NSString * codeStr =[NSString stringWithFormat:@"%@",data[@"status"]];
         if ([codeStr isEqualToString:@"0"]) {
             
             lawPayViewController * lawrevc  = [[lawPayViewController alloc] initWithNibName:@"lawPayViewController" bundle:nil];
             lawrevc.Type = @"2";
+            lawrevc.PayId = data[@"data"][@"id"];
             lawrevc.Pricestr= self.MoneyTextField.text;
             [weakSelf.navigationController pushViewController:lawrevc animated:YES];
 

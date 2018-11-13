@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIButton *VipPayBtn;
 
+@property (weak, nonatomic) IBOutlet UILabel *PayPriceLBss;
 
 
 
@@ -41,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIButton *BottomPayBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *BottomPayBtnHright;
+@property (weak, nonatomic) IBOutlet UILabel *CanUSerYuELB;
 
 
 

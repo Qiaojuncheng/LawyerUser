@@ -15,7 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString * id;
 @property (strong, nonatomic) NSString * name;
 @property (strong, nonatomic) NSString * price;
-@property (strong, nonatomic) NSMutableArray * content;
+@property (strong, nonatomic) NSString * num;
+ @property (strong, nonatomic) NSMutableArray * content;
 
 @end
 

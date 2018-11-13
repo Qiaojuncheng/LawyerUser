@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "lawLawyerDetailModle.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface lawAppointmentVC : BaseViewController
@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString * lid;// 律师id
 @property (strong, nonatomic) NSString * price; // 面谈或预约的价格；
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ViewTopHeight;
+
+@property (strong ,nonatomic )lawLawyerDetailModle * model;
+
+
 
 - (IBAction)PushAction:(UIButton *)sender;
 

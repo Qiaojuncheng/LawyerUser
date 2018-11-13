@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "lawLawyerDetailModle.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface lawPhonePayVC : BaseViewController
@@ -18,7 +18,24 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *YeLB;
 @property (weak, nonatomic) IBOutlet UIButton *YeBtn;
 
- 
+
+@property (strong ,nonatomic )lawLawyerDetailModle * model;
+@property (strong ,nonatomic )NSString  * PayId;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImage;
+@property (weak, nonatomic) IBOutlet UILabel *LawName;
+
+@property (weak, nonatomic) IBOutlet UIView *ShowVIew;
+
+@property (weak, nonatomic) IBOutlet UILabel *PriceLB;
+
+@property (weak, nonatomic) IBOutlet UIButton *PayBtn;
+
+- (IBAction)PayAction:(id)sender;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *CanuserLB;
+
+
 
 - (IBAction)PayBtnAction:(UIButton *)sender;
 @end

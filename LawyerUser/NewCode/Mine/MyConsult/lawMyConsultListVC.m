@@ -9,6 +9,7 @@
 #import "lawMyConsultListVC.h"
 #import "lawMyConsultCell.h"
 #import "lawMyconsultDetailVC.h"
+#import "lawMyconsultListModel.h"
 @interface lawMyConsultListVC ()<UITableViewDataSource,UITableViewDelegate>{
     NSMutableArray * dataArrray ;
     UITableView * _tableView;
@@ -27,20 +28,19 @@
     
     [self addCenterLabelWithTitle:@"我的咨询" titleColor:nil];
     [self addView];
-    [self makeCollect];
+    [self makeConsult];
     // Do any additional setup after loading the view.
 }
--(void)makeCollect{
+-(void)makeConsult{
     
     if(page==1){
         [self showHudInView:self.view hint:nil];
-        
-    }
+     }
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    //    NewCasemyCollect
+        NewmymyConsult
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
     if ([UserId length]> 0) {
-        [valuedic setValue:UserId forKey:@"lawyer_id"];
+        [valuedic setValue:UserId forKey:@"uid"];
         
         [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
         
@@ -56,8 +56,9 @@
                 }
                 for (NSDictionary  * dicc in responseObjeck[@"data"]) {
                     
-                    //                    LawCaseNewModel * model = [LawCaseNewModel yy_modelWithJSON:dicc];
-                    //                    [dataArrray addObject:model];
+             lawMyconsultListModel * model = [ lawMyconsultListModel yy_modelWithJSON:dicc];
+                    model.CellHeight =[NSString GetHeightWithMaxSize:CGSizeMake(SCREENWIDTH - 35, MAXFLOAT) AndFont:[UIFont systemFontOfSize:15] AndText:model.content].height +100;
+             [dataArrray addObject:model];
                     
                 }
                 [_tableView reloadData];
@@ -87,7 +88,7 @@
     _tableView.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         page = 1;
         
-        [weakSelf makeCollect];
+        [weakSelf makeConsult];
     }];
     
     _tableView.estimatedRowHeight = 0;
@@ -98,12 +99,13 @@
     
     _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         page ++;
-        [weakSelf makeCollect];
+        [weakSelf makeConsult];
     }];
     [self.view addSubview:_tableView];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  10;// dataArrray.count;
+    
+    return    dataArrray.count ;
     
 }
 
@@ -113,15 +115,21 @@
     if (cell == nil) {
         cell  =[[[NSBundle mainBundle ]loadNibNamed:@"lawMyConsultCell" owner:self options:nil]lastObject];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+     cell.Model = dataArrray[indexPath.row];
+     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return  cell ;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return 150;
-}
+         lawMyconsultListModel * model = dataArrray[indexPath.row];
+        return model.CellHeight;
+ }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     lawMyconsultDetailVC * detail =[[lawMyconsultDetailVC alloc]init];
+    
+    detail.model = dataArrray[indexPath.row];
+    detail.model.red = @"1";
+    [dataArrray replaceObjectAtIndex:indexPath.row withObject:detail.model];
+    [_tableView reloadData];
     [self.navigationController pushViewController:detail animated:YES];
     
 }

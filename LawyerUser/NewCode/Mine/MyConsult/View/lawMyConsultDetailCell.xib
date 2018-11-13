@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="125" id="KGk-i7-Jjw" customClass="lawMyConsultDetailCell">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="111" id="KGk-i7-Jjw" customClass="lawMyConsultDetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="122.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Hc-fj-bVA">
@@ -34,8 +34,8 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李长兴律师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JB-I0-JxZ">
-                        <rect key="frame" x="52" y="34" width="61.5" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45fenzhongqian " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JB-I0-JxZ">
+                        <rect key="frame" x="52" y="34" width="95.5" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="Xav-lq-0ls"/>
                         </constraints>
@@ -43,14 +43,14 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李晓轩律师说的对。实在不行就起诉处理吧。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXW-Te-DSU">
-                        <rect key="frame" x="52" y="54" width="307" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXW-Te-DSU">
+                        <rect key="frame" x="52" y="54" width="307" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9x-ZS-0Oe">
-                        <rect key="frame" x="291" y="95" width="64" height="20"/>
+                    <button opaque="NO" tag="33" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9x-ZS-0Oe">
+                        <rect key="frame" x="291" y="62" width="64" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="o83-94-3eN"/>
                             <constraint firstAttribute="width" constant="64" id="y5P-hv-k13"/>
@@ -59,20 +59,26 @@
                         <state key="normal" title=" 咨询TA" image="consult">
                             <color key="titleColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="BtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MWQ-1J-rGC"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9A5-9x-y28">
-                        <rect key="frame" x="207" y="95" width="64" height="20"/>
+                    <button opaque="NO" tag="32" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9A5-9x-y28">
+                        <rect key="frame" x="207" y="62" width="64" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="HN2-K3-Ass"/>
                             <constraint firstAttribute="width" constant="64" id="cMU-rB-Ard"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title=" 送心意" image="consult">
+                        <state key="normal" title=" 送心意" image="heart_">
                             <color key="titleColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="BtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Mj3-vm-Gup"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91m-Q3-NwA">
-                        <rect key="frame" x="131" y="95" width="64" height="20"/>
+                    <button opaque="NO" tag="31" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91m-Q3-NwA">
+                        <rect key="frame" x="131" y="62" width="64" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="64" id="Yik-6n-mI0"/>
                             <constraint firstAttribute="height" constant="20" id="hhi-d8-XVY"/>
@@ -81,13 +87,23 @@
                         <state key="normal" title=" 采纳" image="adopt">
                             <color key="titleColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="BtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WDn-kv-b3m"/>
+                        </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adopti" translatesAutoresizingMaskIntoConstraints="NO" id="0ce-31-e0k">
+                        <rect key="frame" x="283" y="0.0" width="68" height="58"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="68" id="72z-3C-Z1w"/>
+                            <constraint firstAttribute="height" constant="58" id="Hne-Dx-gdj"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="j9x-ZS-0Oe" secondAttribute="bottom" constant="7.5" id="3vA-0g-lg4"/>
                     <constraint firstItem="6JB-I0-JxZ" firstAttribute="top" secondItem="ALs-wC-eHm" secondAttribute="bottom" constant="4" id="4HC-3L-EaP"/>
                     <constraint firstItem="9Hc-fj-bVA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="5h7-io-6l0"/>
-                    <constraint firstItem="j9x-ZS-0Oe" firstAttribute="top" secondItem="GXW-Te-DSU" secondAttribute="bottom" constant="20" id="AYN-l0-gIf"/>
+                    <constraint firstAttribute="trailing" secondItem="0ce-31-e0k" secondAttribute="trailing" constant="24" id="CoU-lJ-YnZ"/>
                     <constraint firstItem="j9x-ZS-0Oe" firstAttribute="leading" secondItem="9A5-9x-y28" secondAttribute="trailing" constant="20" id="SSt-9G-THN"/>
                     <constraint firstAttribute="bottom" secondItem="91m-Q3-NwA" secondAttribute="bottom" constant="7.5" id="Yy9-eZ-pUi"/>
                     <constraint firstAttribute="trailing" secondItem="j9x-ZS-0Oe" secondAttribute="trailing" constant="20" id="b77-FT-i9s"/>
@@ -96,17 +112,29 @@
                     <constraint firstItem="6JB-I0-JxZ" firstAttribute="leading" secondItem="9Hc-fj-bVA" secondAttribute="trailing" constant="8" id="fHm-Cq-37g"/>
                     <constraint firstItem="ALs-wC-eHm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="hqt-yo-gw9"/>
                     <constraint firstItem="9Hc-fj-bVA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ikV-LT-ogT"/>
+                    <constraint firstItem="0ce-31-e0k" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lOe-4j-P1Q"/>
                     <constraint firstItem="GXW-Te-DSU" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="mEw-cl-Ng0"/>
                     <constraint firstItem="9A5-9x-y28" firstAttribute="leading" secondItem="91m-Q3-NwA" secondAttribute="trailing" constant="12" id="u0B-p9-13I"/>
                     <constraint firstAttribute="bottom" secondItem="9A5-9x-y28" secondAttribute="bottom" constant="7.5" id="x5e-Gp-XsW"/>
                     <constraint firstItem="ALs-wC-eHm" firstAttribute="leading" secondItem="9Hc-fj-bVA" secondAttribute="trailing" constant="7" id="xcn-pg-Tb4"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-36" y="108.39580209895054"/>
+            <connections>
+                <outlet property="CainaBtn" destination="91m-Q3-NwA" id="YPK-7t-5Ps"/>
+                <outlet property="ConcentLB" destination="GXW-Te-DSU" id="wPv-Zl-n14"/>
+                <outlet property="ConsultBtn" destination="j9x-ZS-0Oe" id="W2f-p8-J9M"/>
+                <outlet property="LawHeaderImage" destination="9Hc-fj-bVA" id="jt0-I9-CTp"/>
+                <outlet property="TimeLB" destination="6JB-I0-JxZ" id="zGI-na-Pa4"/>
+                <outlet property="cainaImageView" destination="0ce-31-e0k" id="pj3-OD-aQn"/>
+                <outlet property="lawNameLB" destination="ALs-wC-eHm" id="9LG-4r-q0t"/>
+            </connections>
+            <point key="canvasLocation" x="-36" y="101.64917541229386"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="adopt" width="14" height="14"/>
+        <image name="adopti" width="69" height="58"/>
         <image name="consult" width="14" height="13"/>
+        <image name="heart_" width="14" height="14"/>
     </resources>
 </document>

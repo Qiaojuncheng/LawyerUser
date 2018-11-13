@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *surplusLB;
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *IconImaegVIew;
+
+
 
 @end
 

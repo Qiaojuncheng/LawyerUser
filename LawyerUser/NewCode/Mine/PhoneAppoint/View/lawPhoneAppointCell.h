@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "lawAppointModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface lawPhoneAppointCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *publicTimeLB;
-
+@property (strong ,nonatomic) lawAppointModel * model ;
 @property (weak, nonatomic) IBOutlet UIView *RedView;
 @property (weak, nonatomic) IBOutlet UILabel *ServiceLB;
 @property (weak, nonatomic) IBOutlet UIImageView *personImageView;
@@ -27,10 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *PhoneImage;
 @property (weak, nonatomic) IBOutlet UILabel *TypeLB;
 
+@property (strong, nonatomic) void(^OverBlock)();
+
 - (IBAction)SureAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *SureBtn;
 
 
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *TopHeight;
 
 
 

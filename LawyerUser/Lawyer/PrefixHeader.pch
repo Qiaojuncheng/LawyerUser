@@ -128,6 +128,8 @@
 #define DLogMethod()
 #endif
 
+ 
+
 // 判断是否问 ios 7
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
 
@@ -255,8 +257,15 @@
 // 充值模块 ；
 #define NewUserCZ [dic setValue:@"App/User/cz" forKey:@"action"];
 
-//获取支付信息 （下单）；
+//获取支付信息 （下单）；  暂时不用
 #define NewUserPay [dic setValue:@"App/Service/pay" forKey:@"action"];
+
+// z余额支付
+#define NewYuEPay [dic setValue:@"App/Service/moneyPay" forKey:@"action"];
+
+
+ 
+
 
 #pragma  mark  找律师
 //找律师
@@ -331,6 +340,18 @@
 
 //收藏
 #define NewmyCollect  [dic setValue:@"App/User/myCollect" forKey:@"action"];
+
+//我的咨询
+#define NewmymyConsult  [dic setValue:@"App/User/myConsult" forKey:@"action"];
+//我的咨询x 咨询详情 App/User/consultXq
+#define NewmymyconsultXq  [dic setValue:@"App/User/consultXq" forKey:@"action"];
+//咨询采纳
+#define Newmyuseradopt  [dic setValue:@"App/User/adopt" forKey:@"action"];
+
+//我的 电话预约 和见面预约  NewCasemyCollect
+#define NewmyusermyAppoint  [dic setValue:@"App/User/myAppoint" forKey:@"action"];
+//结束预约
+#define NewmyusermyAppointOver  [dic setValue:@"App/User/appointOver" forKey:@"action"];
 
 // 意见反馈
 #define QJAddvicefeedback [dic setValue:@"App/Public/feedback" forKey:@"action"];

@@ -32,6 +32,9 @@
 		1F2EC1D8218EB41000F75226 /* lawVipZoneTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EC1D7218EB41000F75226 /* lawVipZoneTopView.m */; };
 		1F2EC1DA218EB44300F75226 /* lawVipZoneTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F2EC1D9218EB44300F75226 /* lawVipZoneTopView.xib */; };
 		1F2EC1DD218F176300F75226 /* lawVipConcentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EC1DC218F176300F75226 /* lawVipConcentModel.m */; };
+		1F3297542199ABD100E32555 /* lawMyconsultListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3297532199ABD100E32555 /* lawMyconsultListModel.m */; };
+		1F3297572199BD8800E32555 /* lawConsultdetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3297562199BD8800E32555 /* lawConsultdetailModel.m */; };
+		1F32975A2199DFEC00E32555 /* lawAppointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3297592199DFEC00E32555 /* lawAppointModel.m */; };
 		1F4034591EA5ECE1006803AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4034581EA5ECE1006803AE /* Images.xcassets */; };
 		1F40345C1EA5F8B0006803AE /* xsqbanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F40345B1EA5F8B0006803AE /* xsqbanner.m */; };
 		1F5429A7219285FE00F78C79 /* lawNearLawyerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5429A6219285FE00F78C79 /* lawNearLawyerVC.m */; };
@@ -351,6 +354,12 @@
 		1F2EC1D9218EB44300F75226 /* lawVipZoneTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = lawVipZoneTopView.xib; sourceTree = "<group>"; };
 		1F2EC1DB218F176300F75226 /* lawVipConcentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawVipConcentModel.h; sourceTree = "<group>"; };
 		1F2EC1DC218F176300F75226 /* lawVipConcentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawVipConcentModel.m; sourceTree = "<group>"; };
+		1F3297522199ABD100E32555 /* lawMyconsultListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawMyconsultListModel.h; sourceTree = "<group>"; };
+		1F3297532199ABD100E32555 /* lawMyconsultListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawMyconsultListModel.m; sourceTree = "<group>"; };
+		1F3297552199BD8800E32555 /* lawConsultdetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawConsultdetailModel.h; sourceTree = "<group>"; };
+		1F3297562199BD8800E32555 /* lawConsultdetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawConsultdetailModel.m; sourceTree = "<group>"; };
+		1F3297582199DFEC00E32555 /* lawAppointModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawAppointModel.h; sourceTree = "<group>"; };
+		1F3297592199DFEC00E32555 /* lawAppointModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawAppointModel.m; sourceTree = "<group>"; };
 		1F3F114D1F96FF44002F7AC5 /* Lawyer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lawyer.entitlements; sourceTree = "<group>"; };
 		1F4034581EA5ECE1006803AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F40345A1EA5F8B0006803AE /* xsqbanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xsqbanner.h; sourceTree = "<group>"; };
@@ -1159,6 +1168,8 @@
 		1F8F525E219030C800526AAF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1F3297582199DFEC00E32555 /* lawAppointModel.h */,
+				1F3297592199DFEC00E32555 /* lawAppointModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1225,6 +1236,10 @@
 		1FA469AC2191687400A57CAD /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1F3297522199ABD100E32555 /* lawMyconsultListModel.h */,
+				1F3297532199ABD100E32555 /* lawMyconsultListModel.m */,
+				1F3297552199BD8800E32555 /* lawConsultdetailModel.h */,
+				1F3297562199BD8800E32555 /* lawConsultdetailModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2556,6 +2571,7 @@
 				1FF61A7D2188A6D000C13C28 /* lawLawyerDetailModle.m in Sources */,
 				1FF61A892188A6D000C13C28 /* QJAboutAppViewController.m in Sources */,
 				1FD8A75E1F259FAC00504F90 /* UIColor+XPKit.m in Sources */,
+				1F3297572199BD8800E32555 /* lawConsultdetailModel.m in Sources */,
 				1F2C1AD8218A9EB500749B42 /* LawMessageCenterCell.m in Sources */,
 				1F86C987218C548200E8B75C /* lawVipModel.m in Sources */,
 				1FF61A872188A6D000C13C28 /* LawIWantPublicVC.m in Sources */,
@@ -2564,6 +2580,7 @@
 				1FF61A602188A6D000C13C28 /* AFManagerHelp.m in Sources */,
 				1FEFBB271E9F7DCE00B0A76D /* QJSelectArea.m in Sources */,
 				9A3DF6E51F79EBFA002CCAB3 /* MJRefreshAutoNormalFooter.m in Sources */,
+				1F3297542199ABD100E32555 /* lawMyconsultListModel.m in Sources */,
 				1FF61A932188A6D000C13C28 /* LawNewSettingViewController.m in Sources */,
 				1FF61AB72188A6D000C13C28 /* LawCardSMSViewController.m in Sources */,
 				9A3DF6EA1F79EBFA002CCAB3 /* MJRefreshGifHeader.m in Sources */,
@@ -2583,6 +2600,7 @@
 				1F5B26F71E9B52D100DBFA44 /* main.m in Sources */,
 				1FD9E4A61F70F84900CC2E30 /* UIViewController+HUD.m in Sources */,
 				1FF61AB12188A6D000C13C28 /* LawIntroducionCell.m in Sources */,
+				1F32975A2199DFEC00E32555 /* lawAppointModel.m in Sources */,
 				9A3DF6E31F79EBFA002CCAB3 /* MJRefreshHeader.m in Sources */,
 				1FF61A632188A6D000C13C28 /* PublicMethod.m in Sources */,
 				1FA469A5219146BA00A57CAD /* lawMyOrderDetailCell.m in Sources */,

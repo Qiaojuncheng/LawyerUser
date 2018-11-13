@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface lawCompanyImageVC : BaseViewController
 
  @property (weak, nonatomic) IBOutlet UIButton *addBtn;
-
+@property (strong ,nonatomic) NSString * ImageStr;
  - (IBAction)AddImageAction:(UIButton *)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *ShiliImage;

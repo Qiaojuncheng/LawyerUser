@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -76,6 +76,15 @@
                             <constraint firstAttribute="height" constant="1" id="9KV-Gu-ktb"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDr-oA-Kmu">
+                        <rect key="frame" x="359" y="23" width="0.0" height="9"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="9" id="vKS-Vf-Gqi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="hrM-43-HW4" firstAttribute="leading" secondItem="jBG-Ne-wQn" secondAttribute="trailing" constant="12" id="10P-8P-I54"/>
@@ -83,6 +92,7 @@
                     <constraint firstAttribute="bottom" secondItem="juD-ed-GcA" secondAttribute="bottom" id="4yl-bB-EZC"/>
                     <constraint firstItem="jBG-Ne-wQn" firstAttribute="leading" secondItem="TCW-jk-IKg" secondAttribute="trailing" constant="12" id="6I7-PP-D8y"/>
                     <constraint firstAttribute="trailing" secondItem="juD-ed-GcA" secondAttribute="trailing" constant="14" id="7gS-Kj-xH4"/>
+                    <constraint firstItem="KDr-oA-Kmu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="Anr-aJ-Xa6"/>
                     <constraint firstItem="TCW-jk-IKg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="D6W-FH-V6c"/>
                     <constraint firstItem="6HE-JN-u5s" firstAttribute="leading" secondItem="hrM-43-HW4" secondAttribute="trailing" constant="10" id="G3a-bo-erV"/>
                     <constraint firstItem="6HE-JN-u5s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="K1C-2F-IL0"/>
@@ -90,6 +100,7 @@
                     <constraint firstItem="TCW-jk-IKg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="V0h-ck-sNO"/>
                     <constraint firstItem="y6G-cD-2RI" firstAttribute="top" secondItem="Y4b-Fc-QhT" secondAttribute="bottom" constant="11" id="bBM-SJ-JTU"/>
                     <constraint firstAttribute="trailing" secondItem="y6G-cD-2RI" secondAttribute="trailing" constant="5" id="bPR-7d-9PU"/>
+                    <constraint firstItem="KDr-oA-Kmu" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="fJY-D7-vkb"/>
                     <constraint firstItem="jBG-Ne-wQn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="fiz-IH-g5m"/>
                     <constraint firstItem="Y4b-Fc-QhT" firstAttribute="top" secondItem="jBG-Ne-wQn" secondAttribute="bottom" constant="10" id="g2O-Bi-cQa"/>
                     <constraint firstItem="hrM-43-HW4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="nVz-iu-wh3"/>
@@ -98,6 +109,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="AddressLB" destination="Y4b-Fc-QhT" id="scx-ym-4hr"/>
+                <outlet property="DistanceLB" destination="KDr-oA-Kmu" id="HDM-zo-bvz"/>
                 <outlet property="LawyerImaegView" destination="TCW-jk-IKg" id="e1d-f5-IwV"/>
                 <outlet property="TimeLB" destination="hrM-43-HW4" id="QMc-WS-Q9v"/>
                 <outlet property="TuiImage" destination="6HE-JN-u5s" id="v0m-QR-bov"/>
