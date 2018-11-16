@@ -10,18 +10,22 @@
 
 @interface LawNewMessageMM : NSObject
 /*
- "id":"10",
- "lid":"1",
- "title":"您参与回答的咨询已被采纳。",
- "time":"1536768019",
- "type":"3",
- "status":"0",
- "tid":"0"
+ 
+ 
+ "id":"117",
+ "uid":"1",
+ "title":"你发布的预约已有律师答复了，快去看看吧",
+ "create_time":"1542074764",
+ "type":"2",
+ "status":"1",
+ "content":"潘梦飞律师同意了您的预约！",
+ "tid":"144"
+ 
  */
 @property (strong , nonatomic) NSString * id;
 @property (strong , nonatomic) NSString * lid;
 @property (strong , nonatomic) NSString * title;
-@property (strong , nonatomic) NSString * time;
+@property (strong , nonatomic) NSString * create_time;
 @property (strong , nonatomic) NSString * type;
 @property (strong , nonatomic) NSString * status;
 @property (strong , nonatomic) NSString * tid;

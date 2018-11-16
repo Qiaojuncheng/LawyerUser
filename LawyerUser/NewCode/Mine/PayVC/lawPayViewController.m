@@ -7,12 +7,13 @@
 //
 
 #import "lawPayViewController.h"
-
+#import "WXApiObject.h"
+#import "WXApi.h"
 @interface lawPayViewController (){
     NSArray * BtnArary ;
 //    后台定义的
     
- NSString * payType;// 1法律服务 2咨询支付 3预约支付 4送心意 5充值
+  NSString * payType;// 1法律服务 2咨询支付 3预约支付 4送心意 5充值 6 购买套餐
     NSString * payFangshi;// 支付方式
     NSString * moneyStr ;// 可用金额
 
@@ -54,7 +55,7 @@
         self.PayTypeName.text = [NSString stringWithFormat:@"%@VIP会员",self.VIPNameStr];
         self.PriceTextField.text = [NSString stringWithFormat:@"￥%@",self.Pricestr];
         self.PriceTextField.userInteractionEnabled = NO ;
-
+        [self getVipPayInfo];
     }else if([self.Type isEqualToString:@"4"]){
         self.VIPPayView.hidden = YES ;
         self.PayTypeName.text = @"需支付金额";
@@ -116,7 +117,8 @@
 */
 #pragma  mark 充值数据
 -(void)UserChongZhi{
-    if (![self.PriceTextField.text integerValue]) {
+   
+    if (![self.PriceTextField.text floatValue]) {
          [self showHint:@"请输入充值金额"];
          return ;
     }
@@ -134,9 +136,11 @@
         if ([str isEqualToString:@"0"]) {
             //         只有微信充值
             self.PayId = data[@"data"][@"id"];
-            payType= data[@"data"][@"type"];
-//            [self getPayInfo];
-        }
+              payType= data[@"data"][@"type"];
+//            获取微信支付信息；
+            [self getWxPayData];
+
+         }
     } failure:^(NSError *error) {
         
         NSLog(@"%@",error);
@@ -145,35 +149,6 @@
  }
 
 
-#pragma  mark  余额支付
--(void)YuEpay{
-    
- NSDictionary * dic  =[[NSMutableDictionary alloc]init];
-        NewYuEPay
-    NSDictionary * valudic =[[NSMutableDictionary alloc]init] ;
-    [valudic setValue:self.PayId forKey:@"id"];
-    [valudic setValue:payType forKey:@"type"];
-    [valudic setValue:UserId forKey:@"uid"];
-        NSString * baseStr = [NSString getBase64StringWithArray:valudic];
-        [dic setValue:baseStr forKey:@"value"];
-        
-        [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
-            NSString  * str =[NSString stringWithFormat:@"%@",data[@"status"]];
-            
-          
-            if ([str isEqualToString:@"0"]) {
-                [self.navigationController popToRootViewControllerAnimated:YES];
-
-            }else{
-            }
-            [self showHint:data[@"msg"]];
-
-        } failure:^(NSError *error) {
-            NSLog(@"%@",error);
-        }];
-        
- 
-}
 
 
 
@@ -183,13 +158,9 @@
 
 
 
+// NSString * payType;// 1法律服务 2咨询支付 3预约支付 4送心意 5充值 6 送套餐
 
-
-
-
-
-// NSString * payType;// 1法律服务 2咨询支付 3预约支付 4送心意 5充值
-
+#pragma mark 充值按钮
 - (IBAction)ChongzhiAction:(UIButton *)sender {
     
     
@@ -197,10 +168,17 @@
 //       余额支付
         [self YuEpay];
 
+    }else if ([payFangshi isEqualToString:@"1"]){// 微信支付
+        if ([self.Type isEqualToString:@"1"]){
+             [self UserChongZhi];//  充值信息
+        }else{
+            [self getWxPayData];
+        }
+    }else if ([payFangshi isEqualToString:@"4"]){
+        [self VipPay];
     }
     
 //    if([self.Type isEqualToString:@"1"]){// 充值
-//     [self UserChongZhi];// 获取充值信息
 //
 //    }else if([self.Type isEqualToString:@"2"]){// 悬赏咨询
 //        [self YuEpay];
@@ -216,10 +194,12 @@
     
 }
 
+#pragma   mark 支付方式 微信支付宝、余额 套餐
 - (IBAction)PayBtnAction:(UIButton *)sender {
     if(sender.tag == 30){
 //  微信
         payFangshi = @"1";
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(WXpayResult:) name:@"PAYSTATUE" object:nil];
     }else if(sender.tag == 31){
 //  支付宝
         payFangshi =@"2";
@@ -239,37 +219,160 @@
     sender.selected = YES ;
     
 }
-#pragma mark  获取微信支付信息
 
--(void)getWxPayData{        //请求 参数 token
- 
-  
-//    if(dict != nil){
-//        NSMutableString *retcode = [dict objectForKey:@"appid"];
-//        if (retcode.length > 0){
-//            NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
-//            //调起微信支付
-//            PayReq* req = [[PayReq alloc] init];
-//            req.partnerId = [dict objectForKey:@"partnerid"];// 商家ID
-//            req.prepayId            = [dict objectForKey:@"prepayid"];// 订单号
-//            req.nonceStr = [dict objectForKey:@"noncestr"]; /** 随机串，防重发 */
-//            req.timeStamp = stamp.intValue;/** 时间戳，防重发 */
-//            req.package             = [dict objectForKey:@"package"];/** 商家根据财付通文档填写的数据和签名 */
-//            req.sign                = [dict objectForKey:@"sign"];/** 商家根据微信开放平台文档对数据做的签名 */
-//            [WXApi sendReq:req];
-//            //日志输出
-//            NSLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",[dict objectForKey:@"appid"],req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
-//        }
-//
+
+#pragma  mark  余额支付
+-(void)YuEpay{
+    
+    NSDictionary * dic  =[[NSMutableDictionary alloc]init];
+    NewYuEPay
+    NSDictionary * valudic =[[NSMutableDictionary alloc]init] ;
+    [valudic setValue:self.PayId forKey:@"id"];
+    [valudic setValue:payType forKey:@"type"];
+    [valudic setValue:UserId forKey:@"uid"];
+    NSString * baseStr = [NSString getBase64StringWithArray:valudic];
+    [dic setValue:baseStr forKey:@"value"];
+    
+    [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
+        NSString  * str =[NSString stringWithFormat:@"%@",data[@"status"]];
+        
+        
+        if ([str isEqualToString:@"0"]) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+        }else{
+        }
+        [self showHint:data[@"msg"]];
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    
 }
 
+#pragma mark 套餐支付
+-(void)VipPay{
+    NSDictionary * dic  =[[NSMutableDictionary alloc]init];
+    NewServicePay
+    NSDictionary * valudic =[[NSMutableDictionary alloc]init] ;
+    [valudic setValue:self.PayId forKey:@"id"];
+    [valudic setValue:payType forKey:@"type"];
+    [valudic setValue:UserId forKey:@"uid"];
+    NSString * baseStr = [NSString getBase64StringWithArray:valudic];
+    [dic setValue:baseStr forKey:@"value"];
+    
+    [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
+        NSString  * str =[NSString stringWithFormat:@"%@",data[@"status"]];
+        
+        
+        if ([str isEqualToString:@"0"]) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+        }else{
+        }
+        [self showHint:data[@"msg"]];
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+}
 
-// 获取余额
+#pragma mark  获取套餐支付信息
+-(void)getVipPayInfo{
+    
+    NSDictionary * dic  =[[NSMutableDictionary alloc]init];
+    NewGetbuyVip
+    if( !IsLogin){
+        return ;
+    }
+    NSMutableDictionary * valudic  = [[NSMutableDictionary alloc]init];
+    [valudic setValue:self.VipId forKey:@"sid"];
+//    [valudic setValue:payType forKey:@"type"];
+    [valudic setValue:UserId forKey:@"uid"];
+    
+    NSString * baseStr = [NSString getBase64StringWithArray:valudic];
+    [dic setValue:baseStr forKey:@"value"];
+    
+    [self showHudInView:self.view hint:nil];
+    
+    
+    [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
+        NSString  * str =[NSString stringWithFormat:@"%@",data[@"status"]];
+        if ([str isEqualToString:@"0"]) {
+            self.PayId = data[@"data"][@"id"];
+         
+        }
+        [self hideHud];
+        
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"%@",error);
+    }];
+    
+
+    
+}
+#pragma mark  获取微信支付信息  并支付
+-(void)getWxPayData{        //请求 参数 token
+ 
+    NSDictionary * dic  =[[NSMutableDictionary alloc]init];
+    NewGetwxPay
+    if( !IsLogin){
+        return ;
+    }
+    NSMutableDictionary * valudic  = [[NSMutableDictionary alloc]init];
+    [valudic setValue:self.PayId forKey:@"id"];
+    [valudic setValue:payType forKey:@"type"];
+    [valudic setValue:UserId forKey:@"uid"];
+
+    NSString * baseStr = [NSString getBase64StringWithArray:valudic];
+    [dic setValue:baseStr forKey:@"value"];
+    
+    [self showHudInView:self.view hint:nil];
+    
+    
+    [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
+        NSString  * str =[NSString stringWithFormat:@"%@",data[@"status"]];
+        if ([str isEqualToString:@"0"]) {
+            NSDictionary * dict  = data[@"data"];
+                if(dict != nil){
+                    NSMutableString *retcode = [dict objectForKey:@"appid"];
+                    if (retcode.length > 0){
+                        NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
+                        //调起微信支付
+                        PayReq* req = [[PayReq alloc] init];
+                        req.partnerId = [dict objectForKey:@"partnerid"];// 商家ID
+                        req.prepayId            = [dict objectForKey:@"prepayid"];// 订单号
+                        req.nonceStr = [dict objectForKey:@"noncestr"]; /** 随机串，防重发 */
+                        req.timeStamp = stamp.intValue;/** 时间戳，防重发 */
+                        req.package             = [dict objectForKey:@"package"];/** 商家根据财付通文档填写的数据和签名 */
+                        req.sign                = [dict objectForKey:@"sign"];/** 商家根据微信开放平台文档对数据做的签名 */
+                        [WXApi sendReq:req];
+                        //日志输出
+                        NSLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",[dict objectForKey:@"appid"],req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
+                    }
+            
+            }
+        }
+        [self hideHud];
+
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"%@",error);
+    }];
+
+  
+ }
+
+
+#pragma mark  获取用户余额
 - (void)requestData {
     
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
     QJAddvicegetMoney
-    if( [UserId length] < 1){
+    if( !IsLogin){
         return ;
     }
     NSDictionary * valudic  = @{@"id":UserId,@"type":@"1"};
@@ -297,6 +400,29 @@
     }];
 
 
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WXpayResult" object:nil];
+}
+-(void)WXpayResult:(NSNotification *)info{
+    
+    PayResp *  payRespay = (PayResp *)info.object;
+    int payCode = payRespay.errCode;
+    NSString * payResoult ;
+    if (payCode == 0) {
+        payResoult = @"支付成功";
+        [self.navigationController popToRootViewControllerAnimated:YES];
+     } else if (payCode == -1) {
+        payResoult = @"支付失败，请稍后再试！";
+     } else if (payCode == -2) {
+        payResoult = @"您已取消支付！";
+     } else {
+         payResoult = [NSString stringWithFormat:@"%@",payRespay.errStr];
+    }
+
+    [self showHint:payResoult];
+    
 }
 
 @end

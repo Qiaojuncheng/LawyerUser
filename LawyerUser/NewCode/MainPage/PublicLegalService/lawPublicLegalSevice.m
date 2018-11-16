@@ -37,14 +37,14 @@
         [self addCenterLabelWithTitle:@"案件委托" titleColor:nil];
          self.TypePriceLB.text = @"委托报价";
         [self.PayBtn setTitle:@"寻找律师报价" forState:UIControlStateNormal];
-    }else  if ([self.type isEqualToString:@"2"]) {
+    }else  if ([self.type isEqualToString:@"4"]) {
         [self addCenterLabelWithTitle:@"发律师函" titleColor:nil];
  
-    }else if ([self.type isEqualToString:@"3"]) {
+    }else if ([self.type isEqualToString:@"2"]) {
         [self addCenterLabelWithTitle:@"合同审查" titleColor:nil];
  
 
-    }else if ([self.type isEqualToString:@"4"]) {
+    }else if ([self.type isEqualToString:@"3"]) {
         [self addCenterLabelWithTitle:@"合同起草" titleColor:nil];
  
 

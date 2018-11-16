@@ -95,7 +95,7 @@
     
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
     QJAddvicefeedback
-    if( [UserId length] < 1){
+    if( !IsLogin){
         return ;
     }
     NSDictionary * valudic  = @{@"content":self.textView.text,@"id":UserId,@"type":@"2"};

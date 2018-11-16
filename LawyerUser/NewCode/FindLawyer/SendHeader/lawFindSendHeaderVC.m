@@ -24,7 +24,7 @@
     [self addCenterLabelWithTitle:@"送心意" titleColor:nil];
     self.topheight.constant = NavStatusBarHeight;
     LBArray =@[self.FirstLB,self.SecondLB,self.ThirdLB,self.LastLB];
-    [self.LwayerHeader sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,self.model.avatar]] placeholderImage:nil];
+    [self.LwayerHeader sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,self.model.avatar]] placeholderImage:[UIImage imageNamed:@"head_empty"]];
     self.lawyerNameLB.text = self.model.name;
     
     [Utile makeCorner:self.LwayerHeader.height/2  view:self.LwayerHeader  ];

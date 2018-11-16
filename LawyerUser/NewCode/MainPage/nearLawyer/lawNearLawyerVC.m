@@ -66,6 +66,16 @@
             
             for (NSDictionary * dics in data[@"data"]) {
                 lawLawyerModle * model =  [lawLawyerModle yy_modelWithDictionary:dics];
+                
+                CGFloat range = [model.range floatValue];
+                if (range < 0.5) {
+                    model.range = @"<500m";
+                }else if(range > 20){
+                    model.range = @">20km";
+                }else{
+                    model.range = [NSString stringWithFormat:@"%.1fkm",range];
+                }
+                
                 [dataArrray addObject:model];
                 
             }
@@ -118,7 +128,10 @@
         cell  =[[[NSBundle mainBundle ]loadNibNamed:@"lawMainPageLawyerCell" owner:self options:nil]lastObject];
     }
     cell.model = dataArrray[indexPath.row];
-    cell.DistanceLB.text = cell.model.distance;
+    
+    
+ 
+    cell.DistanceLB.text = cell.model.range;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return  cell ;
 }

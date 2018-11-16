@@ -7,7 +7,8 @@
 //
 
 #import "lawPhonePayVC.h"
-
+#import "WXApi.h"
+#import "WXApiObject.h"
 @interface lawPhonePayVC (){
     NSArray * BtnArary ;
 
@@ -56,7 +57,9 @@
     if ([PayCon isEqualToString:@"3"]) {
 //        余额支付
         [self YuEpay];
-
+    }else if([PayCon isEqualToString:@"1"]){
+        
+        [self getWxPayData];
     }
 }
 
@@ -99,6 +102,8 @@
     sender.selected = YES ;
     if (sender.tag == 31) {
         PayCon = @"1";
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(WXpayResult:) name:@"PAYSTATUE" object:nil];
+
     }else if (sender.tag == 32){
         PayCon = @"2";
     }else if (sender.tag ==33){
@@ -112,7 +117,7 @@
     
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
     QJAddvicegetMoney
-    if( [UserId length] < 1){
+    if( !IsLogin){
         return ;
     }
     NSDictionary * valudic  = @{@"id":UserId,@"type":@"1"};
@@ -139,6 +144,84 @@
         NSLog(@"%@",error);
     }];
     
+    
+}
+
+
+-(void)getWxPayData{        //请求 参数 token
+    
+    NSDictionary * dic  =[[NSMutableDictionary alloc]init];
+    NewGetwxPay
+    if( !IsLogin){
+        return ;
+    }
+    NSMutableDictionary * valudic  = [[NSMutableDictionary alloc]init];
+    [valudic setValue:self.PayId forKey:@"id"];
+    [valudic setValue:@"3" forKey:@"type"];
+    [valudic setValue:UserId forKey:@"uid"];
+    
+    NSString * baseStr = [NSString getBase64StringWithArray:valudic];
+    [dic setValue:baseStr forKey:@"value"];
+    
+    [self showHudInView:self.view hint:nil];
+    
+    
+    [HttpAfManager postWithUrlString:MainUrl parameters:dic success:^(id data) {
+        NSString  * str =[NSString stringWithFormat:@"%@",data[@"status"]];
+        if ([str isEqualToString:@"0"]) {
+            NSDictionary * dict  = data[@"data"];
+            if(dict != nil){
+                NSMutableString *retcode = [dict objectForKey:@"appid"];
+                if (retcode.length > 0){
+                    NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
+                    //调起微信支付
+                    PayReq* req = [[PayReq alloc] init];
+                    req.partnerId = [dict objectForKey:@"partnerid"];// 商家ID
+                    req.prepayId            = [dict objectForKey:@"prepayid"];// 订单号
+                    req.nonceStr = [dict objectForKey:@"noncestr"]; /** 随机串，防重发 */
+                    req.timeStamp = stamp.intValue;/** 时间戳，防重发 */
+                    req.package             = [dict objectForKey:@"package"];/** 商家根据财付通文档填写的数据和签名 */
+                    req.sign                = [dict objectForKey:@"sign"];/** 商家根据微信开放平台文档对数据做的签名 */
+                    [WXApi sendReq:req];
+                    //日志输出
+                    NSLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",[dict objectForKey:@"appid"],req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
+                }
+                
+            }
+        }
+        [self hideHud];
+        
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"%@",error);
+    }];
+    
+    
+}
+
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WXpayResult" object:nil];
+}
+-(void)WXpayResult:(NSNotification *)info{
+    
+    PayResp *  payRespay = (PayResp *)info.object;
+    int payCode = payRespay.errCode;
+    NSString * payResoult ;
+    if (payCode == 0) {
+        payResoult = @"支付成功";
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } else if (payCode == -1) {
+        payResoult = @"支付失败，请稍后再试！";
+    } else if (payCode == -2) {
+        payResoult = @"您已u取消支付！";
+    } else {
+        payResoult = [NSString stringWithFormat:@"%@",payRespay.errStr];
+    }
+    
+    [self showHint:payResoult];
     
 }
 

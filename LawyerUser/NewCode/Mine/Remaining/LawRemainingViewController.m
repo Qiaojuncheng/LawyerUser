@@ -39,7 +39,7 @@
 -(void)makeYUE{
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
     QJAddvicegetMoney
-    if( [UserId length] < 1){
+    if( !IsLogin){
         return ;
     }
     NSDictionary * valudic  = @{@"id":UserId,@"type":@"1"};

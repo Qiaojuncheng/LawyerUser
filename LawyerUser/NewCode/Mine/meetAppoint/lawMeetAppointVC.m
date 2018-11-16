@@ -39,11 +39,14 @@
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
         NewmyusermyAppoint
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
-    if ([UserId length]> 0) {
+    if( IsLogin){
         [valuedic setValue:UserId forKey:@"uid"];
         [valuedic setValue:@"2" forKey:@"type"];
          [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
-        
+        if(self.mid){
+            [valuedic setValue:self.mid forKey:@"mid"];
+        }
+
         NSString * base64String =[NSString getBase64StringWithArray:valuedic];
         [dic setValue:base64String forKey:@"value"];
         
@@ -139,7 +142,7 @@
         NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
         NewmyusermyAppointOver
         NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
-        if ([UserId length]> 0) {
+        if( IsLogin){
             [valuedic setValue:UserId forKey:@"uid"];
             [valuedic setValue:model.id  forKey:@"id"];
             NSString * base64String =[NSString getBase64StringWithArray:valuedic];

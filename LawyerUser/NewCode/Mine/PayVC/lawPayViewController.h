@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 这个是自定义的  里面的才是后台定义的 PayId
 @property (strong, nonatomic) NSString * Type;// 支付类型 1  充值 ， 2 送心意 , 3 购买套餐， 4 悬赏咨询支付  5 预约面谈 支付 6 案件委托 7 发律师函 8 合同审查 9 合同起草
 @property (strong, nonatomic)     NSString * PayId ;// 服务id
+@property (strong, nonatomic)     NSString * VipId ;// 购买套餐 id
 
 
 @property  (strong, nonatomic ) NSString * Pricestr;// 费用

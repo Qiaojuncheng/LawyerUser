@@ -9,9 +9,10 @@
 #import "LawMianPageMessageList.h"
 #import "LawNewMessageMM.h"
 #import "LawMessageCenterCell.h"
-//#import "LawMeetingViewController.h"
-//#import "LawConsultDetailViewController.h"
-//#import "LawPersonInfoViewController.h"
+#import "lawMyconsultDetailVC.h"
+#import "lawPhoneAppointVC.h"
+#import "lawMeetAppointVC.h"
+#import "lawVipZoneVC.h"
 //#import "LawHeartViewController.h"
 @interface LawMianPageMessageList (){
     NSMutableArray * dataArrray ;
@@ -36,11 +37,13 @@
 -(void)makedata{
     
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
-//    NewMymessageList
-    if( [UserId length] < 1){
+    
+    LawMainUserMessage
+    
+    if( !IsLogin){
         return ;
     }
-    NSDictionary * valudic  = @{@"lawyer_id":UserId,@"p":[NSString stringWithFormat:@"%ld",page]};
+    NSDictionary * valudic  = @{@"uid":UserId,@"p":[NSString stringWithFormat:@"%ld",page]};
     NSString * baseStr = [NSString getBase64StringWithArray:valudic];
     [dic setValue:baseStr forKey:@"value"];
     if(page==1){
@@ -125,13 +128,32 @@
     LawNewMessageMM * modle =  dataArrray[indexPath.row];
     modle.status =@"1";
     [dataArrray replaceObjectAtIndex:indexPath.row withObject:modle];
-//   if ([modle.type isEqualToString:@"1"]) {
-//       LawMeetingViewController * adsListVc = [[LawMeetingViewController alloc]init];
-//            adsListVc.meetTing =@"电话预约";
-//        adsListVc.tid =modle.tid;
-//        adsListVc.mid =modle.id;
-//         [self.navigationController pushViewController:adsListVc animated:YES];
-//   }else if ([modle.type isEqualToString:@"2"]) {
+//    type   1 咨询 2 电话预约 3 见面预约 4 法律服务 5 会员到期
+   if ([modle.type isEqualToString:@"1"]) {
+       lawMyconsultDetailVC * detail =[[lawMyconsultDetailVC alloc]init];
+       detail.ConstulId = modle.tid;
+       [self.navigationController pushViewController:detail animated:YES];
+   }else if ([modle.type isEqualToString:@"2"]){
+       //  @"电话预约";
+       lawPhoneAppointVC * phoneVC =[[lawPhoneAppointVC alloc]init];
+       phoneVC.mid = modle.tid;
+       [self.navigationController pushViewController:phoneVC animated:YES];
+   }else if([modle.type isEqualToString:@"3"]){
+       
+       lawMeetAppointVC * meetVC =[[lawMeetAppointVC alloc]init];
+       meetVC.mid = modle.tid;
+
+       [self.navigationController pushViewController:meetVC animated:YES];
+   }else if([modle.type isEqualToString:@"5"]){
+//       会员
+       lawVipZoneVC * vc=[[lawVipZoneVC alloc]init];
+       [self.navigationController pushViewController:vc animated:YES];
+
+   }
+    
+    
+    
+//       else if ([modle.type isEqualToString:@"2"]) {
 //       LawMeetingViewController * adsListVc = [[LawMeetingViewController alloc]init];
 //        adsListVc.meetTing =@"见面预约";
 //       adsListVc.mid =modle.id;

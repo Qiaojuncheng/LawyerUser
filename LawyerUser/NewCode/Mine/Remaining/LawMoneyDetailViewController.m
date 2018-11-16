@@ -32,7 +32,7 @@
 -(void)makeData{
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
     NewMoneydetailed
-    if( [UserId length] < 1){
+    if( !IsLogin){
         return ;
     }
     NSDictionary * valudic  = @{@"uid":UserId,@"p":[NSString stringWithFormat:@"%ld",Page]};

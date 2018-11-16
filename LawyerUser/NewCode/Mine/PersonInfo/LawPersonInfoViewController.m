@@ -97,7 +97,7 @@
         }
             cell.CellTitile.text = @"头像";
             if (self.infoModel.avatar) {
-                [cell.PersonImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,self.infoModel.avatar]] placeholderImage:nil];
+                [cell.PersonImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,self.infoModel.avatar]] placeholderImage:[UIImage imageNamed:@"head_empty"]];
             }
              cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return  cell ;

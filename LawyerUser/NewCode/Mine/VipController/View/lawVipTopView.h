@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface lawVipTopView : UIView
 @property (strong, nonatomic) NSString * VipPriceStr ;
+@property (strong, nonatomic) NSString * VipId ;
 @property (strong, nonatomic) MyInfoModel * Model;
 @property (weak, nonatomic) IBOutlet UILabel *HeaderNameLB;
 @property (weak, nonatomic) IBOutlet UIImageView *VipImage;

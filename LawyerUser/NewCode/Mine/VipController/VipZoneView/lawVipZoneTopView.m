@@ -25,7 +25,7 @@
         self.NameLB.text = @"未登录";
     }else{
         self.NameLB.text = [UD objectForKey:@"name"]?[UD objectForKey:@"name"]:[UD objectForKey:@"phone"];
-        [self.personHeaderImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,[UD objectForKey:@"avatar"]]] placeholderImage:nil];
+        [self.personHeaderImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,[UD objectForKey:@"avatar"]]] placeholderImage:[UIImage imageNamed:@"head_empty"]];
         
         if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
             self.MessageLB.text=  [NSString stringWithFormat:@"您的企业VIP到期时间为%@",[NSString timeWithTimeIntervalString:[UD objectForKey:@"end_time"]]];
@@ -43,6 +43,7 @@
     lawrevc.Type = @"3";
     lawrevc.Pricestr= model.price;
     lawrevc.VIPNameStr =model.name;
+    lawrevc.VipId  = model.id;
     [[self belongViewController].navigationController pushViewController:lawrevc animated:YES];
 
 }

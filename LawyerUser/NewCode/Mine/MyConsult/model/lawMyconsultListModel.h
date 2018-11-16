@@ -20,8 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
  name = "\U4e54\U4fca\U6210";
  red = 1;
  "reply_count" = 0;
+ 
+ name
+ cate_name
  */
-
+ 
 @property (strong , nonatomic) NSString *avatar ;
 @property (strong , nonatomic) NSString *cate_name ;
 @property (strong , nonatomic) NSString *content ;

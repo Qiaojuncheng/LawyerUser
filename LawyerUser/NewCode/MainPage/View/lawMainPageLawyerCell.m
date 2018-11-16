@@ -25,7 +25,7 @@
 -(void)setModel:(lawLawyerModle *)model{
     _model   = model ;
     
-    [self.LawyerImaegView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",ImageUrl,model.avatar]] placeholderImage:nil];
+    [self.LawyerImaegView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",ImageUrl,model.avatar]] placeholderImage:[UIImage imageNamed:@"head_empty"]];
     self.lawyerName.text = [NSString stringWithFormat:@"%@律师",model.name];
     self.TimeLB.text = [NSString stringWithFormat:@"执业%@年",model.practice_years];
     self.AddressLB.text = [NSString stringWithFormat:@"%@ | %@",model.city_name,model.company];

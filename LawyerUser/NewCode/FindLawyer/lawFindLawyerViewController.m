@@ -56,21 +56,39 @@
         [weakSelf.navigationController pushViewController:VC animated:YES];
     }];
     
-    [self addleftButtonWithTitle:@"全部" actionBlock:^{
-        self->order = @"";
-        self->cate_id = @"";
-        self->area = @"";
-        self->page =1 ;
-        [self makedata];
-        [menu removeFromSuperview];
-        [self makemenu];
-
-    }];
+    [self addleftButtonWithTitle:@" 全部" ];
     [self makedata];
     [self makemenu];
     [self  makeAddreeData];
     [self addView ];
     // Do any additional setup after loading the view.
+}
+-(void)addleftButtonWithTitle:(NSString *)title
+{
+    UIButton *LeftBtn = [UIButton buttonWithType:0];
+    LeftBtn.backgroundColor = [UIColor clearColor];
+    [LeftBtn setTitleColor: [UIColor colorWithHex:0x3181FE]];
+    [LeftBtn setNormalTitle:title];
+    [LeftBtn.titleLabel setNormalFont:15.0f];
+    [LeftBtn addClickTarget:self action:@selector(leftBar_Touched:)];
+     [self.naviBarView addSubview:LeftBtn];
+    
+    LeftBtn.sd_layout
+    .leftSpaceToView(self.naviBarView,15)
+    .topSpaceToView(self.naviBarView,StatusBarHeight)
+    .widthIs(44)
+    .heightIs(44);
+}
+-(void)leftBar_Touched:(UIButton *)sender{
+  
+    self->order = @"";
+    self->cate_id = @"";
+    self->area = @"";
+    self->page =1 ;
+    [self makedata];
+    [menu removeFromSuperview];
+    [self makemenu];
+
 }
 
 -(void)makemenu{

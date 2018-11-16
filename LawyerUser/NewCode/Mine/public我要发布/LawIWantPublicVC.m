@@ -144,7 +144,7 @@
     
     
     NSMutableDictionary *valuedic =[[NSMutableDictionary alloc]init];
-    [valuedic setValue:UserId forKey:@"lawyer_id"];
+    [valuedic setValue:UserId forKey:@"user_id"];
     [valuedic setValue:self.TitleTextField.text forKey:@"title"];
     [valuedic setValue:Cate_id forKey:@"cate_id"];
     [valuedic setValue:self.ContentTextView.text forKey:@"content"];
@@ -152,7 +152,7 @@
     NSString * base64String =[NSString getBase64StringWithArray:valuedic];
     
     NSMutableDictionary  *dic =[[NSMutableDictionary alloc]init] ;
-//    NewIWantPublic ;
+    NewUserRelease ;
     [dic setValue:base64String forKey:@"value"];
     [AFManagerHelp   asyncUploadFileWithData:imageData name:@"thumb" fileName:@"PersonHeadPic.jpg" mimeType:@"image/jpeg" parameters:dic success:^(id responseObject) {
         

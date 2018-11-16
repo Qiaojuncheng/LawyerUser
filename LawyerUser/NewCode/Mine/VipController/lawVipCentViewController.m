@@ -204,7 +204,9 @@
                 lawVipModel * model  =[lawVipModel yy_modelWithJSON:dic];
                 [self->CollectDataArray addObject:model];
             }
-            self.collectionTopView.VipPriceStr = @"2000";
+            
+            self.collectionTopView.VipPriceStr = responseObjeck[@"suit"][@"price"];
+            self.collectionTopView.VipId = responseObjeck[@"suit"][@"id"];;
 //            返回VIP的n名字和 价格  跳转充值使用；
             [self.collectionView reloadData];
             

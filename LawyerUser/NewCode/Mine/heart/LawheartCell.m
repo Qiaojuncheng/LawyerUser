@@ -17,7 +17,7 @@
 }
 -(void)setModel:(LawNewHeaterModel *)model{
     _model = model;
-    [self.PeronImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,model.user_avatar]] placeholderImage:nil];
+    [self.PeronImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageUrl,model.user_avatar]] placeholderImage:[UIImage imageNamed:@"head_empty"]];
     self.PersonName.text = model.user_name;
     self.TimeLb.text = [NSString timeWithTimeIntervalString:model.create_time];
     self.PriceLB.text = model.money;

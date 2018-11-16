@@ -44,9 +44,9 @@
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
         NewmymyconsultXq
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
-    if ([UserId length]> 0) {
+    if( IsLogin){
         [valuedic setValue:UserId forKey:@"uid"];
-        [valuedic setValue:self.model.id forKey:@"id"];
+        [valuedic setValue:self.ConstulId forKey:@"id"];
 
         [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
         
@@ -59,8 +59,15 @@
             if ([responseObjeck[@"status"] integerValue] == 0) {
                 if (page == 1) {
                     [dataArrray removeAllObjects];
+                    self.model =[lawMyconsultListModel yy_modelWithJSON:responseObjeck[@"data"]];
+                    self.model.CellHeight =[NSString GetHeightWithMaxSize:CGSizeMake(SCREENWIDTH - 35, MAXFLOAT) AndFont:[UIFont systemFontOfSize:15] AndText:self.model.content].height +100;
+                    self.model.red =@"1";
                 }
+                
+                
                 for (NSDictionary  * dicc in responseObjeck[@"data"][@"reply_list"]) {
+                    
+                    
                     
                     lawConsultdetailModel * model = [ lawConsultdetailModel yy_modelWithJSON:dicc];
                     model.CellHeight =[NSString GetHeightWithMaxSize:CGSizeMake(SCREENWIDTH - 68, MAXFLOAT) AndFont:[UIFont systemFontOfSize:15] AndText:model.content].height +90;
@@ -186,7 +193,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return self.model.CellHeight;
+        return self.model.CellHeight?self.model.CellHeight:0;
     }else{
         lawConsultdetailModel *model =  dataArrray[indexPath.row];
         return model.CellHeight;
@@ -210,7 +217,7 @@
      NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     Newmyuseradopt
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
-    if ([UserId length]> 0) {
+    if( IsLogin){
         [valuedic setValue:UserId forKey:@"uid"];
         [valuedic setValue:self.model.id forKey:@"cid"];
         [valuedic setValue:detailmodel.id forKey:@"id"];

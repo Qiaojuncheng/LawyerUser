@@ -274,17 +274,17 @@
                 }else if(index == 32) {
                     lawPublicLegalSevice * Service =[[lawPublicLegalSevice alloc]init];
                     Service.hidesBottomBarWhenPushed = YES ;
-                    Service.type = @"2";
+                    Service.type = @"4";
                     [self.navigationController pushViewController:Service animated:YES ];
                 }else if(index == 33) {
                     lawPublicLegalSevice * Service =[[lawPublicLegalSevice alloc]init];
                     Service.hidesBottomBarWhenPushed = YES ;
-                    Service.type = @"3";
+                    Service.type = @"2";
                      [self.navigationController pushViewController:Service animated:YES ];
                 }else if(index == 34) {
                     lawPublicLegalSevice * Service =[[lawPublicLegalSevice alloc]init];
                     Service.hidesBottomBarWhenPushed = YES ;
-                    Service.type = @"4";
+                    Service.type = @"3";
                      [self.navigationController pushViewController:Service animated:YES ];
                 }else {
                     [self showHint:@"功能正在开发中敬请期待！"];

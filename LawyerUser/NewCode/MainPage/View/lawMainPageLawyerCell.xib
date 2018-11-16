@@ -18,9 +18,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TCW-jk-IKg">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_empty" translatesAutoresizingMaskIntoConstraints="NO" id="TCW-jk-IKg">
                         <rect key="frame" x="14" y="14" width="80" height="80"/>
-                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="80" id="K8A-Od-Y5p"/>
                             <constraint firstAttribute="width" constant="80" id="otJ-oP-Szj"/>
@@ -120,6 +120,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="head_empty" width="60" height="59"/>
         <image name="icon_recommend" width="16" height="16"/>
     </resources>
 </document>

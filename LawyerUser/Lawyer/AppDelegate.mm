@@ -131,7 +131,7 @@ static SystemSoundID shake_sound_male_id = 0;
         GuideViewController * gvc =[[GuideViewController alloc]init];
         self.window.rootViewController  = gvc;
     }else{
-        if ([UserId length] > 0) {
+        if( IsLogin){
             Tab =[[MCTabBarController alloc]init];
             //    UINavigationController *MainNavi =[[UINavigationController alloc]initWithRootViewController:Tab];
             self.window.rootViewController = Tab;
@@ -441,131 +441,144 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 
-
-
-////监听购买结果
-//- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transaction {
-//    for (SKPaymentTransaction *tran in transaction) {
-//        // 如果小票状态是购买完成
-//        if (SKPaymentTransactionStatePurchased == tran.transactionState) {
-//            // 更新界面或者数据，把用户购买得商品交给用户
-//            //返回购买的商品信息
-//            NSLog(@"用户信息%@",tran.payment.applicationUsername);
-//            [self verifyPruchase:tran];
-//            //商品购买成功可调用本地接口
-//        } else if (SKPaymentTransactionStateRestored == tran.transactionState) {
-//
-//            // 将交易从交易队列中删除
-//            [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+ //- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation
+//{
 //
 //
-//        } else if (SKPaymentTransactionStateFailed == tran.transactionState) {
-//            // 支付失败
-//            //   [self showHint:@"支付失败，请重新购买"];
-//            // 将交易从交易队列中删除
-//            [[SKPaymentQueue defaultQueue] finishTransaction:tran];
 //
+//    NSString * urlStr =  [[url absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //
+////    if (self.window) {
+////        if (![urlStr hasPrefix:@"wx"]) {
+////            NSString *fileNameStr = [url lastPathComponent];
+////            // 路径
+////            //      wangFile ;
+////            NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSAllDomainsMask, YES);
+////            NSString *path = [arr objectAtIndex:0];
+////            NSString * CreatPath =[path stringByAppendingPathComponent:@"wangFile"];
+////            [[NSFileManager defaultManager] createDirectoryAtPath:CreatPath withIntermediateDirectories:YES attributes:nil error:nil];
+////            NSString *pStr = [CreatPath stringByAppendingPathComponent:fileNameStr];
+////            NSLog(@"%@",pStr);
+////            NSData *data = [[NSData alloc]initWithContentsOfURL:url];
+////            BOOL isBol =   [data writeToFile:pStr atomically:YES];
+////            //        BOOL isBol   =  [strings writeToFile:pStr atomically:YES encoding:NSUTF8StringEncoding error:&errror];
+////            if (isBol) {
+////                NSLog(@"yes");
+////            }else{
+////                NSLog(@"no");
+////            }
+////
+////            // NSLog(@"文件已存到本地文件夹内 patch = %@",Doc);
+////        }
+////    }
+//    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
+//    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+//    if (!result) {
+//        // 其他如支付等SDK的回调
+//        if ([urlStr hasPrefix:@"wx"]) {
+//            return  [WXApi handleOpenURL:url delegate:self];
 //        }
 //    }
-//}
-////交易结束
-//- (void)completeTransaction:(SKPaymentTransaction *)transaction {
-//    NSLog(@"交易结束");
-//    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-//
-//}
-//
-//// 交易失败
-//- (void)failedTransaction:(SKPaymentTransaction *)transaction{
-//    if (transaction.error.code == SKErrorPaymentCancelled) {
-//    }else{
-//
-//    }
-//    [[SKPaymentQueue defaultQueue]finishTransaction:transaction];
-//}
-//- (void)verifyPruchase:(SKPaymentTransaction *)tran{
-//
-//
-//    // 验证凭据，获取到苹果返回的交易凭据
-//    // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
-//    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
-//    // 从沙盒中获取到购买凭据
-//    NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
-//    NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-//
-//    if (1) {
-//        [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
-//        [[SKPaymentQueue defaultQueue] finishTransaction:tran];
-//
-//    }
-////    //
-////    NSString *urlString = [NSString stringWithFormat:@"%@app/apple/apple_receipt",requestURL];
-////    NSDictionary *dic;
-////    dic = @{@"apple_receipt":encodeStr,@"type":[[NSUserDefaults standardUserDefaults] objectForKey:@"typeString"],@"pay_id": [[NSUserDefaults standardUserDefaults] objectForKey:@"order_sn"],@"pay_type":@"0"};
-////    [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
-////        NSLog(@"服务器验证%@",data);
-////        //  删除监听
-////        [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
-////        NSString *code = [NSString stringWithFormat:@"%@",data[@"code"]];
-////        if ([code isEqualToString:@"200"]) {
-////            [[SKPaymentQueue defaultQueue] finishTransaction:tran];
-////        }
-////    } failure:^(NSError *error) {
-////
-////        //  删除监听
-////        [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
-////        //        [self verifyPruchase];
-////
-////
-////    }];
-//}
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation
+//    return result;
+//     //return YES;
+// }
+
+
+// NOTE: 9.0以后使用新API接口
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
     
-    
-    
-    NSString * urlStr =  [[url absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    if (self.window) {
-        if (![urlStr hasPrefix:@"wx"]) {
-            NSString *fileNameStr = [url lastPathComponent];
-            // 路径
-            //      wangFile ;
-            NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSAllDomainsMask, YES);
-            NSString *path = [arr objectAtIndex:0];
-            NSString * CreatPath =[path stringByAppendingPathComponent:@"wangFile"];
-            [[NSFileManager defaultManager] createDirectoryAtPath:CreatPath withIntermediateDirectories:YES attributes:nil error:nil];
-            NSString *pStr = [CreatPath stringByAppendingPathComponent:fileNameStr];
-            NSLog(@"%@",pStr);
-            NSData *data = [[NSData alloc]initWithContentsOfURL:url];
-            BOOL isBol =   [data writeToFile:pStr atomically:YES];
-            //        BOOL isBol   =  [strings writeToFile:pStr atomically:YES encoding:NSUTF8StringEncoding error:&errror];
-            if (isBol) {
-                NSLog(@"yes");
-            }else{
-                NSLog(@"no");
-            }
-            
-            // NSLog(@"文件已存到本地文件夹内 patch = %@",Doc);
-        }
+    NSLog(@" alipay -  结果 返回 9 以上 ") ;
+    if ([url.host isEqualToString:@"safepay"]) {// 支付宝支付
+        // 支付跳转支付宝钱包进行支付，处理支付结果
+//        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+//            //            NSLog(@"支付宝支付结果回调result = %@",resultDic);
+//            NSString *resultStatus = resultDic[@"resultStatus"];
+//            NSDictionary *dic = @{@"resultStatus":resultStatus, @"type":@"1"};
+//            [[NSNotificationCenter defaultCenter] postNotificationName:Alipay_PayResultNotfication object:nil userInfo:dic];
+//            
+//        }];
+//        
+//        // 授权跳转支付宝钱包进行支付，处理支付结果
+//        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+//            //            NSLog(@"result = %@",resultDic);
+//            // 解析 auth code
+//            NSString *result = resultDic[@"result"];
+//            NSString *authCode = nil;
+//            if (result.length>0) {
+//                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+//                for (NSString *subResult in resultArr) {
+//                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+//                        authCode = [subResult substringFromIndex:10];
+//                        break;
+//                    }
+//                }
+//            }
+//            //            NSLog(@"授权结果 authCode = %@", authCode?:@"");
+//        }];
+        
+    }else{ //微信支付
+        
+        return  [WXApi handleOpenURL:url delegate:self] ;
+        
     }
-    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
-    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
-    if (!result) {
-        // 其他如支付等SDK的回调
-        if ([urlStr hasPrefix:@"wx"]) {
-            return  [WXApi handleOpenURL:url delegate:self];
-        }
-    }
-    return result;
-    
-    
-    //return YES;
-    
-    
+    return YES;
 }
--(void)onResp:(BaseResp *)resp{
+
+ #pragma mark - 支付宝
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    NSLog(@" alipay -  结果 返回 9 一下 ") ;
+    if ([url.host isEqualToString:@"safepay"]) { // 支付宝支付
+        // 支付跳转支付宝钱包进行支付，处理支付结果
+//        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+//            //            NSLog(@"result = %@",resultDic);
+//            NSString *resultStatus = resultDic[@"resultStatus"];
+//            NSDictionary *dic = @{@"resultStatus":resultStatus , @"type":@"1"};
+//            [[NSNotificationCenter defaultCenter] postNotificationName:Alipay_PayResultNotfication object:nil userInfo:dic];
+//        }];
+//        /**
+//         * 收到 应用跳转 回调 , 发送通知 , 在支付页面处理支付结果 ,  支付页面 block里处理网页支付的回调
+//         * Appdelegate 里处理应用跳转的回调
+//         */
+//
+//        // 授权跳转支付宝钱包进行支付，处理支付结果
+//        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+//            //            NSLog(@"result = %@",resultDic);
+//            // 解析 auth code
+//            NSString *result = resultDic[@"result"];
+//            NSString *authCode = nil;
+//            if (result.length>0) {
+//                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+//                for (NSString *subResult in resultArr) {
+//                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+//                        authCode = [subResult substringFromIndex:10];
+//                        break;
+//                    }
+//                }
+//            }
+//            //            NSLog(@"授权结果 authCode = %@", authCode?:@"");
+//        }];
+        
+    }else{// 微信支付
+        
+        return  [WXApi handleOpenURL:url delegate:self] ;
+    }
+    
+    return YES;
+}
+
+#pragma  mark 微信支付回调
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [WXApi handleOpenURL:url delegate:self];
+}
+
+#pragma mark 微信支付代理
+ -(void)onResp:(BaseResp *)resp{
     [[NSNotificationCenter defaultCenter]postNotificationName:@"PAYSTATUE" object:resp];
     
 }

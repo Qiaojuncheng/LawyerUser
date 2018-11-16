@@ -121,7 +121,7 @@
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     NewCaseNews
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
-    if ([UserId length]> 0) {
+    if( IsLogin){
         [valuedic setValue:UserId forKey:@"id"];
         [valuedic setValue:@"1" forKey:@"type"];
 

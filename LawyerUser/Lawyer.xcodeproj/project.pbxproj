@@ -890,13 +890,13 @@
 		1F2C1AC5218A9EB400749B42 /* meeaageCeneter */ = {
 			isa = PBXGroup;
 			children = (
-				1F2C1AC6218A9EB400749B42 /* LawMianPageMessageCenter.m */,
-				1F2C1AC7218A9EB400749B42 /* LawMianPageMessageList.m */,
-				1F2C1AC8218A9EB400749B42 /* LawMianPageMessageList.h */,
 				1F2C1AC9218A9EB400749B42 /* LawMianPageMessageCenter.h */,
+				1F2C1AC6218A9EB400749B42 /* LawMianPageMessageCenter.m */,
+				1F2C1AC8218A9EB400749B42 /* LawMianPageMessageList.h */,
+				1F2C1AC7218A9EB400749B42 /* LawMianPageMessageList.m */,
+				1F2C1AD1218A9EB400749B42 /* meessageModel */,
 				1F2C1ACA218A9EB400749B42 /* model */,
 				1F2C1ACD218A9EB400749B42 /* NewMessageCell */,
-				1F2C1AD1218A9EB400749B42 /* meessageModel */,
 			);
 			path = meeaageCeneter;
 			sourceTree = "<group>";
@@ -1743,8 +1743,8 @@
 			isa = PBXGroup;
 			children = (
 				1FF619C32188A6CF00C13C28 /* LawIWantPublicVC.h */,
-				1FF619C42188A6CF00C13C28 /* LawIWantPublicVC.xib */,
 				1FF619C52188A6CF00C13C28 /* LawIWantPublicVC.m */,
+				1FF619C42188A6CF00C13C28 /* LawIWantPublicVC.xib */,
 			);
 			path = "public我要发布";
 			sourceTree = "<group>";

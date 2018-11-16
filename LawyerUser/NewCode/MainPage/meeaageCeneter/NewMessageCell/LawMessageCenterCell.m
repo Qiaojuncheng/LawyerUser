@@ -25,7 +25,7 @@
         self.RedView.hidden = YES;
 
     }
-    self.TimeLB.text =[NSString timeWithTimeIntervalString:model.time];
+    self.TimeLB.text =[NSString timeWithTimeIntervalString:model.create_time];
     self.ConcentLB.text = model.title;
     if([model.type isEqualToString:@"1"]){
         self.MeeageImage.image =[UIImage imageNamed:@"news_telephone"];

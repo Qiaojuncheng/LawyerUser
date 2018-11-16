@@ -47,7 +47,7 @@
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
     NewmyCollect
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
-    if ([UserId length]> 0) {
+    if( IsLogin){
         [valuedic setValue:UserId forKey:@"uid"];
          [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
         [valuedic setValue:[NSString stringWithFormat:@"%@",type] forKey:@"type"];

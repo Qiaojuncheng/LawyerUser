@@ -39,7 +39,7 @@
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
         NewmymyConsult
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
-    if ([UserId length]> 0) {
+    if( IsLogin){
         [valuedic setValue:UserId forKey:@"uid"];
         
         [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
@@ -125,10 +125,9 @@
  }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     lawMyconsultDetailVC * detail =[[lawMyconsultDetailVC alloc]init];
-    
-    detail.model = dataArrray[indexPath.row];
-    detail.model.red = @"1";
-    [dataArrray replaceObjectAtIndex:indexPath.row withObject:detail.model];
+    lawMyconsultListModel *model = dataArrray[indexPath.row];
+    detail.ConstulId = model.id;
+    [dataArrray replaceObjectAtIndex:indexPath.row withObject:model];
     [_tableView reloadData];
     [self.navigationController pushViewController:detail animated:YES];
     

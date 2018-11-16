@@ -57,7 +57,8 @@
       NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
          NewIndex
       NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
-          NSString * base64String =[NSString getBase64StringWithArray:valuedic];
+    [valuedic  setObject:UserId forKey:@"mid"];
+    NSString * base64String =[NSString getBase64StringWithArray:valuedic];
         [dic setValue:base64String forKey:@"value"];
         
         [AFManagerHelp POST:MainUrl parameters:dic success:^(id responseObjeck) {

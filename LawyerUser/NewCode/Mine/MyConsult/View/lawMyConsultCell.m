@@ -30,10 +30,11 @@
     }else{
         self.AnswerLB.text = [NSString stringWithFormat:@"%@",Model.create_time];
     }
-    if ([Model.red isEqualToString:@"1"]) {
-        self.RedVIew.hidden = YES ;
-    }else{
+    if ([Model.red isEqualToString:@"0"]) {
         self.RedVIew.hidden = NO;
+     }else{
+         self.RedVIew.hidden = YES ;
+
     }
     
 }

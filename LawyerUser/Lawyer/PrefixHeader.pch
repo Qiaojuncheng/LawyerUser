@@ -247,6 +247,12 @@
 #pragma  mark 新的接口
 #pragma  mark  首页
 
+// 消息列表
+#define LawMainUserMessage [dic setValue:@"App/User/message" forKey:@"action"];
+
+
+
+
 //首页推荐律师
 #define LawMaingetTuiLawyer [dic setValue:@"App/User/getTuiLawyer" forKey:@"action"];
 //首页轮播图；App/Public/banner
@@ -262,9 +268,12 @@
 
 // z余额支付
 #define NewYuEPay [dic setValue:@"App/Service/moneyPay" forKey:@"action"];
-
-
- 
+// 获取为微信支付 信息
+#define NewGetwxPay [dic setValue:@"App/Service/wxPay" forKey:@"action"];
+// 获取套餐订单新信息
+#define NewGetbuyVip [dic setValue:@"App/Vip/buyVip" forKey:@"action"];
+ //套餐支付
+#define NewServicePay [dic setValue:@"App/Service/servicePay" forKey:@"action"];
 
 
 #pragma  mark  找律师
@@ -352,6 +361,9 @@
 #define NewmyusermyAppoint  [dic setValue:@"App/User/myAppoint" forKey:@"action"];
 //结束预约
 #define NewmyusermyAppointOver  [dic setValue:@"App/User/appointOver" forKey:@"action"];
+// 我要发布
+#define NewUserRelease [dic setValue:@"App/User/release" forKey:@"action"];
+
 
 // 意见反馈
 #define QJAddvicefeedback [dic setValue:@"App/Public/feedback" forKey:@"action"];

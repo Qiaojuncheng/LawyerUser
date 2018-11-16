@@ -32,7 +32,7 @@
 -(void)makeData{
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
     NewHetermind
-    if( [UserId length] < 1){
+    if( !IsLogin){
         return ;
     }
     NSDictionary * valudic ;

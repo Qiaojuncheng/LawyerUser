@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface lawMyconsultDetailVC : BaseViewController
+@property (strong , nonatomic) NSString  *ConstulId ;
 
 @property (strong , nonatomic) lawMyconsultListModel *model ;
 

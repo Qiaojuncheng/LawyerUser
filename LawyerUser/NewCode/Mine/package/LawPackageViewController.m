@@ -33,7 +33,7 @@
 -(void)makeData{
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
 //    NewMyticket
-    if( [UserId length] < 1){
+    if( !IsLogin){
         return ;
     }
     NSDictionary * valudic  = @{@"lawyer_id":UserId,@"p":[NSString stringWithFormat:@"%ld",page]};
@@ -149,7 +149,7 @@
     
     NSDictionary * dic  =[[NSMutableDictionary alloc]init];
 //    NewticketChange
-    if( [UserId length] < 1){
+    if( !IsLogin){
         return ;
     }
     NSDictionary * valudic  = @{@"lawyer_id":UserId,@"id":model.id};
