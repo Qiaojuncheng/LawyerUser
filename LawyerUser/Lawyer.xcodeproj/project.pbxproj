@@ -262,6 +262,7 @@
 		1FFD33DD1EA1AC33003BD66D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFD33DC1EA1AC33003BD66D /* Security.framework */; };
 		1FFD33DF1EA1AC4F003BD66D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFD33DE1EA1AC4F003BD66D /* libsqlite3.tbd */; };
 		1FFD33E11EA1AC5A003BD66D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFD33E01EA1AC5A003BD66D /* CoreTelephony.framework */; };
+		1FFE6045219EC23D004D0919 /* lawMyOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE6044219EC23D004D0919 /* lawMyOrderModel.m */; };
 		9A1933601F7F284300D23A36 /* WYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A19335E1F7F284300D23A36 /* WYViewController.m */; };
 		9A1933611F7F284400D23A36 /* WYViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A19335F1F7F284300D23A36 /* WYViewController.xib */; };
 		9A25D8461F8F48DD00BC632A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A25D8451F8F48DD00BC632A /* libc++.tbd */; };
@@ -736,6 +737,8 @@
 		1FFD33DC1EA1AC33003BD66D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1FFD33DE1EA1AC4F003BD66D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		1FFD33E01EA1AC5A003BD66D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1FFE6043219EC23D004D0919 /* lawMyOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawMyOrderModel.h; sourceTree = "<group>"; };
+		1FFE6044219EC23D004D0919 /* lawMyOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawMyOrderModel.m; sourceTree = "<group>"; };
 		46FAF65B3318F8B0A4F74409 /* Pods-Lawyer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lawyer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lawyer/Pods-Lawyer.debug.xcconfig"; sourceTree = "<group>"; };
 		6AB013BFB289E6F80BBDB2D0 /* Pods-LawyerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LawyerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LawyerUITests/Pods-LawyerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		70F561945D3DB89F459A2E67 /* libPods-LawyerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LawyerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1203,6 +1206,8 @@
 		1FA4699921913E9800A57CAD /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1FFE6043219EC23D004D0919 /* lawMyOrderModel.h */,
+				1FFE6044219EC23D004D0919 /* lawMyOrderModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2626,6 +2631,7 @@
 				9A3DF6EB1F79EBFA002CCAB3 /* MJRefreshNormalHeader.m in Sources */,
 				1F1972BB1F38081B00C648CF /* HttpAfManager.m in Sources */,
 				1FF61A8B2188A6D000C13C28 /* LawNewHeZuoViewController.m in Sources */,
+				1FFE6045219EC23D004D0919 /* lawMyOrderModel.m in Sources */,
 				1F1972D41F3853DE00C648CF /* TLCityPickerSearchResultController.m in Sources */,
 				1FF61AA32188A6D000C13C28 /* LawSeletAreaViewController.m in Sources */,
 				1FF61AA82188A6D000C13C28 /* LawplatformEditCell.m in Sources */,

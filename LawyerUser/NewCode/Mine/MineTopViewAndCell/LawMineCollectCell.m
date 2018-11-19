@@ -11,6 +11,7 @@
 @implementation LawMineCollectCell
 -(void)layoutSubviews{
     [super layoutSubviews];
+    [Utile makeCorner:4 view:self.RedView];
 }
 
 - (void)awakeFromNib {

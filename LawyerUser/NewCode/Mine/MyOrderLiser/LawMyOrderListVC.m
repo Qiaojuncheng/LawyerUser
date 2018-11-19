@@ -9,6 +9,7 @@
 #import "LawMyOrderListVC.h"
 #import "lawMyOrderListCell.h"
 #import "lawMyOrderDetailVC.h"
+#import "lawMyOrderModel.h"
 @interface LawMyOrderListVC ()<UITableViewDataSource,UITableViewDelegate>{
     NSMutableArray * dataArrray ;
     UITableView * _tableView;
@@ -38,10 +39,10 @@
         
     }
     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    //    NewCasemyCollect
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
+    NewAppUsermyOrder
     if( IsLogin){
-        [valuedic setValue:UserId forKey:@"lawyer_id"];
+        [valuedic setValue:UserId forKey:@"uid"];
         
         [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
         
@@ -57,8 +58,10 @@
                 }
                 for (NSDictionary  * dicc in responseObjeck[@"data"]) {
                     
-                    //                    LawCaseNewModel * model = [LawCaseNewModel yy_modelWithJSON:dicc];
-                    //                    [dataArrray addObject:model];
+                                        lawMyOrderModel * model = [lawMyOrderModel yy_modelWithJSON:dicc];
+                model.cellHeight =[NSString GetHeightWithMaxSize:CGSizeMake(SCREENWIDTH - 35, MAXFLOAT) AndFont:[UIFont systemFontOfSize:13] AndText:model.content].height +135;
+
+                                        [dataArrray addObject:model];
                     
                 }
                 [_tableView reloadData];
@@ -104,7 +107,7 @@
     [self.view addSubview:_tableView];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  10;// dataArrray.count;
+    return    dataArrray.count;
     
 }
 
@@ -114,16 +117,18 @@
     if (cell == nil) {
         cell  =[[[NSBundle mainBundle ]loadNibNamed:@"lawMyOrderListCell" owner:self options:nil]lastObject];
     }
+    cell.model = dataArrray[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return  cell ;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 197;
+    lawMyOrderModel * model = dataArrray[indexPath.row];
+     return model.cellHeight ;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    lawMyOrderDetailVC * detail =[[lawMyOrderDetailVC alloc]init];
-    [self.navigationController pushViewController:detail animated:YES];
+//    lawMyOrderDetailVC * detail =[[lawMyOrderDetailVC alloc]init];
+//    [self.navigationController pushViewController:detail animated:YES];
     
 }
 

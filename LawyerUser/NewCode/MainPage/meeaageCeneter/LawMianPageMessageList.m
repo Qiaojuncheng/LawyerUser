@@ -131,22 +131,24 @@
 //    type   1 咨询 2 电话预约 3 见面预约 4 法律服务 5 会员到期
    if ([modle.type isEqualToString:@"1"]) {
        lawMyconsultDetailVC * detail =[[lawMyconsultDetailVC alloc]init];
-       detail.ConstulId = modle.tid;
+       detail.ConstulId = modle.id;
        [self.navigationController pushViewController:detail animated:YES];
    }else if ([modle.type isEqualToString:@"2"]){
        //  @"电话预约";
        lawPhoneAppointVC * phoneVC =[[lawPhoneAppointVC alloc]init];
-       phoneVC.mid = modle.tid;
+       phoneVC.mid = modle.id;
        [self.navigationController pushViewController:phoneVC animated:YES];
    }else if([modle.type isEqualToString:@"3"]){
        
        lawMeetAppointVC * meetVC =[[lawMeetAppointVC alloc]init];
-       meetVC.mid = modle.tid;
+       meetVC.mid = modle.id;
 
        [self.navigationController pushViewController:meetVC animated:YES];
    }else if([modle.type isEqualToString:@"5"]){
 //       会员
        lawVipZoneVC * vc=[[lawVipZoneVC alloc]init];
+       vc.mid = modle.id;
+
        [self.navigationController pushViewController:vc animated:YES];
 
    }

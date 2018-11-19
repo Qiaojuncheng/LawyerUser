@@ -74,7 +74,12 @@
     [self initCollectionView];
     //    [self addCenterLabelWithTitle:@"个人中心" titleColor:[UIColor whiteColor]];
     // Do any additional setup after loading the view.
+       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(PushAction:) name:@"PushMessage" object:nil];
 }
+-(void)PushAction:(NSNotification *)nofi{
+    [_collectionView reloadData];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -329,6 +334,29 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     }
     cell.CellImage.image = [UIImage imageNamed:CollectitemImageArray[indexPath.section][indexPath.row]];
     cell.CellLabel.text = CollectitemArray[indexPath.section][indexPath.row];
+    
+    if (indexPath.section == 1) {
+        cell.RedView.hidden = YES ;
+    }else{
+         NSString *  ShowTopView ;
+        
+        if (indexPath.row ==  0) {
+              ShowTopView =[[NSUserDefaults standardUserDefaults] objectForKey:@"consultShow"];
+         }else if (indexPath.row ==  1) {
+             ShowTopView =[[NSUserDefaults standardUserDefaults] objectForKey:@"PhoneAppointShow"];
+        }else if (indexPath.row ==  2) {
+            ShowTopView =[[NSUserDefaults standardUserDefaults] objectForKey:@"MeetAppointShow"];
+        }else if (indexPath.row ==  3) {
+            ShowTopView =[[NSUserDefaults standardUserDefaults] objectForKey:@"OredrShow"];
+        }
+        if ( [ShowTopView isEqualToString:@"YES"]) {
+            cell.RedView.hidden = NO ;
+        }else{
+            cell.RedView.hidden = YES ;
+        }
+ 
+        
+    }
     return cell;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -339,23 +367,30 @@ referenceSizeForHeaderInSection:(NSInteger)section {
             return;
         }
         
-        
         if(indexPath.row == 0){
              lawMyConsultListVC * phoneVC =[[lawMyConsultListVC alloc]init];
+            [UD setObject:@"NO"  forKey:@"consultShow"];
+
             [self.navigationController pushViewController:phoneVC animated:YES];
         }else if (indexPath.row ==1){
             //  @"电话预约";
+            [UD setObject:@"NO"forKey:@"PhoneAppointShow"];
+
             lawPhoneAppointVC * phoneVC =[[lawPhoneAppointVC alloc]init];
             [self.navigationController pushViewController:phoneVC animated:YES];
         }else if(indexPath.row ==2){
-            
+            [UD setObject:@"NO"  forKey:@"MeetAppointShow"];
+
             lawMeetAppointVC * meetVC =[[lawMeetAppointVC alloc]init];
             [self.navigationController pushViewController:meetVC animated:YES];
          }else if (indexPath.row==3){
+             [UD setObject:@"NO"  forKey:@"OredrShow"];
              LawMyOrderListVC * adsListVc = [[LawMyOrderListVC alloc]init];
              [self.navigationController pushViewController:adsListVc animated:YES];
 
         }
+        [UD synchronize];
+        [collectionView reloadData];
         
         
     }
@@ -400,7 +435,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 #pragma mark  定义每个UICollectionView的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  CGSizeMake(75 ,90);
+    return  CGSizeMake(75 ,94);
 }
 
 

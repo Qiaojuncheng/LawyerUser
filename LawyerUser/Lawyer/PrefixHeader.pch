@@ -363,6 +363,8 @@
 #define NewmyusermyAppointOver  [dic setValue:@"App/User/appointOver" forKey:@"action"];
 // 我要发布
 #define NewUserRelease [dic setValue:@"App/User/release" forKey:@"action"];
+//我的订单
+#define NewAppUsermyOrder  [dic setValue:@"App/User/myOrder" forKey:@"action"];
 
 
 // 意见反馈

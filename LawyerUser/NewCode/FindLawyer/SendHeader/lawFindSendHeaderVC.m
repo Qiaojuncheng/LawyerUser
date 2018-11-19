@@ -75,8 +75,11 @@
                     UILabel * label =  (UILabel *)LBArray[i];
                     label.text =[NSString stringWithFormat:@"￥%@",money];
                     i++;
+                    if (i ==4) {
+                        return ;
+                    }
+
                 }
-                
             }
         }
      } failure:^(NSError *error) {

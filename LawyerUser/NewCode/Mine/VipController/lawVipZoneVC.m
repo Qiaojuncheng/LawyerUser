@@ -57,7 +57,9 @@
       NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
          NewIndex
       NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
-    [valuedic  setObject:UserId forKey:@"mid"];
+    if(self.mid){
+        [valuedic  setObject:UserId forKey:@"mid"];
+    }
     NSString * base64String =[NSString getBase64StringWithArray:valuedic];
         [dic setValue:base64String forKey:@"value"];
         

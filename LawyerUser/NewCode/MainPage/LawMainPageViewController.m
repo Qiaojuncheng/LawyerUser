@@ -57,10 +57,20 @@
     [self addView];
     [self  getBannerData];
     [self  getHeat];
+    
+    BOOL  ShowTopView =[UD objectForKey:@"showMainpageTip"];
+    if ( ShowTopView) {
+        tipView.hidden = NO ;
+    }else{
+        tipView.hidden = YES ;
+    }
+    
+    
 }
 -(void)PushAction:(NSNotification *)nofi{
     NSLog(@"%@ === %@ === %@", nofi.object, nofi.userInfo, nofi.name);
     tipView.hidden = NO;
+
  
 }
 -(void)addCentersearchView{
@@ -331,6 +341,7 @@
     .heightIs(44);
     
     tipView = [[UIView alloc] initWithFrame:CGRectMake(rightButton.width - 15, 10, 8, 8)];
+    tipView.backgroundColor = [UIColor redColor];
     [Utile makeCorner:tipView.height/2 view:tipView];
     [rightButton addSubview:tipView];
     
@@ -416,14 +427,15 @@
     [AlertVC addAction:sure];
     [self presentViewController:AlertVC animated:YES completion:nil];
 }
-#pragma mark 通知
+#pragma mark 进入消息中心
 -(void)rightBar_Action:(UIButton * )sender{
     
 //      判断登录；
      PostComeinLogionNotific
     
        tipView.hidden = YES ;
- 
+    [UD setBool:NO  forKey:@"showMainpageTip"];
+    [UD synchronize];
     NSLog(@"通知");
     LawMianPageMessageCenter* messagecent = [[LawMianPageMessageCenter alloc]init];
     [self.navigationController pushViewController:messagecent animated:YES];

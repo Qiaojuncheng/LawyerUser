@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="lawMyOrderListCell">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="151" id="KGk-i7-Jjw" customClass="lawMyOrderListCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="196.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="150.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzS-rG-sG9">
@@ -25,7 +25,7 @@
                             <constraint firstAttribute="height" constant="10" id="QST-JB-lyW"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kc3-86-WuK">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_empty" translatesAutoresizingMaskIntoConstraints="NO" id="kc3-86-WuK">
                         <rect key="frame" x="16" y="24" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="5jj-X4-VJt"/>
@@ -59,14 +59,14 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容内容内容内容内容内容内容内容内容内容内容内容内容 内容内容内容内容内容内容内容内容内容内容内容内容内容 内容内容内容内容内" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffl-ps-9H0">
-                        <rect key="frame" x="16" y="78" width="343" height="47"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffl-ps-9H0">
+                        <rect key="frame" x="16" y="78" width="343" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-07-24 13:10:47" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eY-ek-0YQ">
-                        <rect key="frame" x="16" y="174" width="102" height="9"/>
+                        <rect key="frame" x="16" y="128" width="102" height="9"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="9" id="Qtj-tQ-7Pl"/>
                         </constraints>
@@ -75,7 +75,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合同类型" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqD-4t-aRF">
-                        <rect key="frame" x="16" y="146" width="58" height="19"/>
+                        <rect key="frame" x="16" y="100" width="58" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="58" id="DPs-vO-0R5"/>
                             <constraint firstAttribute="height" constant="19" id="a6L-hj-5l5"/>
@@ -85,7 +85,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务价格：888元（套餐券支付)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rm9-no-2ID">
-                        <rect key="frame" x="170" y="149" width="189" height="13"/>
+                        <rect key="frame" x="170" y="103" width="189" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="dh3-4e-Y19"/>
                         </constraints>
@@ -94,7 +94,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8人竞标" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTv-KQ-Q4V">
-                        <rect key="frame" x="310.5" y="171" width="48.5" height="13"/>
+                        <rect key="frame" x="310.5" y="125" width="48.5" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="UC3-d3-6Zu"/>
                         </constraints>
@@ -103,7 +103,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_bidding" translatesAutoresizingMaskIntoConstraints="NO" id="3F7-ib-b0Z">
-                        <rect key="frame" x="287.5" y="171" width="13" height="12"/>
+                        <rect key="frame" x="287.5" y="125" width="13" height="12"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="13" id="fkD-TV-KIi"/>
                             <constraint firstAttribute="height" constant="12" id="zSf-OB-6RV"/>
@@ -137,10 +137,22 @@
                     <constraint firstItem="rm9-no-2ID" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="yww-Yb-CeR"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="244" y="131.78410794602701"/>
+            <connections>
+                <outlet property="Address" destination="Uxe-wp-oQp" id="JwW-pU-3of"/>
+                <outlet property="BigType" destination="LJT-aR-hBQ" id="Dwj-Ve-cX7"/>
+                <outlet property="NameLb" destination="sw7-Wi-1bb" id="yRJ-ve-eaM"/>
+                <outlet property="PriceLB" destination="rm9-no-2ID" id="WZh-yu-0Vc"/>
+                <outlet property="TimeLB" destination="7eY-ek-0YQ" id="lEA-ug-iuM"/>
+                <outlet property="TypeLB" destination="xqD-4t-aRF" id="FCD-q3-njL"/>
+                <outlet property="concentLB" destination="ffl-ps-9H0" id="cTo-XG-cCG"/>
+                <outlet property="headerImage" destination="kc3-86-WuK" id="Kcd-YX-F2L"/>
+                <outlet property="numLB" destination="vTv-KQ-Q4V" id="Bvy-gh-5EV"/>
+            </connections>
+            <point key="canvasLocation" x="244" y="111.0944527736132"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="head_empty" width="60" height="59"/>
         <image name="icon_bidding" width="13" height="12"/>
     </resources>
 </document>

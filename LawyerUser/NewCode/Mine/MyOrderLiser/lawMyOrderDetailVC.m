@@ -41,7 +41,7 @@
     //    NewCasemyCollect
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
     if( IsLogin){
-        [valuedic setValue:UserId forKey:@"lawyer_id"];
+        [valuedic setValue:UserId forKey:@"uid"];
         
         [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
         

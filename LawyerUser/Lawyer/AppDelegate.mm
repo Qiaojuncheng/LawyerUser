@@ -53,6 +53,8 @@ static SystemSoundID shake_sound_male_id = 0;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+   
+    
     [self getPhone];
     [self getlocation];
      UserDefaults =[NSUserDefaults standardUserDefaults];
@@ -79,12 +81,13 @@ static SystemSoundID shake_sound_male_id = 0;
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
 
     
+#pragma mark  极光设置
     // Required
     // init Push
     // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
     // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
-    [JPUSHService setupWithOption:launchOptions appKey:@"4f8d107be387cc5ed6c54302"
-                          channel:@"xiazeidizhi"
+    [JPUSHService setupWithOption:launchOptions appKey:@"901a44bbf61d062d51ccc913"
+                          channel:@"xiazeidi"
                  apsForProduction:YES];//0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
     
     
@@ -163,7 +166,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
 }
-
+#pragma mark 设置别名
 -(void)setalias{
     
     NSString * UUid  =   [[[UIDevice currentDevice] identifierForVendor] UUIDString];
@@ -262,11 +265,37 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    NSString *content = [userInfo valueForKey:@"content"];
     NSDictionary *extras = [userInfo valueForKey:@"extras"];
     NSString *customizeField1 = [extras valueForKey:@"stateNumber"]; //服务端传递的Extras附加字段，key是自己定义的
-//    customizeField   1 我的咨询   1 收到回复
-//     我的预约     2 有律师同意   3有律师拒绝  4 有律师点击完成提示去评价
-//     我的需求   5 律师抢单成功   6 律师点完成提示评价
-   
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"PushMessage" object:customizeField1];
+/*
+ 所有通知首页右上角都显示红点
+ 1. 咨询) 您发布的咨询已经有律师回复，点击查看
+ 2. 电弧预约）您发布的电话咨询律师已接单，请保持电话畅通/您的电话咨询服
+ 3. 预约面谈）务已完成，请确认服务完成 您发布的预约面谈律师已接单，请保持电话畅通/您的预
+ 4. 订单）您发布的案件委托已有律师参与竞标，点击查看
+ 
+*/
+
+    NSLog(@"在线消息 == %@ ",customizeField1);
+    // 首页必显示
+    [UD setBool:YES  forKey:@"showMainpageTip"];
+    
+//    咨询
+    if([customizeField1 isEqualToString:@"1"]){
+        [UD  setObject:@"YES" forKey:@"consultShow"];
+     }else   if([customizeField1 isEqualToString:@"2"]){
+        [UD setObject:@"YES" forKey:@"PhoneAppointShow"];
+     }else  if([customizeField1 isEqualToString:@"3"]){
+        [UD setObject:@"YES" forKey:@"MeetAppointShow"];
+    }else  if([customizeField1 isEqualToString:@"4"]){
+        [UD setObject:@"YES" forKey:@"OredrShow"];
+    }
+    
+    
+    [UD synchronize];
+    
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PushMessage" object:customizeField1];
 
     
 //    if ([customizeField1 isEqualToString:@"1"])//
@@ -284,7 +313,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //        [self otherLogin];
 //    }
     [self playSoundAndVibration];
-     NSLog(@"自定义消息  = %@",userInfo);
+//     NSLog(@"自定义消息  = %@",userInfo);
 }
 -(void)otherLogin{
     NSLog(@"其他设备登录请 清除别名清除本地数据退出登录");
