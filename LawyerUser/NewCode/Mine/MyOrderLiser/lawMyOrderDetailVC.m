@@ -9,11 +9,13 @@
 #import "lawMyOrderDetailVC.h"
 #import "lawMyOrderListCell.h"
 #import "lawMyOrderDetailCell.h"
+#import "lawOrderResultModel.h"
+#import "lawMyOrderModel.h"
 @interface lawMyOrderDetailVC ()<UITableViewDataSource,UITableViewDelegate>{
     NSMutableArray * dataArrray ;
     UITableView * _tableView;
-    NSInteger page ;
-}
+    lawMyOrderModel * detailModel ;
+ }
 
 
 @end
@@ -22,8 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    page = 1;
-    dataArrray =[[NSMutableArray alloc]init];
+     dataArrray =[[NSMutableArray alloc]init];
     self.view.backgroundColor  =   BackViewColor;
     
     [self addCenterLabelWithTitle:@"服务详情" titleColor:nil];
@@ -33,45 +34,34 @@
 }
 -(void)makeCollect{
     
-    if(page==1){
-        [self showHudInView:self.view hint:nil];
+         [self showHudInView:self.view hint:nil];
         
-    }
-    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
-    //    NewCasemyCollect
+     NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+        NewAppUsermyorderXq
     NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
     if( IsLogin){
         [valuedic setValue:UserId forKey:@"uid"];
-        
-        [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
-        
+        [valuedic setValue:self.orderId forKey:@"id"];
+ 
         NSString * base64String =[NSString getBase64StringWithArray:valuedic];
         [dic setValue:base64String forKey:@"value"];
-        
         [AFManagerHelp POST:MainUrl parameters:dic success:^(id responseObjeck) {
             [self hideHud];
             // 处理数据
             if ([responseObjeck[@"status"] integerValue] == 0) {
-                if (page == 1) {
-                    [dataArrray removeAllObjects];
-                }
-                for (NSDictionary  * dicc in responseObjeck[@"data"]) {
-                    
-                    //                    LawCaseNewModel * model = [LawCaseNewModel yy_modelWithJSON:dicc];
-                    //                    [dataArrray addObject:model];
-                    
+                     [dataArrray removeAllObjects];
+                detailModel = [lawMyOrderModel yy_modelWithJSON:responseObjeck[@"data"]];
+                detailModel.cellHeight =[NSString GetHeightWithMaxSize:CGSizeMake(SCREENWIDTH - 35, MAXFLOAT) AndFont:[UIFont systemFontOfSize:13] AndText:detailModel.content].height +135;
+                for (NSDictionary  * dicc in responseObjeck[@"data"][@"bidding_list"]) {
+                      lawOrderResultModel * model = [lawOrderResultModel yy_modelWithJSON:dicc];
+                    model.cellHeight =[NSString GetHeightWithMaxSize:CGSizeMake(SCREENWIDTH - 75, MAXFLOAT) AndFont:[UIFont systemFontOfSize:15] AndText:model.describe].height +56;
+                    [dataArrray addObject:model];
                 }
                 [_tableView reloadData];
             }
-            [_tableView.mj_header endRefreshing];
-            [_tableView.mj_footer endRefreshing];
-            
         } failure:^(NSError *error) {
             [self hideHud];
-            [_tableView.mj_header endRefreshing];
-            [_tableView.mj_footer endRefreshing];
         }];
-        
     }
     
 }
@@ -81,34 +71,24 @@
     _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0,  NavStatusBarHeight  , SCREENWIDTH, SCREENHEIGHT  -  NavStatusBarHeight  ) style:UITableViewStylePlain];
     _tableView.delegate=  self;
     _tableView.dataSource = self;
-    _tableView.separatorInset = UIEdgeInsetsMake(0,30, 0, 30);
+    _tableView.separatorInset =  UIEdgeInsetsMake(0, SCREENWIDTH, 0, 0);
     _tableView.separatorColor =[UIColor colorWithHex:0xE5E5E5];
     _tableView.backgroundColor =[UIColor whiteColor];
     _tableView.tableFooterView = [[UIView alloc]init];
     __weak typeof(self) weakSelf = self;
-    _tableView.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page = 1;
-        
-        [weakSelf makeCollect];
-    }];
-    
+ 
     _tableView.estimatedRowHeight = 0;
     _tableView.estimatedSectionHeaderHeight= 0;
     _tableView.estimatedSectionFooterHeight= 0;
     
     
-    
-    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-        page ++;
-        [weakSelf makeCollect];
-    }];
     [self.view addSubview:_tableView];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
         return 1;
     }else{
-        return  10;// dataArrray.count;
+        return   dataArrray.count;
 
     }
     
@@ -120,7 +100,7 @@
     if (section == 0) {
         return 0.0001;
     }else{
-        return 30;
+        return 10;
     }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -140,13 +120,18 @@
         cell  =[[[NSBundle mainBundle ]loadNibNamed:@"lawMyOrderListCell" owner:self options:nil]lastObject];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.model =  detailModel;
     return  cell ;
     }else{
         lawMyOrderDetailCell  * cell  =[tableView dequeueReusableCellWithIdentifier:@"decell"];
         if (cell == nil) {
             cell  =[[[NSBundle mainBundle ]loadNibNamed:@"lawMyOrderDetailCell" owner:self options:nil]lastObject];
         }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.model = dataArrray[indexPath.row];
+         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.PinBlock = ^{
+            [self makePingAction];
+        };
         return  cell ;
 
         
@@ -154,9 +139,10 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 197;
+        return detailModel.cellHeight;
     }else{
-        return 100;
+        lawOrderResultModel * model =   dataArrray[indexPath.row];
+        return model.cellHeight;
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -170,9 +156,15 @@
                 scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0,0);
             } else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
                     scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
-                }
+            }
 }
- 
+-(void)makePingAction{
+    
+    
+    
+    
+    
+}
 /*
 #pragma mark - Navigation
 

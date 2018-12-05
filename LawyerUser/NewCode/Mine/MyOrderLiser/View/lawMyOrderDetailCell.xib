@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -45,20 +45,24 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzc-gC-0qf">
                         <rect key="frame" x="300" y="13" width="58" height="20"/>
+                        <color key="backgroundColor" red="0.19607843137254902" green="0.50588235294117645" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Gg0-7w-4PI"/>
                             <constraint firstAttribute="width" constant="58" id="crc-AA-zVX"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="聘用" image="employ">
+                        <state key="normal" title=" 聘用" image="employ">
                             <color key="titleColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <state key="selected" title="已聘用" image="employ_blue">
                             <color key="titleColor" red="0.19607843137254902" green="0.50588235294117645" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="PinAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="60k-ny-ADJ"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="律师回答内容律师回答内容律师回答内容律师 回答内容。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97x-UH-cgk">
-                        <rect key="frame" x="51" y="56" width="300" height="29"/>
+                        <rect key="frame" x="51" y="56" width="300" height="36"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -72,14 +76,20 @@
                     <constraint firstItem="Kro-li-Mlu" firstAttribute="top" secondItem="x4a-Dy-CKI" secondAttribute="bottom" constant="4" id="cFt-v8-MhV"/>
                     <constraint firstAttribute="trailingMargin" secondItem="kzc-gC-0qf" secondAttribute="trailing" constant="1" id="dui-bw-WjF"/>
                     <constraint firstItem="kzc-gC-0qf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="efw-Xw-Fqb"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="97x-UH-cgk" secondAttribute="bottom" constant="5" id="gJy-nj-ezE"/>
                     <constraint firstItem="97x-UH-cgk" firstAttribute="top" secondItem="Kro-li-Mlu" secondAttribute="bottom" constant="8" id="o1Q-kl-UHI"/>
                     <constraint firstItem="x4a-Dy-CKI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="oXQ-Cv-Hid"/>
                     <constraint firstItem="4l2-lL-x2u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="q6y-F0-Bvv"/>
                     <constraint firstItem="4l2-lL-x2u" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ugn-a1-Ppf"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="135.19999999999999" y="106.59670164917542"/>
+            <connections>
+                <outlet property="ConcentLB" destination="97x-UH-cgk" id="4Ol-Es-504"/>
+                <outlet property="HeaderImage" destination="4l2-lL-x2u" id="G7Q-IP-mlO"/>
+                <outlet property="PersonNaem" destination="x4a-Dy-CKI" id="KDs-Ny-hXU"/>
+                <outlet property="PinBtn" destination="kzc-gC-0qf" id="ICX-zb-xP5"/>
+                <outlet property="TimeLB" destination="Kro-li-Mlu" id="T5V-56-F4n"/>
+            </connections>
+            <point key="canvasLocation" x="63" y="107"/>
         </tableViewCell>
     </objects>
     <resources>

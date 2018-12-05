@@ -11,7 +11,6 @@
 typedef void (^changBlock) (NSString * iscollect);
 @interface LawCaseAppreciateDetail : BaseViewController
 
- 
 @property (strong , nonatomic) LawCaseNewModel * model;
 @property (copy , nonatomic) changBlock  ChangCollectStatus;
 

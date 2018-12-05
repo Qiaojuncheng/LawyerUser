@@ -224,7 +224,9 @@
             [weakSelf.navigationController pushViewController:lawrevc animated:YES];
             }
             
-          }
+        }else{
+            [self showHint:data[@"msg"]];
+        }
          [self hideHud];
     } failure:^(NSError *error) {
         [self hideHud];

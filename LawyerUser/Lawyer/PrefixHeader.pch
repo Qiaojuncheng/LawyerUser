@@ -39,6 +39,8 @@
 #import <UShareUI/UShareUI.h>
 
 #import "LawLogionViewController.h"
+#import <UShareUI/UShareUI.h>
+
 //#import "SDWebImageManager.h"
 //#import "UIImageView+WebCache.h"
 /** @brief 登录状态变更的通知 */
@@ -365,6 +367,8 @@
 #define NewUserRelease [dic setValue:@"App/User/release" forKey:@"action"];
 //我的订单
 #define NewAppUsermyOrder  [dic setValue:@"App/User/myOrder" forKey:@"action"];
+//订单详情
+#define NewAppUsermyorderXq  [dic setValue:@"App/User/orderXq" forKey:@"action"];
 
 
 // 意见反馈

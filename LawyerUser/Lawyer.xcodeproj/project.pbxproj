@@ -55,6 +55,7 @@
 		1F5B271B1E9B52D100DBFA44 /* LawyerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B271A1E9B52D100DBFA44 /* LawyerUITests.m */; };
 		1F5B273B1E9B538C00DBFA44 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B273A1E9B538C00DBFA44 /* BaseViewController.m */; };
 		1F5E78081FA1DE6D00D22E3B /* 111.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5E78051FA1DE6C00D22E3B /* 111.png */; };
+		1F5E780821AF9237000FF02F /* lawOrderResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5E780721AF9237000FF02F /* lawOrderResultModel.m */; };
 		1F5E78091FA1DE6D00D22E3B /* 222.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5E78061FA1DE6C00D22E3B /* 222.png */; };
 		1F5E780A1FA1DE6D00D22E3B /* 333.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5E78071FA1DE6C00D22E3B /* 333.png */; };
 		1F674B341F79E83C00338C3E /* lot.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F674B331F79E83C00338C3E /* lot.plist */; };
@@ -399,7 +400,9 @@
 		1F5B27751E9B633700DBFA44 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		1F5E78051FA1DE6C00D22E3B /* 111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 111.png; sourceTree = "<group>"; };
 		1F5E78061FA1DE6C00D22E3B /* 222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 222.png; sourceTree = "<group>"; };
+		1F5E780621AF9237000FF02F /* lawOrderResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawOrderResultModel.h; sourceTree = "<group>"; };
 		1F5E78071FA1DE6C00D22E3B /* 333.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 333.png; sourceTree = "<group>"; };
+		1F5E780721AF9237000FF02F /* lawOrderResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawOrderResultModel.m; sourceTree = "<group>"; };
 		1F674B331F79E83C00338C3E /* lot.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lot.plist; sourceTree = "<group>"; };
 		1F86C985218C548200E8B75C /* lawVipModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawVipModel.h; sourceTree = "<group>"; };
 		1F86C986218C548200E8B75C /* lawVipModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawVipModel.m; sourceTree = "<group>"; };
@@ -1208,6 +1211,8 @@
 			children = (
 				1FFE6043219EC23D004D0919 /* lawMyOrderModel.h */,
 				1FFE6044219EC23D004D0919 /* lawMyOrderModel.m */,
+				1F5E780621AF9237000FF02F /* lawOrderResultModel.h */,
+				1F5E780721AF9237000FF02F /* lawOrderResultModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1516,15 +1521,15 @@
 		1FF6196C2188A6CF00C13C28 /* caretory */ = {
 			isa = PBXGroup;
 			children = (
+				1FF6196F2188A6CF00C13C28 /* AFManagerHelp */,
+				1FF619792188A6CF00C13C28 /* NSString+Password.h */,
+				1FF6197F2188A6CF00C13C28 /* NSString+Password.m */,
+				1FF619742188A6CF00C13C28 /* PublicMethod */,
+				1FF6197C2188A6CF00C13C28 /* TimerBtn */,
+				1FF6197B2188A6CF00C13C28 /* UIButton+ZYButton.h */,
 				1FF6196D2188A6CF00C13C28 /* UIButton+ZYButton.m */,
 				1FF6196E2188A6CF00C13C28 /* UILabel+ZYLable.h */,
-				1FF6196F2188A6CF00C13C28 /* AFManagerHelp */,
-				1FF619742188A6CF00C13C28 /* PublicMethod */,
-				1FF619792188A6CF00C13C28 /* NSString+Password.h */,
 				1FF6197A2188A6CF00C13C28 /* UILabel+ZYLable.m */,
-				1FF6197B2188A6CF00C13C28 /* UIButton+ZYButton.h */,
-				1FF6197C2188A6CF00C13C28 /* TimerBtn */,
-				1FF6197F2188A6CF00C13C28 /* NSString+Password.m */,
 			);
 			path = caretory;
 			sourceTree = "<group>";
@@ -1776,14 +1781,14 @@
 		1FF619CE2188A6CF00C13C28 /* heart */ = {
 			isa = PBXGroup;
 			children = (
-				1FF619CF2188A6CF00C13C28 /* LawNewHeaterModel.h */,
-				1FF619D02188A6CF00C13C28 /* LawHeartViewController.m */,
 				1FF619D12188A6CF00C13C28 /* LawheartCell.h */,
-				1FF619D22188A6CF00C13C28 /* LawNewHeaterModel.m */,
-				1FF619D32188A6CF00C13C28 /* LawHeartViewController.xib */,
+				1FF619D62188A6CF00C13C28 /* LawheartCell.m */,
 				1FF619D42188A6CF00C13C28 /* LawheartCell.xib */,
 				1FF619D52188A6CF00C13C28 /* LawHeartViewController.h */,
-				1FF619D62188A6CF00C13C28 /* LawheartCell.m */,
+				1FF619D02188A6CF00C13C28 /* LawHeartViewController.m */,
+				1FF619D32188A6CF00C13C28 /* LawHeartViewController.xib */,
+				1FF619CF2188A6CF00C13C28 /* LawNewHeaterModel.h */,
+				1FF619D22188A6CF00C13C28 /* LawNewHeaterModel.m */,
 			);
 			path = heart;
 			sourceTree = "<group>";
@@ -2565,6 +2570,7 @@
 				1FF61AD12188A6D000C13C28 /* LawCaseTypeCell.m in Sources */,
 				1FE7E646218D30E90026610B /* lawVipRecodeVC.m in Sources */,
 				1FF61A742188A6D000C13C28 /* lawAppointmentVC.m in Sources */,
+				1F5E780821AF9237000FF02F /* lawOrderResultModel.m in Sources */,
 				1FF61A832188A6D000C13C28 /* QJCXieYiVc.m in Sources */,
 				9AD265AD1F74EDB2007E98F3 /* Utile.m in Sources */,
 				1FF61A9D2188A6D000C13C28 /* LawMineCollectCell.m in Sources */,

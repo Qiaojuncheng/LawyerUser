@@ -20,6 +20,7 @@
 #import "lawVipCentViewController.h"
 #import "lawNearLawyerVC.h"
 #import "lawVipZoneVC.h"
+#import "LawHeartViewController.h"
 @interface LawMainPageViewController ()<UITableViewDataSource,UITableViewDelegate>{
     //     右上角的红点
     UIView * tipView;
@@ -263,6 +264,12 @@
 
     [_TopHeaderView addSubview:_topItemView];
 //    MJWeakSelf;
+    
+    _topItemView.adsselectBlock = ^(NSInteger index) {
+               LawHeartViewController * lawrevc =  [[LawHeartViewController alloc]init];
+                [self.navigationController pushViewController:lawrevc animated:YES];
+
+    };
 #pragma mark    30 @"常年顾问服务",@"案件委托",@"发律师函",@"合同审查",@"合同起草",@"民行监督",@"线下店铺",@"费用计算"
 
     _topItemView.ItemselectBlock = ^(NSInteger index) {

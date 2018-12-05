@@ -127,8 +127,10 @@
      return model.cellHeight ;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    lawMyOrderDetailVC * detail =[[lawMyOrderDetailVC alloc]init];
-//    [self.navigationController pushViewController:detail animated:YES];
+    lawMyOrderDetailVC * detail =[[lawMyOrderDetailVC alloc]init];
+    lawMyOrderModel * model = dataArrray[indexPath.row];
+    detail.orderId = model.id;
+    [self.navigationController pushViewController:detail animated:YES];
     
 }
 

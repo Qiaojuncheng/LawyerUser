@@ -144,6 +144,7 @@
             }
         }
     } failure:^(NSError *error) {
+  
         
     }];
     
@@ -228,6 +229,8 @@
                 }
             }
             
+        }else{
+            [self showHint:data[@"msg"]];
         }
         [self hideHud];
     } failure:^(NSError *error) {

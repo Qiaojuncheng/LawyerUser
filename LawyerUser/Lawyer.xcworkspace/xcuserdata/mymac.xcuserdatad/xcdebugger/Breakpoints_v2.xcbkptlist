@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lawyer/AppDelegate.mm"
-            timestampString = "564168288.58737"
+            filePath = "NewCode/MainPage/PublicLegalService/lawPublicLegalSevice.m"
+            timestampString = "565668235.61116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
-            landmarkName = "-otherLogin"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-AddAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

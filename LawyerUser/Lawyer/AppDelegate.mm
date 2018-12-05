@@ -369,7 +369,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     /*
      * 打开图片水印
      */
-    //[UMSocialGlobal shareInstance].isUsingWaterMark = YES;
+//    [UMSocialGlobal shareInstance].isUsingWaterMark = YES;
     
     /*
      * 关闭强制验证https，可允许http图片分享，但需要在info.plist设置安全域名
@@ -379,7 +379,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      <true/>
      </dict>
      */
-    //[UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
+//    [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
     
 }
 

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface lawMyOrderDetailVC : BaseViewController
-
+@property (strong , nonatomic)NSString * orderId;
 @end
 
 NS_ASSUME_NONNULL_END

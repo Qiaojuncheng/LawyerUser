@@ -43,9 +43,9 @@
     [_scrollTextView startScrollBottomToTopWithNoSpace];
 }
 - (void)scrollTextView2:(LMJScrollTextView2 *)scrollTextView clickIndex:(NSInteger)index content:(NSString *)content{
-//    if (self.adsselectBlock) {
-//        self.adsselectBlock(index);
-//    }
+    if (self.adsselectBlock) {
+        self.adsselectBlock(index);
+    }
 //    NSLog(@"#####点击的是：第%ld条信息 内容：%@",index,content);
 }
 
