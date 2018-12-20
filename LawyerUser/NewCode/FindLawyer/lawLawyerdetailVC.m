@@ -126,6 +126,14 @@
             cell  =[[[NSBundle mainBundle]loadNibNamed:@"lawdetailBottomCell" owner:self options:nil]lastObject];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        bottomBtn.backgroundColor = MAINCOLOR;
+        bottomBtn.userInteractionEnabled = YES ;
+        if([payType isEqualToString:@"预约"]){
+            cell.SecondView.backgroundColor = [UIColor colorWithHex:0xF6F6F6];
+        }else{
+            payType = @"电话";
+            cell.FirstView.backgroundColor = [UIColor colorWithHex:0xF6F6F6];
+        }
         cell.touchBlock = ^(NSInteger index) {
             if (index == 10) {
                 bottomBtn.backgroundColor = MAINCOLOR;

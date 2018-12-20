@@ -22,8 +22,24 @@
     self.PersonNaem.text =[NSString stringWithFormat:@"%@律师",model.name];
     self.TimeLB.text = model.time;
     self.ConcentLB.text = model.describe;
-    
-    
+//    状态0未聘用显示聘用按钮1已聘用2不显示内容
+    if([model.status isEqualToString:@"0"]){
+        self.PinBtn.hidden = NO ;
+        [self.PinBtn setTitle:@" 聘用" forState:UIControlStateNormal];
+        [self.PinBtn setTitleColor:[UIColor whiteColor]];
+        [self.PinBtn setBackgroundColor:[UIColor colorWithHex:0x3281FE]];
+        [self.PinBtn setImage:[UIImage imageNamed:@"employ"] forState:UIControlStateNormal];
+
+    }else if([model.status isEqualToString:@"1"]){
+        self.PinBtn.hidden =NO ;
+        [self.PinBtn setImage:[UIImage imageNamed:@"employ_blue"] forState:UIControlStateNormal];
+        [self.PinBtn setTitle:@" 已聘用" forState:UIControlStateNormal];
+        [self.PinBtn setTitleColor:[UIColor colorWithHex:0x3281FE]];
+        [self.PinBtn setBackgroundColor:[UIColor whiteColor]];
+        
+    }else{
+        self.PinBtn.hidden = YES ;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

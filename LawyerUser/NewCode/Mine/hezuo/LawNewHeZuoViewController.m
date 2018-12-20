@@ -17,10 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-[self addCenterLabelWithTitle:@"我要合作" titleColor:nil];
+[self addCenterLabelWithTitle:self.WebTitle titleColor:nil];
 self.view.backgroundColor =[UIColor whiteColor];
 self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NavStatusBarHeight +10, SCREENWIDTH, SCREENHEIGHT - NavStatusBarHeight)];
-[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.huirongfa.com/Wap/Index/cooperation.html"]]]];
+[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:self.WebStr]]]];
 self.webView.navigationDelegate = self;
 self.webView.UIDelegate = self;
 //开了支持滑动返回

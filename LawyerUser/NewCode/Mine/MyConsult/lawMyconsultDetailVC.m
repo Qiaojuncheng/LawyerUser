@@ -47,6 +47,10 @@
     if( IsLogin){
         [valuedic setValue:UserId forKey:@"uid"];
         [valuedic setValue:self.ConstulId forKey:@"id"];
+        if(self.mid){
+            [valuedic setValue:self.mid forKey:@"mid"];
+
+        }
 
         [valuedic setValue:[NSString stringWithFormat:@"%ld",page] forKey:@"p"];
         

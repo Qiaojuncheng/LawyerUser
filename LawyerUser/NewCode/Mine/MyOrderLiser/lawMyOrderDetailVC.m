@@ -130,7 +130,7 @@
         cell.model = dataArrray[indexPath.row];
          cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.PinBlock = ^{
-            [self makePingAction];
+            [self makePingAction:dataArrray[indexPath.row]];
         };
         return  cell ;
 
@@ -158,10 +158,40 @@
                     scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
             }
 }
--(void)makePingAction{
+-(void)makePingAction:(lawOrderResultModel *)model{
     
     
     
+    [self showHudInView:self.view hint:nil];
+    
+    NSMutableDictionary * dic =[[NSMutableDictionary alloc]init];
+    NewAppUseremploy
+    NSMutableDictionary * valuedic =[[NSMutableDictionary alloc]init];
+    if( IsLogin){
+        [valuedic setValue:UserId forKey:@"uid"];
+        [valuedic setValue:model.id forKey:@"id"];
+        
+        NSString * base64String =[NSString getBase64StringWithArray:valuedic];
+        [dic setValue:base64String forKey:@"value"];
+        [AFManagerHelp POST:MainUrl parameters:dic success:^(id responseObjeck) {
+            [self hideHud];
+            // 处理数据
+            if ([responseObjeck[@"status"] integerValue] == 0) {
+                [dataArrray removeAllObjects];
+                detailModel = [lawMyOrderModel yy_modelWithJSON:responseObjeck[@"data"]];
+                detailModel.cellHeight =[NSString GetHeightWithMaxSize:CGSizeMake(SCREENWIDTH - 35, MAXFLOAT) AndFont:[UIFont systemFontOfSize:13] AndText:detailModel.content].height +135;
+                for (NSDictionary  * dicc in responseObjeck[@"data"][@"bidding_list"]) {
+                    lawOrderResultModel * model = [lawOrderResultModel yy_modelWithJSON:dicc];
+                    model.cellHeight =[NSString GetHeightWithMaxSize:CGSizeMake(SCREENWIDTH - 75, MAXFLOAT) AndFont:[UIFont systemFontOfSize:15] AndText:model.describe].height +56;
+                    [dataArrray addObject:model];
+                }
+                [_tableView reloadData];
+            }
+        } failure:^(NSError *error) {
+            [self hideHud];
+        }];
+    }
+
     
     
 }

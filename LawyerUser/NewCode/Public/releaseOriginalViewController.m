@@ -49,15 +49,29 @@ self.navigationController.navigationBar.hidden = YES;
 
 
 - (IBAction)imageAction:(UIButton *)sender {
+    if (IsLogin) {
     lawreleaseConsultVC * release =[[lawreleaseConsultVC alloc]init];
     release.type = @"1";
     [self.navigationController pushViewController:release animated:YES ];
+    }else{
+    
+    LawLogionViewController *view = [LawLogionViewController new];
+    UINavigationController * na= [[UINavigationController alloc]initWithRootViewController:view];
+    [UIApplication sharedApplication].delegate.window.rootViewController = na;
+    }
  }
 
 - (IBAction)DTouchImage:(UIButton *)sender {
+    if(IsLogin){
     lawreleaseConsultVC * release =[[lawreleaseConsultVC alloc]init];
     release.type = @"2";
     [self.navigationController pushViewController:release animated:YES ];
+    }else{
+            
+            LawLogionViewController *view = [LawLogionViewController new];
+            UINavigationController * na= [[UINavigationController alloc]initWithRootViewController:view];
+            [UIApplication sharedApplication].delegate.window.rootViewController = na;
+        }
 }
 
 - (IBAction)DeleAction:(id)sender {

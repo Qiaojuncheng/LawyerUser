@@ -131,7 +131,8 @@
 //    type   1 咨询 2 电话预约 3 见面预约 4 法律服务 5 会员到期
    if ([modle.type isEqualToString:@"1"]) {
        lawMyconsultDetailVC * detail =[[lawMyconsultDetailVC alloc]init];
-       detail.ConstulId = modle.id;
+       detail.ConstulId = modle.tid;
+       detail.mid = modle.id;
        [self.navigationController pushViewController:detail animated:YES];
    }else if ([modle.type isEqualToString:@"2"]){
        //  @"电话预约";

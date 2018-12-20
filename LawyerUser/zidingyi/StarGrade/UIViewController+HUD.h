@@ -23,8 +23,4 @@
 
 - (void)showHint:(NSString *)hint yOffset:(float)yOffset;
 
-// 没有数据的时时候显示
-- (void)ShowNoDataViewWithStr:(NSString *) ShowStr yOffset:(float)yOffset;
-- (void) hintNodataView;
-
-@end
+ @end

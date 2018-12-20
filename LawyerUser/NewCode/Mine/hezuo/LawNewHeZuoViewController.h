@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface LawNewHeZuoViewController : BaseViewController
-
+@property (strong, nonatomic) NSString * WebTitle;
+@property (strong, nonatomic) NSString * WebStr;
 @end

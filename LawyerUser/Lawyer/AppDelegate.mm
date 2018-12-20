@@ -276,7 +276,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
     NSLog(@"在线消息 == %@ ",customizeField1);
     // 首页必显示
-    [UD setBool:YES  forKey:@"showMainpageTip"];
+    [UD setValue:@"YES"  forKey:@"showMainpageTip"];
     
 //    咨询
     if([customizeField1 isEqualToString:@"1"]){

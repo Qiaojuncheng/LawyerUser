@@ -20,7 +20,9 @@
 #import "lawVipCentViewController.h"
 #import "lawNearLawyerVC.h"
 #import "lawVipZoneVC.h"
+#import "LawNewHeZuoViewController.h"
 #import "LawHeartViewController.h"
+#import "lawreleaseConsultVC.h"
 @interface LawMainPageViewController ()<UITableViewDataSource,UITableViewDelegate>{
     //     右上角的红点
     UIView * tipView;
@@ -59,8 +61,10 @@
     [self  getBannerData];
     [self  getHeat];
     
-    BOOL  ShowTopView =[UD objectForKey:@"showMainpageTip"];
-    if ( ShowTopView) {
+    NSString *  ShowTopView =[UD objectForKey:@"showMainpageTip"];
+    
+    
+    if ( [ShowTopView isEqualToString:@"YES"]) {
         tipView.hidden = NO ;
     }else{
         tipView.hidden = YES ;
@@ -132,6 +136,8 @@
     _tableView.tableHeaderView = self.TopHeaderView;
     _tableView.separatorColor = [UIColor colorWithHex:0x999999];
     _tableView.delegate=  self;
+    _tableView.separatorInset = UIEdgeInsetsMake(0,SCREENWIDTH, 0, 0);
+
     _tableView.dataSource = self;
     _tableView.tableFooterView = [[UIView alloc]init];
     _tableView.estimatedRowHeight = 0;
@@ -204,9 +210,39 @@
     
     bannerView = [xsqbanner direcWithtFrame:CGRectMake(15, 10, SCREENWIDTH - 30, 160) ImageNameArr:@[@"1c514a19cd4eb919ad3e81ab66151a375b8fd6e151d09.png"] AndImageClickBlock:^(NSInteger index) {
         
+        if (index < BannerImageArraay.count ){
+            NSDictionary * dic  = BannerImageArraay[index];
+            NSString * sort = dic[@"sort"];
+            if([sort isEqualToString:@"1"]){
+                
+            }else if([sort isEqualToString:@"2"]){
+                if(IsLogin){
+//                2 跳到快速咨询
+                lawreleaseConsultVC * release =[[lawreleaseConsultVC alloc]init];
+                release.type = @"2";
+                [self.navigationController pushViewController:release animated:YES ];
+            }else{
+                
+                LawLogionViewController *view = [LawLogionViewController new];
+                UINavigationController * na= [[UINavigationController alloc]initWithRootViewController:view];
+                [UIApplication sharedApplication].delegate.window.rootViewController = na;
+            }
+
+            }else if([sort isEqualToString:@"3"]){
+//               3 跳转到会员页面
+                if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"is_vip"] isEqualToString:@"1"]) {
+                    lawVipCentViewController * vipCenter= [[lawVipCentViewController alloc]init];
+                    [self.navigationController pushViewController:vipCenter animated:YES];
+                    
+                }else{
+                    lawVipZoneVC * vc=[[lawVipZoneVC alloc]init];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+
+            }
+        }
     }];
-    
-     [Utile makeCorner:10 view:bannerView];
+      [Utile makeCorner:10 view:bannerView];
     [_TopHeaderView addSubview:bannerView];
  
 #pragma mark    附近律师和会员专区
@@ -303,7 +339,20 @@
                     Service.hidesBottomBarWhenPushed = YES ;
                     Service.type = @"3";
                      [self.navigationController pushViewController:Service animated:YES ];
-                }else {
+                }else if (index == 36) {
+                    LawNewHeZuoViewController * hezuo  =[[LawNewHeZuoViewController alloc]init];
+                    hezuo.WebTitle = @"线下店铺";
+                    hezuo.WebStr =@"http://www.huirongfa.com/shop.html";
+                    [self.navigationController pushViewController:hezuo animated:YES];
+                    
+                }else if (index == 37) {
+                    LawNewHeZuoViewController * hezuo  =[[LawNewHeZuoViewController alloc]init];
+                    hezuo.WebTitle = @"费用计算";
+                    hezuo.WebStr =@"http://www.huirongfa.com/calculate.html";
+
+                    [self.navigationController pushViewController:hezuo animated:YES];
+                    
+                }else{
                     [self showHint:@"功能正在开发中敬请期待！"];
 
                 }
@@ -348,6 +397,7 @@
     .heightIs(44);
     
     tipView = [[UIView alloc] initWithFrame:CGRectMake(rightButton.width - 15, 10, 8, 8)];
+    tipView.hidden = YES ;
     tipView.backgroundColor = [UIColor redColor];
     [Utile makeCorner:tipView.height/2 view:tipView];
     [rightButton addSubview:tipView];
@@ -367,11 +417,13 @@
         NSString  * str =[NSString stringWithFormat:@"%@",data[@"status"]];
         if ([str isEqualToString:@"0"]) {
             [self->BannerImageArraay removeAllObjects];
+            NSMutableArray * bannerImgeUrlArray =[[NSMutableArray alloc]init];
             for (NSDictionary * dic in data[@"data"]) {
-                [self->BannerImageArraay addObject:[NSString stringWithFormat:@"%@%@",ImageUrl,dic[@"pic"]]];
+                [bannerImgeUrlArray addObject:[NSString stringWithFormat:@"%@%@",ImageUrl,dic[@"pic"]]];
+                [self->BannerImageArraay addObject:dic];
             }
-            if(BannerImageArraay.count > 0){
-                self->bannerView.imageArr =BannerImageArraay;
+            if(bannerImgeUrlArray.count > 0){
+                self->bannerView.imageArr =bannerImgeUrlArray;
             }
         }
         [self hideHud];
@@ -441,7 +493,7 @@
      PostComeinLogionNotific
     
        tipView.hidden = YES ;
-    [UD setBool:NO  forKey:@"showMainpageTip"];
+    [UD setValue:@"YES"  forKey:@"showMainpageTip"];
     [UD synchronize];
     NSLog(@"通知");
     LawMianPageMessageCenter* messagecent = [[LawMianPageMessageCenter alloc]init];

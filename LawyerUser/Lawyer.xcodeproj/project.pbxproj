@@ -1648,15 +1648,15 @@
 		1FF619A02188A6CF00C13C28 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1FF619A92188A6CF00C13C28 /* lawdetailBottomCell.h */,
+				1FF619A32188A6CF00C13C28 /* lawdetailBottomCell.m */,
+				1FF619A62188A6CF00C13C28 /* lawdetailBottomCell.xib */,
+				1FF619A82188A6CF00C13C28 /* lawDetailMiddleCell.h */,
+				1FF619A42188A6CF00C13C28 /* lawDetailMiddleCell.m */,
+				1FF619A52188A6CF00C13C28 /* lawDetailMiddleCell.xib */,
 				1FF619A72188A6CF00C13C28 /* lawDetailTopCell.h */,
 				1FF619A22188A6CF00C13C28 /* lawDetailTopCell.m */,
 				1FF619A12188A6CF00C13C28 /* lawDetailTopCell.xib */,
-				1FF619A32188A6CF00C13C28 /* lawdetailBottomCell.m */,
-				1FF619A42188A6CF00C13C28 /* lawDetailMiddleCell.m */,
-				1FF619A52188A6CF00C13C28 /* lawDetailMiddleCell.xib */,
-				1FF619A62188A6CF00C13C28 /* lawdetailBottomCell.xib */,
-				1FF619A82188A6CF00C13C28 /* lawDetailMiddleCell.h */,
-				1FF619A92188A6CF00C13C28 /* lawdetailBottomCell.h */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

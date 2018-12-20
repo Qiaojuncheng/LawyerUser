@@ -37,8 +37,13 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:view];
     [view addSubview:HUD];
     [HUD show:YES];
+    HUD.bezelView.color = [UIColor blackColor];
+    HUD.activityIndicatorColor =[UIColor whiteColor];
+
     [self setHUD:HUD];
+    
     HUD.labelText = hint;
+    HUD.label.textColor = [UIColor whiteColor];
 }
 
 - (void)showHint:(NSString *)hint
@@ -56,11 +61,15 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
  
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     
-    
+    hud.bezelView.backgroundColor = [UIColor blackColor];
+
     hud.userInteractionEnabled = NO;
     // Configure for text only and offset down
     hud.mode = MBProgressHUDModeText;
     hud.labelText = hint;
+    hud.label.textColor = [UIColor whiteColor];
+    hud.activityIndicatorColor =[UIColor whiteColor];
+
     hud.margin = 10.f;
     hud.yOffset = 180;
     hud.removeFromSuperViewOnHide = YES;
@@ -72,8 +81,11 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     // Configure for text only and offset down
     hud.mode = MBProgressHUDModeText;
     hud.labelText = hint;
+    hud.bezelView.backgroundColor = [UIColor blackColor];
     hud.margin = 10.f;
     hud.yOffset = view.centerY/2;
+    hud.activityIndicatorColor =[UIColor whiteColor];
+
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:2];
 }
@@ -98,6 +110,8 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     [imageV startAnimating];
     hud.customView = imageV;
     hud.square = YES;
+    hud.activityIndicatorColor =[UIColor whiteColor];
+
     hud.color = [UIColor clearColor];
     [self setHUD:hud];//有了这一句可以保证[self hideHUD];正常执行
 
@@ -109,6 +123,9 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     hud.userInteractionEnabled = NO;
     // Configure for text only and offset down
     hud.mode = MBProgressHUDModeText;
+    hud.bezelView.backgroundColor = [UIColor blackColor];
+    hud.activityIndicatorColor =[UIColor whiteColor];
+
     hud.labelText = hint;
     hud.margin = 10.f;
     hud.yOffset = 180;
@@ -119,38 +136,6 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
 
 - (void)hideHud{
     [[self HUD] hide:YES];
-}
-
-- (void)ShowNoDataViewWithStr:(NSString *) ShowStr yOffset:(float)yOffset{
-    UIView * showViews =[self.view viewWithTag:101];
-    [showViews removeFromSuperview];
-
-    UIView * ShowView =[[UIView alloc]initWithFrame:CGRectMake(ConentViewWidth/2 - 50,0,100 , 60)];
-    ShowView.tag = 101;
-    ShowView.centerY = self.view.centerY  + yOffset;
-    ShowView.backgroundColor =[UIColor clearColor];
-
-    
-    UIImageView * ima =[[UIImageView alloc]initWithFrame:CGRectMake(35, 0, 30, 30)];
-     ima.image =[UIImage imageNamed:@"wjl"];
-    [ShowView addSubview:ima];
-    
-    
-    UILabel  * showLabel =[[UILabel alloc]initWithFrame:CGRectMake(0,40 , 100 , 20)];
-      showLabel.text = ShowStr ;
-    showLabel.textAlignment = NSTextAlignmentCenter;
-    showLabel.font =  [UIFont systemFontOfSize:14];
-    showLabel.textColor =[UIColor colorWithHex:0x666666];
-    [ShowView addSubview:showLabel];
-    
-//    UIView *view = [[UIApplication sharedApplication].delegate window];
-    [ self.view addSubview:ShowView];
-    
- }
--(void)hintNodataView{
-    UIView * showView =[self.view viewWithTag:101];
-    [showView removeFromSuperview];
-
 }
 
 @end

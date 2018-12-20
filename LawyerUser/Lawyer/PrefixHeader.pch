@@ -369,7 +369,8 @@
 #define NewAppUsermyOrder  [dic setValue:@"App/User/myOrder" forKey:@"action"];
 //订单详情
 #define NewAppUsermyorderXq  [dic setValue:@"App/User/orderXq" forKey:@"action"];
-
+//聘用律师
+#define NewAppUseremploy  [dic setValue:@"App/User/employ" forKey:@"action"];
 
 // 意见反馈
 #define QJAddvicefeedback [dic setValue:@"App/Public/feedback" forKey:@"action"];

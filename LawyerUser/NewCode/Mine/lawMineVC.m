@@ -427,6 +427,8 @@ referenceSizeForHeaderInSection:(NSInteger)section {
             
         }else if (indexPath.row ==4){
             LawNewHeZuoViewController * hezuo  =[[LawNewHeZuoViewController alloc]init];
+            hezuo.WebTitle = @"我要合作";
+            hezuo.WebStr =@"http://www.huirongfa.com/Wap/Index/cooperation.html";
             [self.navigationController pushViewController:hezuo animated:YES];
         }
         
